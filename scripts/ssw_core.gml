@@ -40,12 +40,9 @@ if (argument[0]) {//animate
     if !blend c=$ffffff
     usedskin_offsety=skin_offsety
     drawsize=global.reroutedsizes[p2,size]
-    frx=floor(frame)
-    fry=0
-    splitpadding=0
-    //frx=floor(frame)+global.animationstartX[p2,sid+ypos]
-    //fry=global.animationstartY[p2,sid+ypos]
-    //splitpadding=global.spritelistpadding[p2,sid+ypos]
+    frx=floor(frame)+global.animationstartX[p2,sid+ypos]
+    fry=global.animationstartY[p2,sid+ypos]
+    splitpadding=global.spritelistpadding[p2,sid+ypos]
     drawsheetsize=drawsize
     if global.singlesheet[p2]{
         splitpadding+=global.singlesheetsplitwidth[p2,drawsize]
@@ -72,16 +69,13 @@ if (argument[0]) {//animate
     if (size==0 && shortsmallform!=0) {divisio=1/shortsmallform  if !global.singlesheet[p2] multiplicio=-1}
     else if (size==5 && !minisheet) {divisio=1.75  multiplicio=5 }
 
-
-
     if (sprite_angle!=0) draw_sprite_general(
     //  sprite, subimage
         sheets[max(drawsheetsize-multiplicio,0)],0,
     //  left, top
-        +8+frx*trusprw+global.animationstartX[p2,sid]+margin+splitpadding,
-        usedskin_offsety+global.animationstartY[p2,sid]+fry*trusprh+margin,
+        8+frx*sprw[drawsize]+margin+splitpadding,usedskin_offsety+fry*sprh[drawsize]+margin,
     //  width, height
-        trusprw-1-margin*2,trusprh-1-margin*2,
+        sprw[drawsize]-1-margin*2,sprh[drawsize]-1-margin*2,
     //  left top corner of the quad, accounting for rotation
         round(x)+lengthdir_x((margin+fox-sprcx[drawsize])*(xsc/divisio)*pxsc*mxsc-13,sprite_angle)+lengthdir_x((margin+foy+dy-(14+sprcy[drawsize]))*(ysc/divisio)*mysc+14,sprite_angle-90),
         round(y)+lengthdir_y((margin+fox-sprcx[drawsize])*(xsc/divisio)*pysc*mysc-13,sprite_angle)+lengthdir_y((margin+foy+dy-(14+sprcy[drawsize]))*(ysc/divisio)*mysc+14,sprite_angle-90),
@@ -92,16 +86,15 @@ if (argument[0]) {//animate
     )
     else draw_sprite_part_ext(
         sheets[max(drawsheetsize-multiplicio,0)],0,
-        8+frx*trusprw+global.animationstartX[p2,sid]+splitpadding,
-        usedskin_offsety+global.animationstartY[p2,sid]+fry*trusprh,
-        trusprw-1,trusprh-1,
+        8+frx*sprw[drawsize]+splitpadding,usedskin_offsety+fry*sprh[drawsize],
+        sprw[drawsize]-1,sprh[drawsize]-1,
         round(x+(fox-sprcx[drawsize])*(xsc/divisio)*pxsc*mxsc), //XSC =direction PXSC = Pipe Squishing MXSC=Modifiable XSC
         round(y+(foy+dy-(14+sprcy[drawsize]))*(ysc/divisio)*pysc*mysc+14),
         (xsc/divisio)*pxsc*mxsc,(ysc/divisio)*pysc*mysc,
         c,alpha*(1-0.75*shadow)
     )
-    draw_left=8+frx*trusprw+splitpadding+global.animationstartX[p2,sid]
-    draw_top=usedskin_offsety+fry*trusprh+global.animationstartY[p2,sid]
+    draw_left=8+frx*sprw[drawsize]+splitpadding
+    draw_top=usedskin_offsety+fry*sprh[drawsize]
 
 
     shader_reset();
