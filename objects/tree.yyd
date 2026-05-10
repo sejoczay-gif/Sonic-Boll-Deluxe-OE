@@ -484,6 +484,7 @@
 	|itemlaunch
 	|clawbase
 	|claw
+	|lifemoon
 +level objects
 	+collision
 		|collider

@@ -477,6 +477,7 @@
 		|spr_dotter
 		|spr_undotter
 		|spr_emerald
+		|spr_3moon
 	+technical
 		+logicentities
 			|spr_logic_relay
