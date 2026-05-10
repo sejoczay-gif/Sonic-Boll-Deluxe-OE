@@ -360,6 +360,11 @@ listobj(lifemush        ,1,spr_1up          ,87,mushroom)
     //#88 - Dotter (Deprecated)
     //#89 - Undotter (Deprecated)
 
+listobj(lifemoon,1,spr_3moon,242,mushroom)
+    listdoc("3up Moon","")
+    listargs("align")
+    listdata("0"    )
+
 listobj(flower          ,1,spr_flower       ,82,mushroom)
     listdoc("Fire Flower","")
     listargs("align")

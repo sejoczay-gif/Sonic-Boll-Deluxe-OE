@@ -220,6 +220,16 @@ if (type="1up") {
     itemget=1
 }
 
+if (type="3up") {
+    sound("item1up")
+    itemc+=1
+    global.lifes+=3
+    deaths=max(0,deaths-3)
+    if (super) superpower=6000
+    else energy=maxe
+    itemget=1
+}
+
 if (type="monitor_1up") {
     give_item(id,"1up")
 }

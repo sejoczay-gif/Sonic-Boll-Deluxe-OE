@@ -43,6 +43,7 @@ switch (argument[0]) {
     case "mushpoison": {if (hspeed>=0 && skindat("itemflip")) xsc=-1 frx=fr fry=7 frox=8 froy=8 break}
     case "glui":      {sheet=global.topsheetcret[biome] frx=ifr fry=1 frox=8 froy=8 break}
     case "btroot":    {sheet=global.topsheetcret[biome] frx=ifr fry=0 frox=8 froy=8 if (object_index == projectile) {xsc=0.88 ysc=0.88} break}
+    case "3moon":     {sheet=global.topsheetcret[biome] frx=ifr fry=2 frox=8 froy=8 break}
 }
 
 draw_sprite_part_ext(sheet,1,frx*16+8,fry*16+8,w*16,h*16,floor(x-frox*xsc),floor(y-froy*ysc)+dy,xsc,ysc,$ffffff,1)
