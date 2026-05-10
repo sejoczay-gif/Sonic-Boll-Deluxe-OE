@@ -1,4 +1,0 @@
-COMPILATION ERROR in Script: charm_loadError in code at line 236:   
-        file_text_write_string(cf, "if string(sha1_file(argument[0]+'\'+name+'.gml')) != '"+string(sha1_file(argument[0]+"\"+name+".gml"))+"' {cacheload = 0; exit;}")                                                                                                      ^at position 101: Unknown function or script: sha1_file
-
-

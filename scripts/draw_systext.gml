@@ -48,11 +48,11 @@ if (string(__text_sys_last)!=str) {
                 if (string_pos("a=",tagstr)=1) {__text_sys_tag_cmds[j,0]=2 __text_sys_tag_cmds[j,1]=unreal(string_delete(tagstr,1,2))}
                 if (string_pos("s=",tagstr)=1) {__text_sys_tag_cmds[j,0]=3 __text_sys_tag_cmds[j,1]=unreal(string_delete(tagstr,1,2))}
                 if (string_pos("l=",tagstr)=1) {__text_sys_tag_cmds[j,0]=4 __text_sys_tag_cmds[j,1]=unreal(string_delete(tagstr,1,2))}
-                __text_sys_char_arr[j]=13 j+=1 i+=1
+                __text_sys_char_arr[j]=13 j+=1
                 continue
-            } else {tagstr+=ch i+=1 continue}
+            } else {tagstr+=ch continue}
         }
-        if (ch="$") if (string_char_at(str,i+1)="{") {tag=1 i+=2 tagstr="" continue}
+        if (ch="$") if (string_char_at(str,i+1)="{") {tag=1 i+=1 tagstr="" continue}
 
         c=string_pos(ch,global.fontmap)
         __text_sys_char_arr[j]=c
@@ -62,7 +62,7 @@ if (string(__text_sys_last)!=str) {
         __text_sys_tag_cmds[j,0]=0
 
         if (c=13) continue
-        if (c=35 || c=10) {if (i=l) break lh+=8*s i+=1 line+=1 continue}
+        if (c=35 || c=10) {if (i=l) break lh+=8*s line+=1 continue}
         lw[line]+=8*s
         maxx=max(maxx,lw[line])
         __text_sys_length_lw[line] = lw[line];
@@ -92,8 +92,8 @@ for (i=1;i<=l;i+=1) {
     if (__text_sys_tag_cmds[i,0]=2) dalp=alpha*__text_sys_tag_cmds[i,1]
     if (__text_sys_tag_cmds[i,0]=3) dsca=s*__text_sys_tag_cmds[i,1]
     if (__text_sys_tag_cmds[i,0]=4) dlin=__text_sys_tag_cmds[i,1]
-    if (c=13) {i+=1 continue}
-    if (c=35 || c=10) {dcol=col dalp=alpha dsca=s line+=1 dx=floor(argument[0]) if (global.halign=1) {dx-=floor(__text_sys_length_lw[line]/2)} if (global.halign=2) {dx-=__text_sys_length_lw[line]} dy+=dlin*s i+=1 continue}
+    if (c=13) {continue}
+    if (c=35 || c=10) {dcol=col dalp=alpha dsca=s line+=1 dx=floor(argument[0]) if (global.halign=1) {dx-=floor(__text_sys_length_lw[line]/2)} if (global.halign=2) {dx-=__text_sys_length_lw[line]} dy+=dlin*s continue}
     if (c!=32) draw_sprite_part_ext(cus_spr,0,__text_sys_char_arr[i, 0],__text_sys_char_arr[i, 1],9,9,dx,dy+(dlin+1)*s-(dlin+1)*dsca,s,dsca,dcol,dalp)
     dx+=8*s
 }
