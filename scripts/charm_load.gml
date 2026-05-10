@@ -230,6 +230,8 @@ if (!cacheload) {
         
         cf = file_text_open_write(global.savedir+"cache\charm\"+name+".gml")
         
+        if (cf == -1) exit;
+        
         file_text_write_string(cf, "name = argument[1]; c = argument[2]; global.__tempbroken="+string(settings(name+" broken"))+"; ")
         file_text_write_string(cf, "if string(sha1_file(argument[0]+'\'+name+'.gml')) != '"+string(sha1_file(argument[0]+"\"+name+".gml"))+"' {cacheload = 0; exit;}")
         
