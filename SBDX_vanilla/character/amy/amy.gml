@@ -880,18 +880,6 @@ if ((abut || jumpbufferdo) && (!springin)) {
         }
     } else { //air jumps
 	
-			if (hang) {
-				screenshake(x,4)
-				playsfx(name+"walljump")
-				afterhang=16
-				hsp=esign((right)+(-left),xsc)*-3.5 instance_create(x+6*xsc,y+8,kickpart)
-				xsc*=-1 vsp=-3.5
-				//if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick",0,1+(size==5)/3)
-				crouch=0
-				pikovault=true;
-				canstopjump=1
-			}
-	
 			if !(pikoball && !hang && !afterhang && !dropkick && !droplag) {
 				pikoball=true;
 				pikovault=false;
@@ -911,6 +899,18 @@ if ((abut || jumpbufferdo) && (!springin)) {
 }
 jumpbufferdo=0
 springin=0
+
+if (hang && jump && pikoball) {
+	screenshake(x,4)
+	playsfx(name+"walljump")
+	afterhang=16
+	hsp=esign((right)+(-left),xsc)*-3.5 instance_create(x+6*xsc,y+8,kickpart)
+	xsc*=-1 vsp=-3.5
+	//if (size) playsfx(name+"wallkick") else playsfx(name+"smallwallkick",0,1+(size==5)/3)
+	crouch=0
+	pikovault=true;
+	canstopjump=0
+}
 
 if (akey) {
     if (jumpbuffer) jumpbuffer-=1
