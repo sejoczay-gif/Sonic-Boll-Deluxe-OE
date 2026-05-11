@@ -15,3 +15,7 @@ This game includes:
 -Easy modding with skins, a level editor, and a character mod loader
 
 This game is still a beta, so expect a few issues here and there.
+#
+<img width="90" height="90" alt="gm82" src="https://github.com/user-attachments/assets/b7ac6543-66bb-44ae-9041-edc72b8baed0"/>
+
+Made with [Gamemaker 8.2.](https://gm82.cherry-treehouse.com/)
