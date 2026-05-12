@@ -804,7 +804,7 @@ com_piping()
         } else {
             if (!jump) {
                 if (sign(hsp)!=h) {
-                    if (abs(hsp)>maxspd*0.8) {
+                    if (abs(hsp)>maxspd*0.8 && !kick) {
 						if !skidding playsfx(name+"skid")
                         braking=1
 						skidding=1
@@ -1020,7 +1020,7 @@ if (!jump && (size && size!=5) && !kick && !spin) {
 
 //crouching and spinning
 if (down && !up) {
-    if (!jump && !braking && !spin) {
+    if (!jump && !braking && !spin && !kick) {
             crouch=1
     }
 com_piping()
@@ -1033,7 +1033,7 @@ com_piping()
     mask_reset()
 }
 if (!grabflagpole && !piped && size==5) mask_set(9,8) //please dont ask why the width has to be 9 pipes are weird and wacky and this is the only way i got to stop players from getting stuck in pipes and turning invisible/
-else if (!grabflagpole && (trip || dash || spin || crouch || size=0 || fall=5)) mask_set(12,12)
+else if (!grabflagpole && (trip || dash || spin || crouch || kick || size=0 || fall=5)) mask_set(12,12)
 else mask_set(12,24)
 
 #define movement
@@ -1238,8 +1238,7 @@ if (global.dustframe) {
 
 if (kick) {
 	kick-=1
-	crouch=1
-	if down && kick<24 {spin=1 kick=0 crouch=0}
+	if down && kick<24 {spin=1 crouch=0 kick=0}
 	if !spin hsp=(kick/8)*xsc 
 	if (jump) kick=0
 }
@@ -1454,7 +1453,7 @@ if (coll) {
         if (coll.object_index=lakitu) if (coll.flee) exit
         
         if (star  
-        || ((spin || kick) && type!=spinyegg && type!=beetle && type!=koopa && !object_is_ancestor(type,koopa) && type!=shell)
+        || ((spin || kick || skip) && type!=spinyegg && type!=beetle && type!=koopa && !object_is_ancestor(type,koopa) && type!=shell)
         || (pound>13 && type!=piranha && type!=spinyegg && type!=spiny)) {
             instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
             if (type=hammerbro) seqcount=max(5,seqcount)
@@ -1469,7 +1468,7 @@ if (coll) {
             exit
         }
         
-        if (spin || kick) {
+        if (spin || kick || skip) {
             if (type=shell) {if (coll.type!="beetle") {enemydie(coll) exit}}
             else if (type=beetle || object_is_ancestor(type,koopa) || type=koopa) {hsp=0 jump=1 jumpspd=0.5 spin=0 enemystomp(coll) exit}
             else if (type=spinyegg) {hurtplayer("enemy") exit}
