@@ -1311,6 +1311,60 @@ with (deity) {
             rect(x*16,y*16+5,real(data[2])*16,6,col,0.5)
             draw_sprite(spr_sidegate,0,(x*16)+(real(data[2])-1)*16,y*16)
         } break
+
+        case (bigitembox): {
+            bigboxoffset=16
+        }
+        case (itembox): {
+            switch data[1] {
+                case "item": {
+                    draw_sprite_ext(spr_flower,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "itemfeather": {
+                    draw_sprite_ext(spr_feather,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "mini": {
+                    draw_sprite_ext(spr_mushsmall,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+4,1,1,0,c_white,0.5)
+                } break
+                case "coins": {
+                    draw_sprite_ext(spr_coin,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "life": {
+                    draw_sprite_ext(spr_1up,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "moon": {
+                    draw_sprite_ext(spr_3moon,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "poison": {
+                    draw_sprite_ext(spr_poison,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "vine": {
+                    draw_sprite_ext(spr_sprong,0,x*16+off+off2x+bigboxoffset,y*16+off+off2y,1,1,0,c_white,0.5)
+                } break
+                case "star": {
+                    draw_sprite_ext(spr_starman,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "key": {
+                    draw_sprite_ext(spr_key,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "shield": {
+                    draw_sprite_ext(spr_shield,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "spring": {
+                    draw_sprite_ext(spr_spring,0,x*16+off+off2x+bigboxoffset,y*16+off+off2y,1,1,0,c_white,0.5)
+                } break
+                case "spreng": {
+                    draw_sprite_ext(spr_spreng,0,x*16+off+off2x+bigboxoffset,y*16+off+off2y,1,1,0,c_white,0.5)
+                } break
+                case "pswitch": {
+                    draw_sprite_ext(spr_switch,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+                case "shard": {
+                    draw_sprite_ext(spr_shard,0,x*16+off+off2x+8+bigboxoffset,y*16+off+off2y+8,1,1,0,c_white,0.5)
+                } break
+            }
+        } break
+
     }
     update=0
 }
