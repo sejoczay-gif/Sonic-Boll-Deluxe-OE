@@ -273,7 +273,7 @@ if tail_draw=0{
 		//  sprite, subimage
 			sheets[drawsize],0,
 		//  left, top
-			8+ssw_frx*sprw+margin,128+sid*sprh+margin,
+			8+ssw_frx*sprw+margin,skin_offsety+sid*sprh+margin,
 		//  width, height
 			sprw-1-margin*2,sprh-1-margin*2,
 		//  left top corner of the quad, accounting for rotation
@@ -286,7 +286,7 @@ if tail_draw=0{
 		)
 		else draw_sprite_part_ext(
 			sheets[drawsize],0,
-			ceil(8+ssw_frx*sprw),ceil(128+sid*sprh),
+			ceil(8+ssw_frx*sprw),ceil(skin_offsety+sid*sprh),
 			sprw-1,sprh-1,
 			round(x-sprcx*xsc*pxsc*mxsc), //XSC =direction PXSC = Pipe Squishing MXSC=Modifiable XSC
 			round(y+(dy-(14+sprcy))*ysc*pysc*mysc+14),
