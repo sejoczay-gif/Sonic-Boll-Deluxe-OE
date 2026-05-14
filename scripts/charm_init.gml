@@ -71,7 +71,7 @@ tempwait=playerskindat(p2,"tempwait"+ss)
 usepalette=playerskindat(p2,"offersprays"+ss)
 MAXIMUMSIZESARGH=playerskindat(p2,"maxsizes"+ss)
 totpal=playerskindat(p2,"totpal"+ss)
-projectilepalettes=(usepalettes && funnytruefalse(playerskindat(p2,string(name)+" projectile palettes")))
+projectilepalettes=(usepalette && funnytruefalse(playerskindat(p2,string(name)+" projectile palettes")))
 
 var loopey;
 loopey=0
