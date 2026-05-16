@@ -1,6 +1,5 @@
 [mecha]
 name=Tony Hawk
-credits=CowboyJoseph64, Zephiel87, Natsume
 
 icon speed=6
 icon loop=yes
@@ -100,6 +99,7 @@ boll bot=#808080
 [lang]
 winspecial=Tony Hawk got a Chaos Emerald
 allspecial=Tony Hawk got all Chaos Emeralds
+credits=CowboyJoseph64, Zephiel87, Natsume
 princess=the gold medal
 savetext1=YOU HAVE PASSED THE#SUPER MARIO COURSE!
 savetext2=YOU ARE A PRO SKATER,#CONGRATULATIONS!

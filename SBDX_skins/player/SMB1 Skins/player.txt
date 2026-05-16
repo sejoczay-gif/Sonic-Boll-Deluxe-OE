@@ -150,6 +150,7 @@ boll bot=#887000
 [lang mario]
 winspecial=Mario got a Chaos Emerald
 allspecial=Mario got all Chaos Emeralds
+credits=Gorsal, Artie, Rapid the Hedgehog, MarioBegins, PolarKoala
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
@@ -254,6 +255,7 @@ boll bot=#000000
 [lang kid]
 winspecial=The Kid got a Chaos Emerald
 allspecial=The Kid got all Chaos Emeralds
+credits=DaJumpJump
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
@@ -406,6 +408,7 @@ boll bot=#fc9838
 winspecial=Sonic got a Chaos Emerald
 allspecial=Sonic got all Chaos Emeralds
 princess=our Princess
+credits=DaJumpJump
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
 savetext3=Hurrah to Sonic

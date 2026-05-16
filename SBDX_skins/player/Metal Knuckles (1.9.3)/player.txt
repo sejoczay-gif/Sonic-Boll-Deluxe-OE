@@ -1,6 +1,5 @@
 [knux]
 name=Metal Knuckles
-credits=Calypso
 
 icon speed=6
 icon loop=yes
@@ -238,6 +237,7 @@ boll bot=#ff0000
 [lang]
 winspecial=Metal Knuckles got a Chaos Emerald
 allspecial=Metal Knuckles got all Chaos Emeralds
+credits=Calypso
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved

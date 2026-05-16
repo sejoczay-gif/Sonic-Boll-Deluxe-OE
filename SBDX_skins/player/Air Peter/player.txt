@@ -137,6 +137,7 @@ boll bot=#006349
 [lang]
 winspecial=Peter got a Chaos Emerald
 allspecial=Peter got all Chaos Emeralds
+credits=SuperSani24
 princess=Lois
 savetext1=Enough!
 savetext2=

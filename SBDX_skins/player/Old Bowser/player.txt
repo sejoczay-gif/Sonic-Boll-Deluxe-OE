@@ -140,6 +140,7 @@ boll bot=#808080
 [lang]
 winspecial=Bowser got a Chaos Emerald
 allspecial=Bowser got all Chaos Emeralds
+credits= 
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved

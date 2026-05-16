@@ -1,7 +1,5 @@
 [sonic]
 name=HD Sonic
-credits=SuperSanic24 (creator), Vincenzo Mastrorosato, “Lapper”, Corral Summer, Mike Harvey, Christian Peterson, Jesús Campos, Isaiah Garcia, Ricky Earl, Leonardo Cirius
-character animation/artwork people from https://sonic2hd.com/staff/
 
 icon speed=6
 icon loop=yes
@@ -139,6 +137,7 @@ boll bot=#ff0000
 [lang]
 winspecial=Sonic got a Chaos Emerald
 allspecial=Sonic got all Chaos Emeralds
+credits=SuperSani24, Vincenzo Mastrorosato, “Lapper”, Corral Summer, Mike Harvey, Christian Peterson, Jesús Campos, Isaiah Garcia, Ricky Earl, Leonardo Cirius, character animation/artwork people from https://sonic2hd.com/staff/
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved

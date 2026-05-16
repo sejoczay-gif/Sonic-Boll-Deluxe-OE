@@ -1,6 +1,5 @@
 [mecha]
 name=M.S. Pack
-credits=MikeWad
 
 icon speed=6
 icon loop=yes
@@ -95,6 +94,7 @@ boll bot=#808080
 [lang]
 winspecial=M.S. Pack got a Chaos Emerald
 allspecial=M.S. Pack got all Chaos Emeralds
+credits=MikeWad
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved

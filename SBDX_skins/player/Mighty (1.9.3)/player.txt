@@ -1602,6 +1602,7 @@ boll bot=#ff0000
 winspecial=Mighty got a Chaos Emerald
 allspecial=Mighty got all Chaos Emeralds
 princess=our Princess
+credits= 
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
 savetext3=Hurrah to Mighty

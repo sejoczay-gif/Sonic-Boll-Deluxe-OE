@@ -28,23 +28,26 @@ single sheet=true
 singlesheet split width=8,242,476,710,710,8
 singlesheet split height=0,0,0,0,0,0
 
-custom sprite list=stand,wait,jump,fly,crouch,lookup,knockstand,knockrun,run,turn,dead,deadair,claw,ball
+custom sprite list=stand,crouch,lookup,fly,dead,ball,jump,knockstand,run,turn
 
-connect armlessalt=true
-connect jump=true
+stand,wait,jump,fly,crouch,lookup,knockstand,knockrun,run,turn,dead,deadair,claw,ball
+
 connect crouch=true
-connect wait=true
 connect lookup=true
 
-connect knockrun=true
+connect dead=true
+connect ball=true
+
+connect knockstand=true
 connect run=true
 connect turn=true
 
-connect deadair=true
-connect claw=true
-connect ball=true
-
-reroute armless=claw
+reroute prerun=jump
+reroute claw=jump
+reroute armless=jump
+reroute armlessalt=jump
+reroute knockrun=knockstand
+reroute deadair=dead
 reroute pose=turn
 reroute climbing=fly
 reroute flagslide=fly
@@ -55,38 +58,33 @@ reroute sidepiping=run
 reroute doorenter=stand
 reroute doorexit=stand
 
-reroute armlessalt=claw
-
 fire duration=8
 victory duration=30
-wait frames=1
-stand frames=2
+stand frames=1
 lookup frames=3
-pose frames=3
+lookup offset x=-1
 knockstand frames=1
-knockrun frames=1
 run frames=2
-jump frames=3
+jump frames=1
 ball frames=3
 turn frames=2
 fly frames=2
+fly offset x=-4
+fly offset y=-14
 turn loop=2
-crouch frames=1
-armless frames=1
-armlessalt frames=1
-claw frames=1
-flagslide frames=1
+crouch frametimes=1,3,3,3,3
+crouch frames=2
 dead frames=1
-deadair frames=1
 
 wait loop=1
 jump loop=1
 claw loop=1
 armless loop=1
-crouch loop=1
+crouch loop=2
+turn loop=2
 
 stand speed=0.125
-crouch speed=0.35
+crouch speed=0.2
 run speed=0.25
 armless speed=0.25
 jump speed=0.25
@@ -94,7 +92,7 @@ claw speed=1
 fly speed=0.4
 climbing speed=0.125
 flagslide speed=0.125
-
+turn speed=0.25
 
 lookup speed=0.3
 
@@ -105,6 +103,7 @@ boll bot=#808080
 [lang]
 winspecial=Waluigi got a Chaos Emerald
 allspecial=Waluigi got all Chaos Emeralds
+credits= 
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved

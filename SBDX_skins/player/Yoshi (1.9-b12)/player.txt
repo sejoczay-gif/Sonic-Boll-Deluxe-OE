@@ -151,6 +151,7 @@ boll bot=#006EEE
 [lang]
 winspecial=Yoshi got a Chaos Emerald
 allspecial=Yoshi got all Chaos Emeralds
+credits= 
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
