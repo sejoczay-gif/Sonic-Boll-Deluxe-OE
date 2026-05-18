@@ -535,8 +535,8 @@ if ((h!=0 || bash) && !water) {
                 braking=0
             }
         } else {
-            if (size==5) hsp+=(0.17+0.17*bash)*wf*(h && !machbash)
-            else hsp+=(0.12+0.12*bash)*wf*(h && !machbash)
+            if (size==5) hsp+=(0.17+0.17*bash)*wf*h
+            else hsp+=(0.12+0.12*bash)*wf*h
             xsc=h
         }
     }
