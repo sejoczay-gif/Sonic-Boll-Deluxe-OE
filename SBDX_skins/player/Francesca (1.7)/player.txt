@@ -20,9 +20,14 @@ pole center offset=8
 
 old glide animation=true
 
+use paletting=true
+defaultspray 1=5
+defaultspray 2=0
+defaultspray 3=0
+defaultspray 4=0
+
 short small form=0.8
 
-use paletting=false
 
 single sheet=true
 singlesheet split width=8,8,200,392,200,8,200,200,200
@@ -99,6 +104,9 @@ spindash speed=0.5
 ball speed=0.3
 upper speed=1
 climbing speed=0.25
+
+size reroute beet=fire
+size reroute lui=big
 
 upper frametimes=8,8,8,8
 
