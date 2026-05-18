@@ -92,7 +92,7 @@ boll bot=#ff0000
 [lang]
 winspecial=Sonic got a Chaos Emerald
 allspecial=Sonic got all Chaos Emeralds
-credits=SuperSanic24, CowboyJoseph64,#Rep, Rin, Fractor (1.4 Sonic)
+credits=SuperSani24, CowboyJoseph64,#Rep, Rin, Fractor (1.4 Sonic),#gamemasterpdx
 princess=our Princess
 savetext1=Peace is Paved
 savetext2=With Kingdom Saved
