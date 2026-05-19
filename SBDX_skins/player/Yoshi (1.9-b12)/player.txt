@@ -22,6 +22,29 @@ time until wait=300
 pipe squish=20
 yoshis island death=no
 
+max sizes=7
+seperate projectile coords by size=true
+
+tongue offset x0=3
+tongue offset y0=-2
+
+tongue offset x1=7
+tongue offset y1=-7
+
+tongue offset x5=3
+tongue offset y5=-2
+
+
+tongue up offset x0=-8
+tongue up offset y0=-2
+
+tongue up offset x1=-8
+tongue up offset y1=-9
+
+tongue up offset x5=-8
+tongue up offset y5=-2
+
+
 single sheet=true
 singlesheet split width=8,264,584,264,264,8
 singlesheet split height=0,0,0,0,0,0

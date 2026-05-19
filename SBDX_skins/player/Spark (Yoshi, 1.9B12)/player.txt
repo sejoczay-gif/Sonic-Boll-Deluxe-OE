@@ -33,6 +33,28 @@ defaultspray 2=6
 defaultspray 3=7
 defaultspray 4=2
 
+max sizes=7
+seperate projectile coords by size=true
+
+tongue offset x0=5
+tongue offset y0=-5
+
+tongue offset x1=9
+tongue offset y1=-3
+
+tongue offset x5=5
+tongue offset y5=-5
+
+
+tongue up offset x0=-8
+tongue up offset y0=-2
+
+tongue up offset x1=-8
+tongue up offset y1=-9
+
+tongue up offset x5=-8
+tongue up offset y5=-2
+
 custom sprite list=stand,walk,run,jump,fall,flutter,brake,crouch,aim,spacer1,pose,climbing,pound,poundfall,swallow,fire,wait,spacer2,knock,dead,flagslide,tongue,spit,standhold,walkhold,runhold,jumphold,fallhold,flutterhold,brakehold,crouchhold
 
 connect walk=true

@@ -20,6 +20,27 @@ cling to walls to reach higher places
 #define rosterorder
 4
 
+#define skininit
+var looper;
+
+tonguebehind=funnytruefalse(playerskindat(p2,name+" tongue behind yoshi")) 
+
+//graphic offsets
+loopey=0
+looper=0
+repeat((projcoordbysize*MAXIMUMSIZESARGH)+1) {
+	if (projcoordbysize) {
+		looper=string(loopey)
+	} else {looper=""}
+	
+	tongue_offsetx[loopey]=nozerounreal(playerskindat(p2,name+" tongue offset x"+looper),4)
+    tongue_offsety[loopey]=nozerounreal(playerskindat(p2,name+" tongue offset y"+looper),-8)
+	
+	tongueup_offsetx[loopey]=nozerounreal(playerskindat(p2,name+" tongue up offset x"+looper),-8)
+    tongueup_offsety[loopey]=nozerounreal(playerskindat(p2,name+" tongue up offset y"+looper),-9)
+	
+	loopey+=1
+}
 
 #define effectsbehind
     if (aim) {
@@ -153,6 +174,7 @@ if (event="step") {
 
 if tonge 
 {
+if owner.tonguebehind depth=owner.depth+1
 
 if !up
 {
@@ -343,7 +365,7 @@ mask_index=spr_mask2x2
 
 frame+=0.1
 
-if frame>=2.9
+if frame>=3
 frame=0
 
 coll=instance_place(x,y,coin)
@@ -603,7 +625,7 @@ calcmoving()
 if exploding=0{
 frame+=0.1
 
-if frame>=3.9
+if frame>=4
 frame=0
 
 if (!instance_exists(owner) || !instance_exists(eggfollow)) {instance_create(x,y,smoke) instance_destroy() exit}
@@ -703,8 +725,15 @@ if (event="draw") {
 		}
 
 		xx=median(0,c,56) 
-		if (!up) draw_sprite_part_ext(sheet,0,133+1-xx,102,xx,20,round(owner.x)+4*xsc,round(owner.y-8+(4*(owner.size==0 || owner.size==5))),xsc,1,$ffffff,1)
-		else draw_sprite_part_ext(sheet,0,135,66,20,xx,round(owner.x-8*xsc),round(owner.y-9-xx+(7*(owner.size==0 || owner.size==5))),xsc,1,$ffffff,1)
+		//if (!up) draw_sprite_part_ext(sheet,0,133+1-xx,102,xx,20,round(owner.x)+4*xsc,round(owner.y-8+(4*(owner.size==0 || owner.size==5))),xsc,1,$ffffff,1)
+		//else draw_sprite_part_ext(sheet,0,135,66,20,xx,round(owner.x-8*xsc),round(owner.y-9-xx+(7*(owner.size==0 || owner.size==5))),xsc,1,$ffffff,1)
+		
+		if (!up) draw_sprite_part_ext(sheet,0,133+1-xx,102,xx,20,
+		round(owner.x)+owner.tongue_offsetx[owner.size*owner.projcoordbysize]*xsc,
+		round(owner.y)+owner.tongue_offsety[owner.size*owner.projcoordbysize],xsc,1,$ffffff,1)
+		else draw_sprite_part_ext(sheet,0,135,66,20,xx,
+		round(owner.x+owner.tongueup_offsetx[owner.size*owner.projcoordbysize]*xsc),
+		round(owner.y+owner.tongueup_offsety[owner.size*owner.projcoordbysize]-xx),xsc,1,$ffffff,1)
 
 	}
 }

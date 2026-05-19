@@ -17,6 +17,28 @@ time until wait=300
 pipe squish=20
 yoshis island death=yes
 
+max sizes=7
+seperate projectile coords by size=true
+
+tongue offset x0=4
+tongue offset y0=-4
+
+tongue offset x1=4
+tongue offset y1=-8
+
+tongue offset x5=4
+tongue offset y5=-4
+
+
+tongue up offset x0=-8
+tongue up offset y0=-2
+
+tongue up offset x1=-8
+tongue up offset y1=-9
+
+tongue up offset x5=-8
+tongue up offset y5=-2
+
 custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,deadland,walk,run,brake,jump,bonk,fall,tongue,tongueup,tongueharmed,tongueupharmed,swallow,standhold,lookuphold,crouchhold,walkhold,runhold,brakehold,jumphold,bonkhold,fallhold,pound,fire,flutter,swim,paddle,grind,piping,pipingup,sidepiping,doorenter,doorexit,climbing,flagslide,standaim,walkaim,runaim,brakeaim,jumpaim,bonkaim,fallaim,standholdaim,walkholdaim,runholdaim,brakeholdaim,jumpholdaim,bonkholdaim,fallholdaim
 reroute spit=tongue
 
@@ -25,7 +47,6 @@ reroute battlewin=pose
 reroute battlemid=stand
 reroute battlelose=knock
 reroute battledead=deadland
-
 
 stand frames=3
 wait frames=4
