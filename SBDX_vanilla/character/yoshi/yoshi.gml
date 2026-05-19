@@ -685,15 +685,15 @@ vspeed=0
 if (event="draw") {
 	if (!tonge) {
 		if (eggtype=0 || eggtype=3)
-		draw_sprite_part_ext(sheet,0,10+17*floor(frame),104,16,16,round(x-8*xsc),round(y-8)+offy,xsc,1,$ffffff,1)
+		draw_sprite_part_ext(sheet,0,10+17*floor(frame),104,16,16,round(x-8*xsc),round(y-8+offy),xsc,1,$ffffff,1)
 
 		if (eggtype=4)
-		draw_sprite_part_ext(owner.sheets[2],0,190+21*floor(frame),100,20,20,round(x-10*xsc),round(y-10),xsc,1,$ffffff,1)
+		draw_sprite_part_ext(owner.sheets[2*!global.singlesheet[p2]],0,190+21*floor(frame),100,20,20,round(x-10*xsc),round(y-10),xsc,1,$ffffff,1)
 
 		if (eggtype=1) {
 			draw_sprite_general(
 			//  sprite, subimage    
-				owner.sheets[1],0,
+				owner.sheets[1*!global.singlesheet[p2]],0,
 			//  left, top    
 				10+17*floor(frame),87,
 			//  width, height    

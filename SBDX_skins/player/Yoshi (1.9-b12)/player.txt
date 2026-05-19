@@ -30,6 +30,16 @@ tongue offset y0=-2
 
 tongue offset x1=7
 tongue offset y1=-7
+tongue offset x2=7
+tongue offset y2=-7
+tongue offset x3=7
+tongue offset y3=-7
+tongue offset x4=7
+tongue offset y4=-7
+tongue offset x6=7
+tongue offset y6=-7
+tongue offset x7=7
+tongue offset y7=-7
 
 tongue offset x5=3
 tongue offset y5=-2
@@ -40,6 +50,16 @@ tongue up offset y0=-2
 
 tongue up offset x1=-8
 tongue up offset y1=-9
+tongue up offset x2=-8
+tongue up offset y2=-9
+tongue up offset x3=-8
+tongue up offset y3=-9
+tongue up offset x4=-8
+tongue up offset y4=-9
+tongue up offset x6=-8
+tongue up offset y6=-9
+tongue up offset x7=-8
+tongue up offset y7=-9
 
 tongue up offset x5=-8
 tongue up offset y5=-2
@@ -136,6 +156,9 @@ spacer1 frames=4
 
 pound loop=8
 swallow loop=2
+
+size reroute beet=big
+size reroute lui=big
 
 stand speed=0.2
 wait speed=0.2

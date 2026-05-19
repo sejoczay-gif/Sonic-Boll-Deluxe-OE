@@ -93,6 +93,9 @@ pound loop=8
 swallow loop=3
 fire loop=2
 
+size reroute beet=big
+size reroute lui=big
+
 stand speed=0.2
 wait speed=0.2
 dead speed=0.5
