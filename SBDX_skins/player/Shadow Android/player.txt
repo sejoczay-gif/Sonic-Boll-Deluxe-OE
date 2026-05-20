@@ -63,6 +63,15 @@ spindash dust graphic y=96
 instashield graphic x=224
 instashield graphic y=58
 
+firedash graphic x=224
+firedash graphic y=98
+
+sonic boom graphic x=8
+sonic boom graphic y=79
+
+featherdash graphic x=384
+featherdash graphic y=58
+
 custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,push,hang,fire,dash,specfall,climbing,flagslide,dropdash,piping,pipingup,sidepiping,doorenter,doorexit
 
 reroute fall=jump
@@ -238,7 +247,7 @@ macguffins graphic x=93
 macguffins graphic y=8
 
 smoke graphic x=212
-smoke graphic y=8
+smoke graphic y=33
 
 flag graphic x=312
 flag graphic y=8
@@ -255,10 +264,16 @@ signpost graphic y=27
 spindash dust graphic x=8
 spindash dust graphic y=96
 
+waterfall graphic x=8
+waterfall graphic y=117
+
+bubbles graphic x=108
+bubbles graphic y=117
+
 instashield graphic x=224
 instashield graphic y=58
 
-custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,push,hang,fire,dash,specfall,climbing,flagslide,dropdash,piping,pipingup,sidepiping,doorenter,doorexit,spacer,teleport,spacer2,bounce
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,spacerrun,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,push,hang,fire,dash,specfall,climbing,flagslide,dropdash,piping,pipingup,sidepiping,doorenter,doorexit,spacer,teleport,spacer2,bounce,spacer3,spacer4,spacer5,spacer6,spacer7,spacer8,run
 
 reroute fall=jump
 reroute spincharge=spindash
@@ -667,6 +682,15 @@ energy vertical graphic y=27
 signpost graphic x=17
 signpost graphic y=27
 
+explosion graphic x=108
+explosion graphic y=63
+
+bomb graphic x=174
+bomb graphic y=79
+
+partial flight bar graphic x=58
+partial flight bar graphic y=29
+
 spindash dust graphic x=8
 spindash dust graphic y=96
 
@@ -676,7 +700,9 @@ reroute fall=jump
 reroute flyfast=maxrun
 
 tailidle frames=1
+tailidle speed=0
 tailspin frames=1
+tailspin speed=0
 
 flyup frames=3
 flyup loop=2
@@ -1668,6 +1694,7 @@ boll mid=#000000
 boll bot=#F0D818
 
 [lang]
+credits=Emília, Christian32307
 winspecial=Shadow got a Chaos Emerald
 allspecial=Shadow got all Chaos Emeralds
 princess=our Princess
