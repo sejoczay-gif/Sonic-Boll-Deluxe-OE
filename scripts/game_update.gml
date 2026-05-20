@@ -62,7 +62,7 @@ if (global.inf_time==1 && global.gamemode="timeattack" && !gamemanager.timedead 
 }
 
 //froggy
-if (frog_escape) {
+if (frog_escape && !gamemanager.timedead) {
     frog_escape_timer = clamp(frog_escape_timer - 1,0,(500) * 60)
     if (frog_escape_timer == 0) {
        /*
@@ -112,9 +112,9 @@ if (frog_escape) {
        }
     }
 
-    if (frog_escape < 32+16) frog_escape += 1
+    if (frog_escape < 32+16) frog_escape += 0.25
     if (frog_escape_timer == 0 && frog_escape_timer_effect == 2)
-       frog_escape = clamp(frog_escape + 1, 32+16, 32+32)
+       frog_escape = clamp(frog_escape + 0.25, 32+16, 32+32)
 }
 
 if (fasttimer && current_time>fasttime) {//play music after hurry
