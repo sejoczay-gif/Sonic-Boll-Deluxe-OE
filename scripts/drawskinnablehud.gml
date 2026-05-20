@@ -40,15 +40,15 @@ if !(global.nohud) && !(p.dontdrawhudler) {
     shader_reset();
 
     var py;
-    py = clamp(gamemanager.frog_escape, 0, 16)
+    py = clamp(floor(gamemanager.frog_escape), 0, 16)
     if (gamemanager.frog_escape && gamemanager.frog_escape_timer == 0 && gamemanager.frog_escape_timer_effect == 2) // scroll timer back in for drain
-    py = 16-clamp(gamemanager.frog_escape - (32+16), 0, 16)
+       py = 16-clamp(floor(gamemanager.frog_escape) - (32+16), 0, 16)
 
 
     if global.gamemode!="timeattack" {
         col=$ffffff
         if (global.inf_time || global.wanna) {
-            draw_skintext(336,8,chr(17)+"-:--",col,hud_alpha[view_current])
+            draw_skintext(336,8-py,chr(17)+"-:--",col,hud_alpha[view_current])
         } else {
             if (gamemanager.time<=skindat("hurrytime") && global.frame8) col=$ff
             if (skindat("mariotime"))
@@ -177,9 +177,9 @@ if !(global.nohud) && !(p.dontdrawhudler) {
        if (timothy <= 10) timcol = c_red else if (timothy <= 30) timcol = c_yellow
 
        ni=1
-       nx=184
+       nx=184 - 8
        //ny=32
-       ny=(clamp(gamemanager.frog_escape,0,16+32) * 2) - (16 + 32)
+       ny=(clamp(floor(gamemanager.frog_escape),0,16+32) ) - (16 + 32) + 8
 
        if (gamemanager.frog_secret) {
            nx=221
@@ -191,10 +191,11 @@ if !(global.nohud) && !(p.dontdrawhudler) {
                   ni+=1 nx+=9
            }
        } else {
-           draw_sprite_part_ext(global.effectssheet[biome],0,8,349,16,16,nx-16,ny,1,1,c_white,hud_alpha[view_current])
+           draw_sprite_part_ext(global.effectssheet[biome],0,8 + (16 * ((gamemanager.frog_escape_timer mod 60) div 10)),349,16,16,nx-16,ny,1,1,c_white,hud_alpha[view_current])
            repeat (string_length(timstr)) {
-                  draw_sprite_part_ext(global.effectssheet[biome],0,8 + ((ord(string_char_at(timstr,ni)) - 48) * 8),333,8,16,nx,ny,1,1,timcol,hud_alpha[view_current])
-                  ni+=1 nx+=8
+                  if (string_char_at(timstr,ni) != ":" || (string_char_at(timstr,ni) == ":" && (gamemanager.frog_escape_timer mod 60 < 30)))
+                  draw_sprite_part_ext(global.effectssheet[biome],0,8 + ((ord(string_char_at(timstr,ni)) - 48) * 8),333,8,16,nx,ny,2,2,timcol,hud_alpha[view_current])
+                  ni+=1 nx+=16
            }
        }
     }
