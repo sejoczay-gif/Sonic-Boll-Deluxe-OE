@@ -26,6 +26,8 @@ time until wait=200
 pipe squish=20
 small shield offset=0
 
+max sizes=7
+
 stand frames=3
 wait frames=11
 lookup frames=2
@@ -44,7 +46,7 @@ grow frames=6
 fire frames=3
 firewalk frames=3
 firejump frames=3
-twirl frames=8,4,4,4,8
+twirl frames=8,4,4,4,8,4,4
 dash frames=8
 specialfall frames=6
 swim frames=3
@@ -89,8 +91,8 @@ stride1fall frametimes=10
 stride2 frametimes=4
 stride2fall frametimes=10
 
-size reroute beet=basic
-size reroute lui=basic
+size reroute beet=feather
+size reroute lui=feather
 
 pose loop=12
 stand loop=3

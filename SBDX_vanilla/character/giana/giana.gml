@@ -382,6 +382,7 @@ vsp=0
 com_inputstack()
 
 tempbrick=0
+luijump-=1
 
 //situations in which it should skip controls entirely
 if (rise!=0 || hurt || piped || move_lock || transforming) {
@@ -467,6 +468,7 @@ vsp=-4.7
         else strideanim=0
         
         jump=1
+		if (size==7) luijump=9
         fall=0
 if braking && (right||left) && brakedir!=(left-right) {vsp-=1 hsp=(right-left)*2 braking=0 fall=13 strideanim=0 stridejump=0}
         braking=0
@@ -515,14 +517,25 @@ if (up) {
             jump=1
             insted=1
             twirl=1
+			if (size==7) luijump=9
             run=0
         }
-} else if (energy && !gianadash && count_projectiles()<1) {
-        if (h) {xsc=h braking=0}
-        fire_projectile(x+7*xsc,y)
+} else if (energy || size=6) && (size!=7) && (!gianadash) {
+        if (size!=6 && size!=7 && count_projectiles()<1) {
+            if (h) {xsc=h braking=0}
+		    hasfired=1
+            fire_projectile(x+7*xsc,y)
+		} else if (size=6 && count_projectiles() < 2) {
+		    p2 = 10;
+            with fire_projectile(x+8*xsc,y+2) {
+                hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc; //yaargh me formula
+                vspeed = -2.4;
+                visible = 0;
+            }
+			p2 = real(ss);
+		}
         playsfx("gianafireball")
         fired=12
-hasfired=1
         if (sprite="fire" || sprite="firewalk" || sprite="firejump") frame=0
     }
 }
@@ -534,7 +547,7 @@ hasfired=0
             fall=13
             twirl=0
             insted=1
-        } else if energy{
+        } else if energy && size!=6 && size!=7{
             gianadash=15-(7*energy<2)
             playsfx("gianadash")
             dashlock=(size!=1)
@@ -660,9 +673,9 @@ player_nslopforce()
 //yground=easyground()
 //if (yground!=verybignumber) yground-=14
 if (jump) {
-if (twirl) vsp=min(vsp+0.1*wf,3-2.5*bkey)
+if (twirl && !luijump) vsp=min(vsp+0.1*wf,3-2.5*bkey)
 else if (water) vsp=min(1.5,vsp+0.04)
-else if fall!=69 {
+else if fall!=69 && !luijump {
 vsp=min(4,vsp+0.15*wf)
 if size==5 && vsp>-0.45 vsp-=0.105
 } if (!hurt) vine_climbing()
@@ -836,6 +849,8 @@ if (gianadash) {
         sprite_angle=dashdir-180
     }
 } else sprite_angle=0
+
+if (jump && size==7 && global.fastframe4 != ff4prev) {ff4prev = global.fastframe4 with instance_create(x, y, afterimagenoblend) {event_user(0) alphadecay=1 alarm[0] = 24 maxalarm = 24 maxalpha=0.8}}
 
 jeezus=(((boost && vsp<4)||(size==5 && !down && abs(hsp)>2.8)) && !water)
 if jeezus==1 {
@@ -1045,6 +1060,7 @@ twirl=0
 oldsize=size
 jumpbuffer=0
 hyperspeed=0
+luijump=0
 hp=0
 star=0
 if (super) stopsuper()   
@@ -1075,7 +1091,7 @@ hurting_rn=30
 #define hitblocks
 if typeblockhit=0{
 with (blockcoll){
-if (stonebump || (owner.size=0 || owner.size=5) && insted!=1 && !owner.tempkill && cracked=0) {
+if (stonebump || (owner.size=0 || owner.size=5) && insted!=1 && !owner.tempkill && (cracked=0 || (cracked=1 && owner.size=5))) {
     if (!goinup) {if (insted!=2) owner.vsp=1.5 sound("itemblockbump") tpos=1}
     if (owner.gianadash && !stonebump/* && owner.size!=5*/){
         owner.vsp=1.5
