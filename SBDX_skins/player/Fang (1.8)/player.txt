@@ -1,0 +1,188 @@
+[fang]
+name=Fang
+
+sheetname=18fang
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+
+multiple box sizes=true
+
+
+center x=12,20,20,20,20,12,20,20
+center y=13,18,18,18,18,13,18,18
+
+box width=24,40,40,40,40,24,40,40
+box height=32,40,40,40,40,32,40,40
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=2.75
+victory duration=30
+time until wait=300
+pipe squish=20
+pole center offset=8
+minisheet=false
+
+short small form=0
+
+use paletting=false
+defaultspray 1=1
+defaultspray 2=6
+defaultspray 3=5
+defaultspray 4=0
+
+single sheet=true
+singlesheet split width=8,200,520,200,200,8,200,200
+singlesheet split height=0,0,0,0,0,0
+
+custom sprite list=stand,wait,pose,crouch,knock,dead,walk,run,brake,flagslide,climbing,spring,jump,bounceland,bounce,bouncefall,fired,bouncelandfired,jumpfired,fallfired,bouncefired,bouncefallfired,lookup,firedown,twirl,ball
+
+connect wait=true
+connect pose=true
+connect crouch=true
+connect knock=true
+connect dead=true
+connect brake=true
+connect flagslide=true
+connect climbing=true
+connect jump=true
+connect bounceland=true
+connect bounce=true
+connect bouncefall=true
+connect bouncelandfired=true
+connect jumpfired=true
+connect fallfired=true
+connect bouncefired=true
+connect bouncefallfired=true
+connect firedown=true
+connect twirl=true
+connect ball=true
+
+reroute wait=wait
+reroute bonk=spring
+reroute push=walk
+reroute hang=stand
+reroute slide=ball
+reroute grind=brake
+reroute piping=pose
+reroute pipingup=spring
+reroute sidepiping=walk
+reroute doorenter=stand
+reroute doorexit=stand
+reroute fallfired=fallfired
+reroute bouncefall=bouncefall
+reroute bouncefallfired=bouncefallfired
+
+max sizes=7
+seperate projectile coords by size=true
+
+small cork graphic x0=10
+small cork graphic y0=88
+small cork graphic x1=10
+small cork graphic x2=112
+small cork graphic x3=10
+small cork graphic x4=10
+small cork graphic x5=10
+small cork graphic x6=10
+small cork graphic x7=10
+
+medium cork graphic x0=10
+medium cork graphic y0=105
+medium cork graphic x1=10
+medium cork graphic x2=112
+medium cork graphic x3=10
+medium cork graphic x4=10
+medium cork graphic x5=10
+medium cork graphic x6=10
+medium cork graphic x7=10
+
+big cork graphic x0=60
+big cork graphic y0=105
+big cork graphic x1=60
+big cork graphic x2=162
+big cork graphic x3=60
+big cork graphic x4=60
+big cork graphic x5=60
+big cork graphic x6=60
+big cork graphic x7=60
+
+energy bar graphic x0=125
+energy bar graphic y0=46
+energy bar graphic y1=46
+energy bar graphic y2=55
+energy bar graphic y3=64
+energy bar graphic y4=46
+energy bar graphic y5=46
+energy bar graphic y6=46
+energy bar graphic y7=46
+
+stand frames=1
+wait frames=3
+pose frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=6,8,8,8,8,6,8,8
+run frames=4
+brake frames=1
+flagslide frames=1
+climbing frames=2
+spring frames=1
+jump frames=1
+bounceland frames=2
+bounce frames=2
+bouncefall frames=2
+fired frames=2
+bouncelandfired frames=2
+jumpfired frames=1
+fallfired frames=1
+bouncefired frames=1
+bouncefallfired frames=1
+lookup frames=1
+firedown frames=1
+twirl frames=2
+ball frames=4
+
+wait loop=2
+bounceland loop=2
+bouncelandfired loop=2
+bounce loop=2
+bouncefall loop=2
+fired loop=2
+twirl loop=2
+
+stand speed=0.1
+wait speed=0.1
+pose speed=0.25
+walk speed=0.45
+run speed=0.25
+climbing speed=0.25
+bounceland speed=1
+bouncelandfired speed=1
+bounce speed=0.2
+bouncefall speed=0.2
+fired speed=1
+twirl speed=0.05
+ball speed=0.3
+
+bounceland frametimes=6,4
+bouncelandfired frametimes=6,4
+fired frametimes=6,10
+
+boll top=#C06000
+boll mid=#8700C1
+boll bot=#3D0070
+
+[lang]
+winspecial=Fang got a Chaos Emerald
+allspecial=Fang got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Fang
+savetext4=Our Only Hero...?
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
+credits=TheKidCode, Rep, Bennascar

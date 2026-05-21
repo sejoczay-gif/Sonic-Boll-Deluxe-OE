@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,jumpfired,bonk,ball,bounceland,bounce,bouncelandfired,bouncefired,fired,push,hang,twirl,slide,firedown,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,jumpfired,fallfired,bonk,ball,bounceland,bounce,bouncefall,bouncelandfired,bouncefired,bouncefallfired,fired,push,hang,twirl,slide,firedown,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
 
 
 #define soundlist
@@ -319,23 +319,23 @@ sprite="climbing" frspd=sign(left+right+up+down)
 }
 	else if (sprung) {
 		if fired {
-			sprite="jumpfired" 
-			if (oldspr="bouncefired" || oldspr="bouncelandfired") keepframebetween=1
+			if (vsp<=0) sprite="jumpfired" else sprite="fallfired"
+			if (oldspr="bouncefired" || oldspr="bouncelandfired" || oldspr="bouncefallfired") keepframebetween=1
 			else if (oldspr="fired" || oldspr="firedown") prevent_spr_reset=1
 			cantslowanim=1
 		} else sprite="spring" if (vsp>=0) {sprung=0 fall=1}
 	}
     else if (fangbounce) if fired {
-		sprite="bouncefired" 
-		if (oldspr="jumpfired" || oldspr="bouncelandfired") keepframebetween=1 
+		if (vsp<=0) sprite="bouncefired" else sprite="bouncefallfired"
+		if (oldspr="jumpfired" || oldspr="bouncelandfired" || oldspr="bouncefallfired") keepframebetween=1 
 		else if (oldspr="fired" || oldspr="firedown") prevent_spr_reset=1
 		cantslowanim=1
-	} else sprite="bounce"
+	} else {if (vsp<=0) sprite="bounce" else sprite="bouncefall"}
     else if (bonk) sprite="bonk"
     else {
 		if fired {
-			sprite="jumpfired" 
-			if (oldspr="bouncefired" || oldspr="bouncelandfired") keepframebetween=1
+			if (vsp<=0) sprite="jumpfired" else sprite="fallfired"
+			if (oldspr="bouncefired" || oldspr="bouncelandfired" || oldspr="bouncefallfired") keepframebetween=1
 			else if (oldspr="fired" || oldspr="firedown") prevent_spr_reset=1
 			cantslowanim=1
 		} else if (fall=6) {sprite="knock"} else if (vsp<=0) sprite="spring" else sprite="jump"

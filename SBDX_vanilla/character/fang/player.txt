@@ -18,6 +18,11 @@ pipe squish=20
 victory duration=30
 pole center offset=8
 
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,jumpfired,bonk,ball,bounceland,bounce,bouncelandfired,bouncefired,fired,push,hang,twirl,slide,firedown,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
+reroute fallfired=jumpfired
+reroute bouncefall=bounce
+reroute bouncefallfired=bouncefired
+
 stand frames=8
 wait frames=3
 lookup frames=1
