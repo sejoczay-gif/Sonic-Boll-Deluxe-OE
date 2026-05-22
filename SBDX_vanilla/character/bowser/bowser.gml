@@ -129,6 +129,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) { //bowser's mod
 				mxsc=1 mysc=1
 			}
 			energy+=2
+			if (size=0 || size=5) size=1
 			itemget=1 
 	}
 	else if (type="fflower") {
@@ -151,6 +152,7 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) { //bowser's mod
             mxsc=1 mysc=1
         }
 		energy+=2
+		if (size=0 || size=5) size=1
         itemget=1
     }                
 	else if (type="mini") {
@@ -190,8 +192,49 @@ if ((!piped && !hurt && !(global.mplay>1 && flash)) || monitem) { //bowser's mod
             mxsc=1 mysc=1
         }
 		energy+=2
+		if (size=0 || size=5) size=1
         itemget=1
     }
+	if (type="bfeather") {
+        coll=other.id
+        if (p2!=other.p2) {
+            itemc+=1
+            doscore_p(1000,1)
+        }
+        playgrowsfx("3")
+
+        if (skidding) {
+            soundstop(name+"skid")
+            skidding=0
+        }
+
+        if (!super && size!=3) grow=1
+        oldsize=size
+        size=3
+		energy+=2
+        itemget=1
+    }
+
+    if (type="btroot") {
+        coll=other.id
+        if (p2!=other.p2) {
+            itemc+=1
+            doscore_p(1000,1)
+        }
+        playgrowsfx("6")
+
+        if (skidding) {
+            soundstop(name+"skid")
+            skidding=0
+        }
+
+        if (!super && size!=6) grow=1
+        oldsize=size
+        size=6
+		energy+=2
+        itemget=1
+    }
+
 } 
 
 //execute the rest of the default item code
@@ -591,6 +634,7 @@ else if ((fired || controlfire) && !spin) {
 com_inputstack()
 
 tempbrick=0
+luijump-=1
 
 //situations in which it should skip controls entirely
 if (rise!=0 || hurt || piped || move_lock) {
@@ -722,6 +766,7 @@ if (jumpdelay=1) {
     sprite_angle=0
             
     jump=1
+	if (size==7) luijump=9
     //fall=0
     braking=0
     //spin=0
@@ -753,25 +798,44 @@ if (bbut) {
             
         if (up) {
             kek=0
-            with (projectile) {if (type="bowshammer" && owner=other.id) owner.kek+=1}
+			
+			with (projectile) {if (type="bowshammer" || p2=10) && (owner=other.id) owner.kek+=1}
+			
+			if (size=6 && kek<2) {
+				p2 = 10;
+				with fire_projectile(x+8*xsc,y+2) {
+				    type=""
+					hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc; //yaargh me formula
+					//vspeed = -2.4;
+					vspeed = -4.75;
+					vspeed+=other.vsp*0.5;
+					visible = 0;
+					owner=other.id;
+					owner.kek+=1;
+				}
+				fired2=15
+                if (sprite="throw") frame=0
+				p2 = real(ss);
+				playsfx("bowserhammer")
+			} else {
             
             if (kek<2) {
                 fired2=15
                 if (sprite="throw") frame=0
                 playsfx("bowserhammer")
                 type="bowshammer"
-with (fire_projectile(x+xsc*12,y-10+16*(size==5))) {
-//bowshammer=1
-//doonce returns from old giana
-                    if (!doonce) {
-                        xsc=other.xsc
-						hspeed=other.xsc*0.8
-                        //hspeed=other.xsc+other.hsp*0.8
-                        vspeed+=other.vsp*0.5
-                        owner=other.id orig=other.id
-doonce=1 
-}
-}
+				with (fire_projectile(x+xsc*12,y-10+16*(size==5))) {
+					//bowshammer=1
+					//doonce returns from old giana
+						if (!doonce) {
+							xsc=other.xsc
+							hspeed=other.xsc*0.8
+							//hspeed=other.xsc+other.hsp*0.8
+							vspeed+=other.vsp*0.5
+							owner=other.id orig=other.id
+					doonce=1 
+					}
+				}
 
 
                 //1.9 code
@@ -788,6 +852,7 @@ doonce=1
                 }
                 */
             }
+			}
         } else {
 if (crouch) {firedc=30 if (sprite="firedcrouch") frame=0}
             else {fired=30 if (sprite="fired") frame=0}
@@ -932,7 +997,7 @@ player_horstep() //Disables moving like normal if you're climbing
             if (pound<20 && !superjump) vsp=0
             else vsp=8*wf
         } else if (water) vsp=min(1.5,vsp+0.04)
-		else if fall!=69 { //Makes sure you aren't affected by gravity while climbing
+		else if fall!=69 && !luijump { //Makes sure you aren't affected by gravity while climbing
             if (insted=1) {
                 vsp+=0.05*wf
                 if size==5 && vsp>-0.15 vsp-=0.035
@@ -1210,6 +1275,7 @@ if (superjump) {
 			jump=1 playsfx("bowsersuperjump2",0,1+(size==5)/3) 
 			shoot(x-8,y+4,psmoke,-2,-1) shoot(x+8,y+4,psmoke,2,-1) 
 			/*instance_create(x,y+8,poundeff)*/ superjumpanim=1
+			if (size==7) luijump=9
 		}
     } else {
 	    if vsp>=-1 {pound=1 spin=0 jumpedoutspin=0 spinplus=0 superjump=0}
@@ -1234,7 +1300,7 @@ if (pound) {
 if (controlfire) controlfire.y=median(controlfire.ystart-48,controlfire.y+(down-up),controlfire.ystart+32)
 if (rise!=0) {crouch=1 hsp=0 xsc=rise risec+=1 if (risec=10) {risec=0 rise=0 crouch=down}}   
 
-if (size!=0 && size!=5) size=0
+if (size!=0 && size!=1 && size!=5 && size!=6 && size!=7) size=0
 if alarm[7]=0 energy=0
 fired2=max(0,fired2-1)
 firedc=max(0,firedc-1)
@@ -1298,6 +1364,8 @@ if (fall=69) {
         y+=onvine.vsp
     }
 }
+
+if (jump && size==7 && global.fastframe4 != ff4prev) {ff4prev = global.fastframe4 with instance_create(x, y, afterimagenoblend) {event_user(0) alphadecay=1 alarm[0] = 24 maxalarm = 24 maxalpha=0.8}}
 
 jeezus=(((boost && vsp<4)||(size==5 && !down && abs(hsp)>2.8)) && !water)
 if jeezus==1 {
@@ -1507,6 +1575,7 @@ twirl=0
 oldsize=size
 jumpbuffer=0
 hyperspeed=0
+luijump=0
 hp=0
 star=0
 onvine=0
@@ -1540,7 +1609,7 @@ if (((!size || size==5) || ohgoditslava) && !shielded && !energy && global.rings
     flash=1
     if (shielded) {shielded=0} 
 else if global.rings[p2]>0 {droprings()} 
-else {energy-=2}
+else {energy-=2 if (energy<2 && size!=0) size=0}
 hurtanim=24
     /*
     jump=1 

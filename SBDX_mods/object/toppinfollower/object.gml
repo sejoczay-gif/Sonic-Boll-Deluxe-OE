@@ -11,9 +11,11 @@ switch(global.cobjectentrypoint){
 		mask_index=spr_mask12x12
 
 		realtype=unreal(data_1,0)
+		x+=unreal(data_2,0)
+		y+=unreal(data_3,0)
 		
 		if !sprite_exists(global.spr_bt_toppinfollower) ||global.spr_bt_toppinfollower==0{
-			global.spr_bt_toppinfollower=sprite_add(globalmanager.moddir+"object\"+data[0]+"\toppins.png",0,1,0,0,0)
+			global.spr_bt_toppinfollower=sprite_add(globalmanager.moddir+"object\"+mytype+"\toppins.png",0,1,0,0,0)
 		}
 		sheet=global.spr_bt_toppinfollower
 		

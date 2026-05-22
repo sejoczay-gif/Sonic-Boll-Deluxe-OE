@@ -56,6 +56,8 @@ connect grind=true
 connect stride1=true
 connect stride1fall=true
 
+max sizes=7
+
 stand frames=3
 wait frames=2
 lookup frames=2
@@ -104,6 +106,9 @@ fall frametimes=10
 twirl frametimes=2,4,2,2,2,2,2,2
 stride1 frametimes=4
 stride1fall frametimes=10
+
+size reroute beet=basic
+size reroute lui=basic
 
 stand loop=1
 pose loop=7

@@ -27,10 +27,10 @@ minisheet=false
 
 short small form=0
 
-use paletting=false
-defaultspray 1=1
-defaultspray 2=6
-defaultspray 3=5
+use paletting=true
+defaultspray 1=0
+defaultspray 2=0
+defaultspray 3=0
 defaultspray 4=0
 
 single sheet=true

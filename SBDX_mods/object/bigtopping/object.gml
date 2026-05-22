@@ -7,12 +7,14 @@ switch(global.cobjectentrypoint){
 		fresh=1
 		
 		realtype=unreal(data_1,0)
+		x+=unreal(data_2,0)
+		y+=unreal(data_3,0)
 		
 		if realtype=0 {randomize() toppingtype=choose(0,1,2,3,4)}
 		else toppingtype=5
 		
 		if !sprite_exists(global.spr_bt_bigtoppings) ||global.spr_bt_bigtoppings==0{
-			global.spr_bt_bigtoppings=sprite_add(globalmanager.moddir+"object\"+data[0]+"\bigtoppings.png",0,1,0,0,0)
+			global.spr_bt_bigtoppings=sprite_add(globalmanager.moddir+"object\"+mytype+"\bigtoppings.png",0,1,0,0,0)
 		}
 		sheet=global.spr_bt_bigtoppings
 		depth=1000000
@@ -21,14 +23,15 @@ switch(global.cobjectentrypoint){
 	break;
 	case "step":
 		if (toppingtype!=5 || !gamemanager.kaerublockstate) {
-			if instance_place(x,y,player) {
-				//if (give_item(other.id,"bigtopping")) {
-					//stats("toppings collected",stats("toppings collected")+1)
-					//with other sound("itembigtopping")
-					with other sound("itemjumprefresh") //temp
-					instance_destroy()
-				//}
-
+			with instance_place(x,y,player) {
+				with other {
+					if (give_item(other.id,"bigtopping")) {
+						stats("toppings collected",stats("toppings collected")+1)
+						//with other sound("itembigtopping")
+						with other sound("itemjumprefresh") //temp
+						instance_destroy()
+					}
+				}
 			}
 	}
 	break;
@@ -52,8 +55,8 @@ switch(global.cobjectentrypoint){
 		
 		realtype=unreal(data[1],0)
 		
-		if realtype=0 draw_sprite_part_ext(sheet,0,4.5,4.5,32,32,(x*16),(y*16),1,1,c_white,1) 
-		else draw_sprite_part_ext(sheet,0,68.5,36.5,32,32,(x*16),(y*16),1,1,c_white,1)
+		if realtype=0 draw_sprite_part_ext(sheet,0,4.5,4.5,32,32,(x*16+unreal(data[2],0)),(y*16+unreal(data[3],0)),1,1,c_white,1) 
+		else draw_sprite_part_ext(sheet,0,68.5,36.5,32,32,(x*16+unreal(data[2],0)),(y*16+unreal(data[3],0)),1,1,c_white,1)
 
 		 
 	break;

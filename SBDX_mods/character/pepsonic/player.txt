@@ -1,0 +1,172 @@
+[pepsonic]
+name=Blue Blur Chef
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=24
+center y=28
+box width=48
+box height=48
+
+tv idle max frames=2
+tv collect max frames=4
+tv hurt max frames=5
+tv combo max frames=6
+tv mach3 max frames=3
+tv mach4 max frames=3
+tv firebutt max frames=2
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=2.75
+victory duration=40
+time until wait=1991
+pipe squish=20
+pole center offset=8
+
+stand frames=6
+wait frames=6
+lookup frames=6
+pose frames=5
+crouch frames=3
+crawl frames=4
+knock frames=2
+closedoorshock frames=4
+dead frames=1
+walk frames=8
+run frames=6
+maxrun frames=3
+megaspeed frames=3
+brake frames=5
+runturn frames=4
+machturn frames=21
+splat frames=1
+splatknock frames=2
+spring frames=6
+jump frames=8
+bonk frames=2
+ball frames=8
+dive frames=1
+dash frames=3
+wallrun frames=8
+stomp frames=2
+stompland frames=1
+superjumpcharge frames=2
+superjump frames=2
+bonkwallr frames=1
+taunt1 frames=4
+taunt2 frames=4
+taunt3 frames=4
+taunt4 frames=4
+taunt5 frames=4
+taunt6 frames=4
+punchhit frames=6
+climbing frames=4
+climbon2 frames=2
+flagslide frames=1
+
+enterdoor frames=16
+levelend frames=3
+treasure frames=3
+enterdoorhappy frames=10
+scared frames=3
+suprise frames=5
+scream frames=6
+
+
+wait loop=4
+pose loop=3
+crouch loop=3
+closedoorshock loop=4
+walk loop=1
+bonk loop=2
+dash loop=7
+spring loop=1
+machturn loop=19
+brake loop=4
+runturn loop=4
+dash loop=1
+splatknock loop=2
+taunt1 loop=4
+taunt2 loop=4
+taunt3 loop=4
+taunt4 loop=4
+taunt5 loop=4
+taunt6 loop=4
+parry loop=6
+enterdoor loop=16
+levelend loop=3
+enterdoorhappy loop=10
+suprise loop=5
+scream loop=4
+
+stand speed=0.1
+wait speed=0.15
+lookup speed=0.1
+pose speed=0.20
+crouch speed=0.22
+crawl speed=0.2
+knock speed=0.25
+closedoorshock speed=0.22
+walk speed=0.5
+run speed=0.5
+maxrun speed=0.5
+megaspeed speed=0.6
+brake speed=0.4
+runturn speed=0.5
+machturn speed=0.7
+spring speed=0.5
+jump speed=0.5
+bonk speed=0.25
+ball speed=0.5
+dash speed=0.2
+wallrun speed=0.5
+splatknock speed=0.5
+taunt1 speed=0.5
+taunt2 speed=0.5
+taunt3 speed=0.5
+taunt4 speed=0.5
+taunt5 speed=0.5
+taunt6 speed=0.5
+punchhit speed=0.20
+climbing speed=0.125
+climbon2 speed=0.05
+enterdoor speed=0.20
+levelend speed=0.20
+treasure speed=0.10
+enterdoorhappy speed=0.5
+scared speed=0.20
+suprise speed=0.5
+scream speed=0.5
+superjumpcharge speed=0.5
+superjump speed=0.5
+
+tv lap3 max frametimes=5,1,1,1
+
+wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
+pose frametimes=1.5,1,1,1,1
+specfall frametimes=3,2,1,1
+crouch frametimes=1,1,1.5,1
+brake frametimes= 1,1,2,10
+
+//check if these are good
+enterdoor frametimes=1,1,14,1,1,1,1,1,1,1,1,1,1,1,1,10
+enterdoorhappy frametimes=1,1,11,1,1,1,16,1,1,1
+
+
+
+boll top=#0077FF
+boll mid=#000000
+boll bot=#ff0000
+
+[lang]
+winspecial=Sonic got a Chaos Emerald
+allspecial=Sonic got all Chaos Emeralds
+princess=The Classic, or, uh The Modern? We don't know yet.
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Sonic
+savetext4=Our Weird Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship

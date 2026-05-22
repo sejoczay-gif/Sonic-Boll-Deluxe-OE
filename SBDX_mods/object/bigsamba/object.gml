@@ -7,11 +7,19 @@ switch(global.cobjectentrypoint){
 		fresh=1
 
 		timeamount=unreal(data_1,0)
+		x+=unreal(data_2,0)
+		y+=unreal(data_3,0)
 		
 		if !sprite_exists(global.spr_bt_bigsamba) ||global.spr_bt_bigsamba==0{
-			global.spr_bt_bigsamba=sprite_add(globalmanager.moddir+"object\"+data[0]+"\bigsamba.png",0,1,0,0,0)
+			global.spr_bt_bigsamba=sprite_add(globalmanager.moddir+"object\"+mytype+"\bigsamba.png",0,1,0,0,0)
 		}
 		sheet=global.spr_bt_bigsamba
+		
+		if !sprite_exists(global.spr_bt_bigsambamask) ||global.spr_bt_bigsambamask==0{
+			global.spr_bt_bigsambamask=sprite_add(globalmanager.moddir+"object\"+mytype+"\bigsambamask.png",0,0,0,0,0)
+		}
+		
+		mask_index=global.spr_bt_bigsambamask
 		
 	break;
 	case "step":
@@ -20,7 +28,7 @@ switch(global.cobjectentrypoint){
 		if !dead {
 			global.pizzatime=1 
 			with other sound("sambahit") //temp
-			with other mus_play("pizzatime",p2)
+			with other {for (i=0;i<8;i+=1) {regionmarker.typemus="pizzatime"} stagemusic(id,p2)}
 			//other.combo+=1
 			gamemanager.time=real(timeamount)
 			vspeed = random_range(-3, -5) 
@@ -52,11 +60,11 @@ switch(global.cobjectentrypoint){
 	break;
 	case "draw":	
 		lookxsc=1
-		if instance_exists(player){
+		if instance_exists(player) && !dead {
 			lookxsc=sign(player.x-x)   
 		}
 	
-		draw_sprite_part_ext(sheet,0,4,4,64,112,x-16,y-48,1,1,c_white,1)
+		draw_sprite_part_ext(sheet,0,4+64*dead,4,64,112,x-32*lookxsc+16,y-48,lookxsc,1,c_white,1)
 		
 	break;
 	
@@ -67,13 +75,24 @@ switch(global.cobjectentrypoint){
 		}
 		sheet=global.spr_bt_bigsamba
 		
-		draw_sprite_part_ext(sheet,0,4,4,64,112,(x*16)-16,(y*16)-48,1,1,c_white,1)
+		lookxsc=1
+		if instance_exists(lemongrab){
+			lookxsc=sign(lemongrab.spawnx-x)   
+		}
+		
+		draw_sprite_part_ext(sheet,0,4,4,64,112,(x*16+16)-32*lookxsc+unreal(data[2],0),(y*16)-48,lookxsc+unreal(data[3],0),1,c_white,1)
 	break;
 	case "deloaded":
 		if !sprite_exists(global.spr_bt_bigsamba) ||global.spr_bt_bigsamba==0{
 			//no need to deload anything.	
 		}else {
 			sprite_delete(global.spr_bt_bigsamba) global.spr_bt_bigsamba=0
+		}
+		
+		if !sprite_exists(global.spr_bt_bigsambamask) ||global.spr_bt_bigsambamask==0{
+			//no need to deload anything.	
+		}else {
+			sprite_delete(global.spr_bt_bigsambamask) global.spr_bt_bigsambamask=0
 		}
 	
 	break;
