@@ -18,6 +18,8 @@ defaultspray 2=2
 defaultspray 3=5
 defaultspray 4=0
 
+reroutespray 4=3
+
 additive blend dash effects=yes
 3d death=yes
 victory duration=76
