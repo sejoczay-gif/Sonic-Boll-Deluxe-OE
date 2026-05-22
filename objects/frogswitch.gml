@@ -48,6 +48,8 @@ activated=1
 
 other.vsp=0
 
+instance_activate_object(konblock)
+instance_activate_object(koffblock)
 with (konblock) alarm[0]=1
 with (koffblock) {alarm[0]=1 owner=global.coll} //koffmo is DEAD!
 gamemanager.kaerublockstate=!gamemanager.kaerublockstate
