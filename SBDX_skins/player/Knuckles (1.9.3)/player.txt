@@ -1,0 +1,246 @@
+[knux]
+name=Knuckles
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+multiple box sizes=true
+
+center x=12,16,16,16,16,12,16
+center y=13,18,18,18,18,13,18
+
+box width=24,32,32,32,32,24,32
+box height=32,40,40,40,40,32,40
+
+fire duration=8
+victory duration=60
+time until wait=300
+pipe squish=20
+pole center offset=8
+
+old glide animation=true
+
+use paletting=true
+defaultspray 1=5
+defaultspray 2=6
+defaultspray 3=8
+defaultspray 4=0
+
+single sheet=true
+singlesheet split width=8,200,200,456,456,8,200,200,200
+singlesheet split height=0,0,0,0,0,0
+
+custom sprite list=stand,wait,pose,crouch,knock,dead,walk,run,brake,spring,climbing,ball,jump,spindash,upper,push,hang,climb,fire,glide,slide,climbstill,flagslide,recover
+
+connect wait=true
+connect pose=true
+connect crouch=true
+connect knock=true
+connect dead=true
+connect brake=true
+connect spring=true
+connect climbing=true
+connect upper=true
+connect hang=true
+connect fire=true
+connect slide=true
+connect climbstill=true
+connect flagslide=true
+connect recover=true
+size reroute beet=big
+size reroute lui=big
+reroute lookup=stand
+reroute springfall=walk
+reroute bonk=jump
+reroute spincharge=spindash
+reroute flagslide=flagslide
+reroute piping=pose
+reroute pipingup=spring
+reroute sidepiping=walk
+reroute doorenter=stand
+reroute doorexit=pose
+reroute climbdown=climb
+
+stand frames=1
+stand loop=1
+stand speed=0.1
+stand frametimes=0
+stand offset x=0
+stand offset y=0
+wait frames=1
+
+wait frames=3
+wait loop=2
+wait speed=0.25
+wait frametimes=0
+wait offset x=0
+wait offset y=0
+
+pose frames=1
+pose loop=1
+pose speed=0
+pose frametimes=0
+pose offset x=0
+pose offset y=0
+
+crouch frames=1
+crouch loop=1
+crouch speed=0.1
+crouch frametimes=0
+crouch offset x=0
+crouch offset y=0
+
+knock frames=1
+knock loop=1
+knock speed=0
+knock frametimes=0
+knock offset x=0
+knock offset y=0
+
+dead frames=1
+dead loop=1
+dead speed=0
+dead frametimes=0
+dead offset x=0
+dead offset y=0
+
+walk frames=8
+walk loop=1
+walk speed=0.45
+walk frametimes=0
+walk offset x=0
+walk offset y=0
+
+run frames=4
+run loop=1
+run speed=0.25
+run frametimes=0
+run offset x=0
+run offset y=0
+
+brake frames=1
+brake loop=1
+brake speed=0
+brake frametimes=0
+brake offset x=0
+brake offset y=0
+
+spring frames=1
+spring loop=1
+spring speed=0
+spring frametimes=0
+spring offset x=0
+spring offset y=0
+
+climbing frames=2
+climbing loop=1
+climbing speed=0.25
+climbing frametimes=0
+climbing offset x=0
+climbing offset y=0
+
+jump frames=8
+jump loop=1
+jump speed=0.5
+jump frametimes=0
+jump offset x=0
+jump offset y=0
+
+ball frames=8
+ball loop=1
+ball speed=0.3
+ball frametimes=0
+ball offset x=0
+ball offset y=0
+
+spindash frames=4
+spindash loop=1
+spindash speed=0.45
+spindash frametimes=0
+spindash offset x=0
+spindash offset y=0
+
+upper frames=4
+upper loop=4
+upper speed=1
+upper frametimes=8,8,8,8
+upper offset x=7
+upper offset y=-5
+
+push frames=4
+push loop=1
+push speed=0.1
+push frametimes=0
+push offset x=0
+push offset y=0
+
+hang frames=4
+hang loop=1
+hang speed=0.1
+hang frametimes=0
+hang offset x=0
+hang offset y=0
+
+climb frames=4,6,6,6,6,4,6
+climb loop=1
+climb speed=0.3
+climb frametimes=0
+climb offset x=0
+climb offset y=0
+
+fire frames=2
+fire loop=2
+fire speed=1
+fire frametimes=10,6
+fire offset x=4
+fire offset y=0
+
+glide frames=3
+glide loop=1
+glide speed=0
+glide frametimes=0
+glide offset x=0
+glide offset y=0
+
+slide frames=1
+slide loop=1
+slide speed=0
+slide frametimes=0
+slide offset x=-1
+slide offset y=0
+
+climbstill frames=1
+climbstill loop=1
+climbstill speed=0
+climbstill frametimes=0
+climbstill offset x=0
+climbstill offset y=0
+
+flagslide frames=1
+flagslide loop=1
+flagslide speed=0
+flagslide frametimes=0
+flagslide offset x=0
+flagslide offset y=0
+
+recover frames=1,2,2,2,2,1,2
+recover loop=2
+recover speed=0.1
+recover frametimes=0
+recover offset x=0
+recover offset y=0
+
+boll top=#ddbb00
+boll mid=#aa0000
+boll bot=#ff0000
+
+[lang]
+winspecial=Knuckles got a Chaos Emerald
+allspecial=Knuckles got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Knuckles
+savetext4=Our Only Hero
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
