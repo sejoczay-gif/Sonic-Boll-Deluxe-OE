@@ -31,7 +31,39 @@ switch(global.cobjectentrypoint){
 				else {other.follower=follower follower.follow=other.id follower=other.id}
 				other.follow=id
 				other.owner=id
-		}
+				
+				with other {
+					with other {
+						itemget=0
+						with other give_item(other.id,"bigtopping")
+						if itemget=0 bigtopping_get=1
+					}
+					
+					stats("toppings collected",stats("toppings collected")+1)
+					with other sound("itemtopping")
+					
+				
+					i=instance_create(x,y,part)
+					i.vspeed=-2
+					i.hspeed=-2
+					i.spritepart=0
+
+					i=instance_create(x,y,part)
+					i.vspeed=2
+					i.hspeed=2
+					i.spritepart=1
+
+					i=instance_create(x,y,part)
+					i.vspeed=-2
+					i.hspeed=2
+					i.spritepart=1
+					i=instance_create(x,y,part)
+					i.vspeed=2
+					i.hspeed=-2
+					i.spritepart=0
+					sound("itemblockbreak")
+				}
+			}
 	
 	}
 

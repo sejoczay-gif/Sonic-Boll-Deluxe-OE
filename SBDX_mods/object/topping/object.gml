@@ -30,7 +30,7 @@ switch(global.cobjectentrypoint){
 				with other {
 					with other {
 						itemget=0
-						give_item(id,"topping")
+						with other give_item(other.id,"topping") //quiet
 						if itemget=0 topping_get=1
 					}
 					
