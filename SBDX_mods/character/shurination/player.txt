@@ -10,10 +10,10 @@ box width=48
 box height=48
 
 tv idle max frames=6
-tv hurt max frames=5
+tv hurt max frames=1
 tv collect max frames=2
-tv combo max frames=6
-tv mach3 max frames=3
+tv combo max frames=1
+tv mach3 max frames=1
 tv mach4 max frames=1
 tv firebutt max frames=2
 

@@ -1909,7 +1909,7 @@ switch tvani
 case "idle": tvaniyf=0 maxtvfr=idlemaxfr break;
 case "collect": tvaniyf=5 maxtvfr=collectmaxfr break;
 case "hurt": tvaniyf=6 maxtvfr=hurtmaxfr break;
-case "combo": tvaniyf=7 maxtvfr=combomaxfr break;
+case "combo": tvaniyf=7 mssaxtvfr=combomaxfr break;
 case "mach3": tvaniyf=8 maxtvfr=mach3maxfr break;
 case "mach4": tvaniyf=9 maxtvfr=mach4maxfr break;
 case "fireass": tvaniyf=10 maxtvfr=firebuttmaxfr break;
