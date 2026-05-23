@@ -102,13 +102,13 @@ mask_set(12,24)
 
 global.facechase = 1
 
-idlemaxfr=unreal(skindat(name+" tv idle max frames"),9999)
-collectmaxfr=unreal(skindat(name+" tv collect max frames"),9999)
-hurtmaxfr=unreal(skindat(name+" tv hurt max frames"),9999)
-combomaxfr=unreal(skindat(name+" tv combo max frames"),9999)
-mach3maxfr=unreal(skindat(name+" tv mach3 max frames"),9999)
-mach4maxfr=unreal(skindat(name+" tv mach4 max frames"),9999)
-firebuttmaxfr=unreal(skindat(name+"tv firebutt max frames"),9999)
+idlemaxfr=unreal(playerskindat(p2,name+" tv idle max frames"),9999)
+collectmaxfr=unreal(playerskindat(p2,name+" tv collect max frames"),9999)
+hurtmaxfr=unreal(playerskindat(p2,name+" tv hurt max frames"),9999)
+combomaxfr=unreal(playerskindat(p2,name+" tv combo max frames"),9999)
+mach3maxfr=unreal(playerskindat(p2,name+" tv mach3 max frames"),9999)
+mach4maxfr=unreal(playerskindat(p2,name+" tv mach4 max frames"),9999)
+firebuttmaxfr=unreal(playerskindat(p2,name+"tv firebutt max frames"),9999)
 
 //This is all made by Scarf, huge credits to him, saved me a lot of trouble
 moddir=global.workdir+"SBDX_mods\"
