@@ -558,7 +558,7 @@ if (h!=0) {
     if (x<=minx && left) coll=1
     if (coll) {
 		if (knuxcanclimb(collision(8*h,0))) && !water && !bonk {
-            if (jump && !sjump) {wall=4 if runspd<1 runspd=1}
+            if (jump && !sjump && !down) {wall=4 if runspd<1 runspd=1}
 			if (place_meeting(x+8*h,y-8,nslopl) || place_meeting(x+8*h,y-8,nslopr)) && !place_meeting(x,y-8,ground) && (ckey) && !sjump {wall=4 hsp=maxspd*h y-=16 jump=1} //have to offset by 16 because he'll get stuck otherwise, used for climbing into slopes
 			else if (place_meeting(x,y+1,nslopl) || place_meeting(x,y+1,nslopr)) && (ckey) && !sjump {wall=4  jump=1} //set to airborne so he doesnt get stuck, used for climbing off slopes
             xsc=h
@@ -570,9 +570,9 @@ if (h!=0) {
 com_piping()
         } else{com_piping()}
     } else {
-if wall if !(knuxcanclimb(collision(8*h,0))) && !water {
-x+=2*xsc jump=0 wall=0 dive=0 hsp=maxspd*xsc
-}
+		if wall if !(knuxcanclimb(collision(8*h,0))) &&!(knuxcanclimb(collision(8*-sh,0))) && !water {
+		x+=2*xsc jump=0 wall=0 dive=0 hsp=maxspd*xsc
+		}
         if (spin) {
             if (sign(hsp)!=h) hsp+=h*0.05
         } else if !walljumped {
@@ -803,7 +803,7 @@ if runstate && !jump
 {
 
 
-if (xsc != h && h != 0 && !jump && brakingmach!=2)
+if (xsc != h && h != 0 && !jump && !wall && ckey && brakingmach!=2)
 {
 brakingmach=2
 runstate=0
