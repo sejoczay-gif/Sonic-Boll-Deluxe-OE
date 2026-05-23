@@ -26,12 +26,13 @@ switch(global.cobjectentrypoint){
 	break;
 	case "step":
 
+	if dead && !inview() instance_destroy()
+
 	if instance_place(x,y,player) {
 		if !dead {
 			global.pizzatime=1 
-			//with other sound("sambahit")
-			with other sound("enemybowserhurt") //temp
-			with other {for (i=0;i<8;i+=1) {regionmarker.typemus="pizzatime"} stagemusic(id,p2)}
+			with other sound("sambahit")
+			with other {regionmarker.typemus="pizzatime" stagemusic(id,p2)}
 			//other.combo+=1
 			//global.inf_time=0
 			gamemanager.tick=real(timeamount)*60
@@ -70,7 +71,7 @@ switch(global.cobjectentrypoint){
 		}
 	
 		draw_sprite_part_ext(sheet,0,4+64*dead,4,64,112,x-64*lookxsc+64*(lookxsc==1),y,lookxsc,1,c_white,1)
-		draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5)
+		if global.debug draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5)
 	break;
 	
 	

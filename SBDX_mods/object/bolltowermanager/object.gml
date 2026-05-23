@@ -10,6 +10,8 @@ switch(global.cobjectentrypoint){
 		global.pizzatime=0
 		global.bollface=noone
 
+		timer=1
+
 		//look im desperate
 		for (k=0;k<2;k+=1) {
 			
@@ -49,7 +51,20 @@ switch(global.cobjectentrypoint){
 
 		}
 		
-		timer=1
+		wskin=global.lemonlskin+"\"
+		
+		replacesound("itemtoppingclock",wskin+"sfx\bellcollectsmall.ogg")
+		replacesound("itemtoppingbell",wskin+"sfx\bellcollectbig.ogg")
+		replacesound("itemtreasure",wskin+"sfx\treasurefind.wav")
+		replacesound("itembigtopping",wskin+"sfx\sfx_collectpizza.ogg")
+		replacesound("itemtreasure",wskin+"sfx\sfx_collectgiantpizza.ogg")
+		replacesound("itemtopping",wskin+"sfx\itemtopping.wav")
+		replacesound("itemtoppin",wskin+"sfx\itemtoppin.wav")
+		replacesound("secretfound",wskin+"sfx\secretfound.wav")
+		replacesound("sambahit",wskin+"sfx\itemsambahit.wav")
+		replacesound("metalbreak",wskin+"sfx\metalbreak.wav")
+		replacesound("entrance",wskin+"sfx\entrance.wav")
+	
 		
 		//temp
 		with instance_create(x,y,scriptblock) {
@@ -73,7 +88,7 @@ switch(global.cobjectentrypoint){
 		if timer<0 {
 			timer=5
 			with customobject{
-				if mytype="topping"|| mytype="bigsamba" || mytype="bigtopping" || mytype="toppinfollower" || mytype="entrancedoor"
+				if mytype="topping" || mytype="bigtopping" || mytype="toppinfollower" || mytype="entrancedoor"
 				if !inview() instance_deactivate_object(self.id)
 			
 			}
@@ -104,8 +119,7 @@ switch(global.cobjectentrypoint){
 			t.mylap2=mylap2
 			
 			global.pizzatime+=1
-			gamemanager.time=0 
-			gamemanager.tick=0
+			gamemanager.frog_escape_timer=0
 			with instance_create(x,y,scriptblock) {
 				scriptname="pizzatimeanim"
 				lap2=1
@@ -120,7 +134,7 @@ switch(global.cobjectentrypoint){
 				pipe=6
 				visible=0
 				
-				for (i=0;i<8;i+=1) {regionmarker.typemus="lap2" stagemusic(id,p2)}
+				regionmarker.typemus="lap2" stagemusic(id,p2)
 			}
 			hit=1
 			t.hit=1

@@ -26,7 +26,7 @@ switch(global.cobjectentrypoint){
 	if !imfollow {
 		with instance_place(x,y,player) {
 				other.imfollow=1
-				sound("itemcoin") //temp
+				sound("itemtoppin")
 				if (!follower) {follower=other.id last=other.id}
 				else {other.follower=follower follower.follow=other.id follower=other.id}
 				other.follow=id

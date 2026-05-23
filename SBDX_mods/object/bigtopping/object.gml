@@ -34,8 +34,8 @@ switch(global.cobjectentrypoint){
 					
 					
 					stats("toppings collected",stats("toppings collected")+1)
-					//with other sound("itemtopping")
-					with other sound("itemjumprefresh") //temp
+					if toppingtype=5 sound("itemtoppingbell")
+					else with other sound("itemtopping")
 					instance_destroy()
 				}
 			}
