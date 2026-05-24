@@ -17,6 +17,12 @@ tv mach3 max frames=1
 tv mach4 max frames=1
 tv firebutt max frames=2
 
+use paletting=true
+defaultspray 1=8
+defaultspray 2=11
+defaultspray 3=10
+defaultspray 4=1
+
 pitch spindash=yes
 jump ball animation=no
 fire duration=2.75

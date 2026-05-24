@@ -623,8 +623,9 @@ if (bbut && !brakingmach) {
         if jump && size=3 {flybash=1 vsp=0.01 playsfx(name+"jet",0) }
         soundinst=playsfx(name+"bash",1)
     } else if crouch && !fired && !pound && size=2{
-        fired=26
-        if (sprite="fire") frame=0
+        //fired=26
+        fired=firelength
+		if (sprite="fire") frame=0
         my_flamesfx=playsfx(name+"fire",1)
     } else if !fired && count_projectiles() < 2 && size=6{
         p2 = 10;
@@ -645,8 +646,9 @@ if (bkey  && !brakingmach) {
 if size=2 if bashtimer<10 bashtimer=10
 if bash && flybash && jump && !swim { flytimer+=1 if flytimer<60 vsp=0.01   }
 if !bash && fired>1 && fired<10 && crouch && !pound && size=2 {
-    fired=26
-    if (sprite="fire") frame=0
+    //fired=26
+    fired=firelength
+	if (sprite="fire") frame=0
     with fire_projectile(x,y) {type="fire"}
 } else if !crouch || !size=2 {fired=0 stopsfx(my_flamesfx)}
 } else {flytimer=60 stopsfx(my_flamesfx)}

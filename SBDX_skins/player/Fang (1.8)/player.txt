@@ -18,7 +18,7 @@ box height=32,40,40,40,40,32,40,40
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=2.75
+fire duration=30
 victory duration=30
 time until wait=300
 pipe squish=20

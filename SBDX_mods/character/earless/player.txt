@@ -13,6 +13,7 @@ pitch spindash=yes
 jump ball animation=no
 time until wait=1
 victory duration=90
+fire duration=16
 
 stand frames=1
 lookup frames=2

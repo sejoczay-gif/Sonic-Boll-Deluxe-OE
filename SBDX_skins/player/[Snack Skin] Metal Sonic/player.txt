@@ -12,7 +12,7 @@ pole center offset=4
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=8
+fire duration=15
 victory duration=90
 victory frame=4
 time until wait=300

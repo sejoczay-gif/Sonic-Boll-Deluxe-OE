@@ -15,7 +15,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=45
 time until wait=300
 pipe squish=20
@@ -219,7 +219,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=45
 time until wait=300
 pipe squish=20
@@ -431,7 +431,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=45
 time until wait=300
 pipe squish=20
@@ -638,7 +638,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=15
 victory duration=45
 time until wait=300
 pipe squish=20
@@ -864,7 +864,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=45
 time until wait=300
 pipe squish=20
@@ -1541,7 +1541,7 @@ skin offset=156
 
 pitch spindash=no
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=45
 time until wait=300
 pipe squish=20

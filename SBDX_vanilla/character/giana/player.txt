@@ -27,6 +27,7 @@ victory frame=12
 time until wait=200
 pipe squish=20
 small shield offset=0
+fire duration=12
 
 max sizes=7
 

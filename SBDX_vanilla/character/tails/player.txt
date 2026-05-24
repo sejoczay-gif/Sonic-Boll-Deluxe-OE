@@ -12,7 +12,7 @@ pole center offset=4
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=8
+fire duration=15
 victory duration=50
 victory frame=4
 time until wait=300
@@ -65,6 +65,7 @@ crouch loop=2
 lookup loop=2
 brake loop=5
 bonk loop=2
+fire loop=3
 
 stand speed=0.15
 wait speed=0.15
@@ -83,7 +84,7 @@ fly speed=0.25
 flyup speed=0.25
 flydown speed=0.25
 flytired speed=0.125
-fire speed=0.125
+fire speed=0.25
 flyfast speed=0.25
 flyupfast speed=0.25
 flydownfast speed=0.25

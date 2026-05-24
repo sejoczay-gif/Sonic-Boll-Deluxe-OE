@@ -373,7 +373,8 @@ if (bbut) {
         if (size=2 && (!count_projectiles()) && !crouch && !spin && !jump) {
             if (!airdash) fall=0
             fire_projectile(x+8*xsc,y+2)
-            fired=16
+			//fired=16
+			fired=firelength
             }
 			//1.8 C-Dash
 		if size=3 && !airdash && jump {

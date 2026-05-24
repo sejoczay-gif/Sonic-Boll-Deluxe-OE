@@ -15,6 +15,7 @@ victory duration=100
 victory frame=12
 time until wait=300
 pipe squish=20
+fire duration=12
 
 roster size=0
 

@@ -563,8 +563,9 @@ if (up) {
 		    hasfired=1
             fire_projectile(x+7*xsc,y)
 			playsfx("gianafireball")
-            fired=12
-            if (sprite="fire" || sprite="firewalk" || sprite="firejump") frame=0
+            //fired=12
+            fired=firelength
+			if (sprite="fire" || sprite="firewalk" || sprite="firejump") frame=0
 		} else if (size=6 && count_projectiles() < 2) {
 		    p2 = 10;
             with fire_projectile(x+8*xsc,y+2) {

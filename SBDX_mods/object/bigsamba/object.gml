@@ -5,7 +5,7 @@ switch(global.cobjectentrypoint){
 		drop=0
 		lok=0
 		fresh=1
-
+		
 		timeamount=unreal(data_1,0)
 		x+=unreal(data_2,0)
 		y+=unreal(data_3,0)
@@ -20,17 +20,25 @@ switch(global.cobjectentrypoint){
 		}
 		
 		mask_index=global.spr_bt_bigsambamask
+		x-=16
+		y-=48
 		
 	break;
 	case "step":
 
+	if dead && !inview() instance_destroy()
+
 	if instance_place(x,y,player) {
 		if !dead {
 			global.pizzatime=1 
-			with other sound("sambahit") //temp
-			with other {for (i=0;i<8;i+=1) {regionmarker.typemus="pizzatime"} stagemusic(id,p2)}
+			with other sound("sambahit")
+			regionmarker.typemus="pizzatime" stagemusic(other.id,other.p2)
 			//other.combo+=1
-			gamemanager.time=real(timeamount)
+			//global.inf_time=0
+			gamemanager.tick=real(timeamount)*60
+			player.tick=real(timeamount)*60
+			gamemanager.frog_escape=1
+			gamemanager.frog_escape_timer=real(timeamount)*60
 			vspeed = random_range(-3, -5) 
 			hspeed = (random_range(3, 5)) 
 			gravity=0.2 
@@ -44,8 +52,6 @@ switch(global.cobjectentrypoint){
 			with (door) if (is_frogdoor) {frogged=1}
 			wait=13
 			tpos=1
-			global.inf_time=0
-			gamemanager.tick=real(timeamount)*60
 			global.lap2x=x
 			global.lap2y=y
 			
@@ -64,8 +70,8 @@ switch(global.cobjectentrypoint){
 			lookxsc=sign(player.x-x)   
 		}
 	
-		draw_sprite_part_ext(sheet,0,4+64*dead,4,64,112,x-32*lookxsc+16,y-48,lookxsc,1,c_white,1)
-		
+		draw_sprite_part_ext(sheet,0,4+64*dead,4,64,112,x-64*lookxsc+64*(lookxsc==1),y,lookxsc,1,c_white,1)
+		if global.debug draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5)
 	break;
 	
 	

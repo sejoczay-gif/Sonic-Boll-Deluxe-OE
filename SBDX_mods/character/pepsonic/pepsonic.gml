@@ -102,13 +102,13 @@ mask_set(12,24)
 
 global.facechase = 1
 
-idlemaxfr=unreal(skindat(name+" tv idle max frames"),9999)
-collectmaxfr=unreal(skindat(name+" tv collect max frames"),9999)
-hurtmaxfr=unreal(skindat(name+" tv hurt max frames"),9999)
-combomaxfr=unreal(skindat(name+" tv combo max frames"),9999)
-mach3maxfr=unreal(skindat(name+" tv mach3 max frames"),9999)
-mach4maxfr=unreal(skindat(name+" tv mach4 max frames"),9999)
-firebuttmaxfr=unreal(skindat(name+"tv firebutt max frames"),9999)
+idlemaxfr=unreal(playerskindat(p2,name+" tv idle max frames"),9999)
+collectmaxfr=unreal(playerskindat(p2,name+" tv collect max frames"),9999)
+hurtmaxfr=unreal(playerskindat(p2,name+" tv hurt max frames"),9999)
+combomaxfr=unreal(playerskindat(p2,name+" tv combo max frames"),9999)
+mach3maxfr=unreal(playerskindat(p2,name+" tv mach3 max frames"),9999)
+mach4maxfr=unreal(playerskindat(p2,name+" tv mach4 max frames"),9999)
+firebuttmaxfr=unreal(playerskindat(p2,name+"tv firebutt max frames"),9999)
 
 //This is all made by Scarf, huge credits to him, saved me a lot of trouble
 moddir=global.workdir+"SBDX_mods\"
@@ -897,8 +897,9 @@ if slop
 if (!dead && !grabflagpole) {
 if fall!=69
 player_horstep()
-    yground=easyground()
-if (yground!=verybignumber) yground-=14
+player_nslopforce()
+	//yground=easyground()
+//if (yground!=verybignumber) yground-=14
     if (jump) {
         //gravity
         hang=0
@@ -975,7 +976,7 @@ sprite_angle=0
 
 
     if (!jump) {
-if (yground!=verybignumber) {y=yground while collision(0,0) && !collision(0,-8) {y-=1 }}
+//if (yground!=verybignumber) {y=yground while collision(0,0) && !collision(0,-8) {y-=1 }}
 osld=sld
 sld=point_direction(0,0,1,slobal)
 if (!jump && abs(hsp)>=maxspd+1 && spin) {
@@ -988,7 +989,7 @@ hsp=lengthdir_x(hsp,osld) vsp=-abs(lengthdir_y(hsp,osld))*1.5 // coolness factor
 }
 
         if (finish && ending="retainer" && !jump) coyote=0
-        if (!collision(0,4) && (y<yground-2)) {
+        if (!collision(0,4) /*&& (y<yground-2)*/) {
             coyote+=1
             if (coyote=3) {
 jump=1

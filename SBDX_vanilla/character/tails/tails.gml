@@ -905,7 +905,8 @@ if (bbut) {
 		i.hspeed=xsc*(!jump || (size=2 && !left && !right))*2.5 +(hsp/2)
 		if size!=4
 		i.vspeed=-4*(!jump || (size=2 && !left && !right))+down*2-up
-		fired=15
+		//fired=15
+		fired=firelength
 	}
 	if (size=6 && (count_projectiles() < 2) && !crouch && !spin) {
             p2 = 10;

@@ -14,7 +14,7 @@ pole center offset=8
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=8
+fire duration=16
 victory duration=45
 time until wait=0
 pipe squish=20

@@ -11,7 +11,7 @@ box height=48
 
 carry offset x=3
 carry offset y=-2
-fire duration=8
+fire duration=26
 victory duration=60
 time until wait=300
 pipe squish=20

@@ -9,7 +9,7 @@ center y=27
 box width=48
 box height=48
 
-fire duration=2.75
+fire duration=15
 victory duration=30
 time until wait=200
 pipe squish=20

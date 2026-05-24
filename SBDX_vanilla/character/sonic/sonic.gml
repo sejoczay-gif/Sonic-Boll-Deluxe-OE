@@ -497,8 +497,9 @@ if (bbut) {
         if (size=2 && (!count_projectiles()) && !crouch && !spin && !jump) {
             if (!airdash) fall=0
             fire_projectile(x+8*xsc,y+2)
-            fired=16
-            if (sprite="fire") frame=0
+            //fired=16
+            fired=firelength
+			if (sprite="fire") frame=0
         } else if (size=6 && (count_projectiles() < 2) && !crouch && !spin) {
             p2 = 10;
             with fire_projectile(x+8*xsc,y+2) {

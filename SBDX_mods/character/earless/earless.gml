@@ -466,7 +466,8 @@ if (bbut) {
         if (!count_projectiles() && global.coins[p2]>0) {
 		    fire_projectile(x+8*xsc,y+2) 
 			global.coins[p2]-=1
-            fired=16
+            //fired=16
+			fired=firelength
 			}
       
 

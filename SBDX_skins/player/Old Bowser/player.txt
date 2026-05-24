@@ -12,11 +12,13 @@ box height=48
 shield offset=-6
 pole center offset=8
 time until wait=300
-fire duration=8
+fire duration=30
 victory duration=50
 pole center offset=8
 mini sheet=0
 use ypos=false
+
+max sizes=7
 
 skin offset=140
 sheet splits=bombjump

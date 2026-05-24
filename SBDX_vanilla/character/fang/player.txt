@@ -17,6 +17,7 @@ temporary wait=yes
 pipe squish=20
 victory duration=30
 pole center offset=8
+fire duration=30
 
 custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,jumpfired,bonk,ball,bounceland,bounce,bouncelandfired,bouncefired,fired,push,hang,twirl,slide,firedown,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
 reroute fallfired=jumpfired

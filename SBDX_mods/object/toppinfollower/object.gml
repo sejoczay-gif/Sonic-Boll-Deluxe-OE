@@ -8,8 +8,9 @@ switch(global.cobjectentrypoint){
 		lok=0
 		fresh=1
 
-		mask_index=spr_mask12x12
-
+		mask_index=spr_monitormask
+		y-=4
+		
 		realtype=unreal(data_1,0)
 		x+=unreal(data_2,0)
 		y+=unreal(data_3,0)
@@ -25,12 +26,54 @@ switch(global.cobjectentrypoint){
 	if !imfollow {
 		with instance_place(x,y,player) {
 				other.imfollow=1
-				sound("itemcoin") //temp
+				sound("itemtoppin")
 				if (!follower) {follower=other.id last=other.id}
 				else {other.follower=follower follower.follow=other.id follower=other.id}
 				other.follow=id
 				other.owner=id
-		}
+				
+				with other {
+					with other {
+						itemget=0
+						with other give_item(other.id,"bigtopping")
+						if itemget=0 bigtopping_get=1
+					}
+					
+					stats("toppings collected",stats("toppings collected")+1)
+					with other sound("itemtopping")
+					
+				
+					i=instance_create(x,y,part)
+					i.vspeed=-2
+					i.hspeed=-2
+					i.spritepart=0
+					i.visible=0
+					i.toppingcagepart=1
+
+					i=instance_create(x,y,part)
+					i.vspeed=2
+					i.hspeed=2
+					i.spritepart=1
+					i.visible=0
+					i.toppingcagepart=1
+					
+					i=instance_create(x,y,part)
+					i.vspeed=-2
+					i.hspeed=2
+					i.spritepart=1
+					i.visible=0
+					i.toppingcagepart=1
+					
+					i=instance_create(x,y,part)
+					i.vspeed=2
+					i.hspeed=-2
+					i.spritepart=0
+					i.visible=0
+					i.toppingcagepart=1
+					
+					sound("itemblockbreak")
+				}
+			}
 	
 	}
 
@@ -115,14 +158,17 @@ switch(global.cobjectentrypoint){
 			}
 		} else {
 			if realtype!=5 {
-				draw_sprite_part_ext(sheet,0,128,0,24,24,x-4,y-8,1,1,c_white,1)
+				draw_sprite_part_ext(sheet,0,128,0,24,24,x-3,y-4,1,1,c_white,1)
 			} else {
-				draw_sprite_part_ext(sheet,0,32,0,32,40,x-16,y-24,1,1,c_white,1)
+				draw_sprite_part_ext(sheet,0,32,0,32,40,x-8,y-20,1,1,c_white,1)
 			}
 		}
 		
+		with (part) if toppingcagepart {
+			draw_sprite_part_ext(other.sheet,0,128+8*other.spritepart,24,8,8,x,y,1,1,c_white,1)
+		}
 		
-		//draw_sprite(spr_spawner,0,x-8,y-8)
+		if global.debug draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5)
 	break;
 	
 	

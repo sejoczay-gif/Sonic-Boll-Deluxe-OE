@@ -16,7 +16,7 @@ max sizes=9
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=8
+fire duration=16
 victory duration=50
 time until wait=0
 pipe squish=20

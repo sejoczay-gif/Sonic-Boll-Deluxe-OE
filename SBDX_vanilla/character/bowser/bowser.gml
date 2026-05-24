@@ -854,8 +854,8 @@ if (bbut) {
             }
 			}
         } else {
-if (crouch) {firedc=30 if (sprite="firedcrouch") frame=0}
-            else {fired=30 if (sprite="fired") frame=0}
+if (crouch) {/*firedc=30*/ firedc=firelength if (sprite="firedcrouch") frame=0}
+            else {/*fired=30*/ fired=firelength if (sprite="fired") frame=0}
 
             playsfx("bowserfire")
             kek=0

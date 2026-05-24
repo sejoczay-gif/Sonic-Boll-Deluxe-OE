@@ -280,7 +280,7 @@ if (up) com_piping()
 oup=up
 
 lookup=0
-if (up && hsp=0 && !jump && !carry && !throw) lookup=1
+if (up && hsp=0 && !jump && !throw) lookup=1
 
 if (
 rise!=0 || 
@@ -457,8 +457,9 @@ canstopjump=0
 if (bbut && (count_projectiles() < 2) && !crouch) {
     if (size=2) {
         fire_projectile(x+8*xsc,y+2)
-        fired=8
-        if (sprite="fire") frame=0
+        //fired=8
+        fired=firelength
+		if (sprite="fire") frame=0
     }
     else if (size=6) {
             p2 = 10;
@@ -963,7 +964,8 @@ spinball+=1 if (spinball=16) {spinball=0
 if (count_projectiles()<2 && !poundcancel && size=2 && !pound && !carry) {
 ballspin=!ballspin
 i=fire_projectile(x+8*ballspin,y+2)
-fired=8
+//fired=8
+fired=firelength
 i.hspeed=-4+8*ballspin
 }
 }

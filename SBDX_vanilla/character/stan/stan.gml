@@ -468,7 +468,8 @@ i.vspeed=2
 if lookup {i.hspeed=-2 i.vspeed=-4 i.side=0}
 		
 		}
-		fired=15
+		//fired=15
+		fired=firelength
 		if (sprite="fired" || sprite="lookupfired" || sprite="jumpfired" || sprite="jumpupfired") frame=0
 if (gun_load) gun_load=0
 	}

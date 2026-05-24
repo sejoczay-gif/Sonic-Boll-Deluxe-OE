@@ -30,14 +30,14 @@ switch(global.cobjectentrypoint){
 				with other {
 					with other {
 						itemget=0
-						give_item(id,"topping")
+						with other give_item(other.id,"topping") //quiet
 						if itemget=0 topping_get=1
 					}
 					
 					
 					stats("toppings collected",stats("toppings collected")+1)
-					//with other sound("itemtopping")
-					with other sound("itemjumprefresh") //temp
+					if toppingtype=5 sound("itemtoppingclock")
+					else with other sound("itemtopping")
 					instance_destroy()
 				}
 			}

@@ -923,9 +923,9 @@ if slop
 
 if (!dead && !grabflagpole) {
 if fall!=69
-player_horstep()
-    yground=easyground()
-if (yground!=verybignumber) yground-=14
+player_horstep() player_nslopforce()
+    //yground=easyground()
+//if (yground!=verybignumber) yground-=14
     if (jump) {
         //gravity
         hang=0
@@ -995,7 +995,7 @@ sprite_angle=0
 
 
     if (!jump) {
-if (yground!=verybignumber) {y=yground while collision(0,0) && !collision(0,-8) {y-=1 }}
+//if (yground!=verybignumber) {y=yground while collision(0,0) && !collision(0,-8) {y-=1 }}
 osld=sld
 sld=point_direction(0,0,1,slobal)
 if (!jump && abs(hsp)>=maxspd+1 && spin) {
@@ -1008,7 +1008,7 @@ hsp=lengthdir_x(hsp,osld) vsp=-abs(lengthdir_y(hsp,osld))*1.5 // coolness factor
 }
 
         if (finish && ending="retainer" && !jump) coyote=0
-        if (!collision(0,4) && (y<yground-2)) {
+        if (!collision(0,4) /*&& (y<yground-2)*/) {
             coyote+=1
             if (coyote=3) {
 jump=1

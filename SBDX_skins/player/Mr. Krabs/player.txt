@@ -116,7 +116,7 @@ boll bot=#808080
 [lang]
 winspecial=Mr. Krabs got a Chaos Emerald
 allspecial=Mr. Krabs got all Chaos Emeralds
-credits=SuperSani24, DaJumpJump, CyanideJam, Alex Kidd, LuigiRules 2009
+credits=SuperSani24, DaJumpJump, CyanideJam,#Alex Kidd, LuigiRules 2009
 princess=the Formula
 savetext1=agagagagga
 savetext2=

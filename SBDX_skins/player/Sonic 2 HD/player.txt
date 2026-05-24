@@ -44,7 +44,7 @@ connect climbing=true
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=8
+fire duration=16
 victory duration=150
 time until wait=200
 pipe squish=3

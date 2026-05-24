@@ -42,7 +42,7 @@ connect handlegrab=true
 
 pitch spindash=yes
 jump ball animation=no
-fire duration=2.75
+fire duration=16
 victory duration=30
 time until wait=0
 pipe squish=0

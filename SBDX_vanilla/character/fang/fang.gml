@@ -503,7 +503,8 @@ if (bbut && (has1bul||has2bul||has3bul)) {
 	i=shoot(x+4*xsc,y-2+(8*crouch),psmoke,2*xsc) i.depth=depth+2
 	//if (abs(hsp)>0.75&&!jump) {jump=1 vsp=-2 hsp+=sign(hsp)}
 	fire_projectile(x+8*xsc,y+(8*crouch)-2)
-	fired=30
+	//fired=30
+	fired=firelength
 	barfxtick=16
 	frx=0
 	fr=0

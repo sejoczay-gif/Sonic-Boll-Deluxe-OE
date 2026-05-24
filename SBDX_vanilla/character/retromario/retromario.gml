@@ -418,7 +418,8 @@ canstopjump=0
 if (bbut) {
     if (size=2 && count_projectiles()<2 && !crouch && !dive) {
         fire_projectile(x+8*xsc,y+2)
-        fired=8
+        //fired=8
+		fired=firelength
         if (sprite="fire") frame=0
     }
 }
@@ -891,7 +892,8 @@ spinball+=1 if (spinball=16) {spinball=0
 if (count_projectiles()<2 && !poundcancel && size=2 && !pound && !carry) {
 ballspin=!ballspin
 i=fire_projectile(x+8*ballspin,y+2)
-fired=8
+//fired=8
+fired=firelength
 i.hspeed=-4+8*ballspin
 }
 }
