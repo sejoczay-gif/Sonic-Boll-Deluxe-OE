@@ -1,0 +1,174 @@
+[tails]
+name=Bean
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=24
+center y=28
+box width=48
+box height=48
+pole center offset=2
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=15
+victory duration=50
+victory frame=4
+time until wait=300
+pipe squish=20
+enable spindust=true
+
+smooth flight bar drain=true
+
+multiple box sizes=true
+
+center x=12,22,22,22,22,12,22,22
+center y=13,18,18,18,18,13,18,18
+
+box width=24,40,40,40,40,24,40,40
+box height=32,40,40,40,40,32,40,40
+
+single sheet=true
+singlesheet split width=8,200,200,200,200,8,200,200
+singlesheet split height=0,0,0,0,0,0,0,0
+
+use paletting=true
+defaultspray 1=8
+defaultspray 2=5
+defaultspray 3=0
+defaultspray 4=0
+
+reroutespray 3=1
+
+custom sprite list=stand,lookup,pose,crouch,spring,brake,knock,dead,walk,run,fly,ball,jump,climbing,spindash,fire,push,flytired,flyup,flydown,flagslide,tailspin,tailidle
+
+connect lookup=true
+connect pose=true
+connect crouch=true
+connect brake=true
+connect spring=true
+connect knock=true
+connect dead=true
+connect fly=true
+connect climbing=true
+connect spindash=true
+connect fire=true
+connect flytired=true
+connect flydown=true
+connect tailspin=true
+connect tailidle=true
+
+reroute wait=stand
+reroute flyfast=fly
+reroute airwalk=walk
+reroute bonk=jump
+reroute hang=stand
+reroute swim=fly
+reroute grind=walk
+reroute piping=pose
+reroute pipingup=spring
+reroute sidepiping=walk
+reroute doorenter=stand
+reroute doorexit=stand
+
+stand frames=1
+lookup frames=1
+pose frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=8
+run frames=4
+brake frames=1
+spring frames=1
+airwalk frames=8
+jump frames=1
+bonk frames=1
+ball frames=8
+spindash frames=3
+push frames=4
+hang frames=4
+fire frames=2
+fly frames=4
+flytired frames=4
+flyfast frames=2
+flyup frames=4
+flydown frames=4
+swim frames=4
+tailspin frames=1
+tailidle frames=1
+climbing frames=2
+
+size reroute beet=fire
+size reroute lui=big
+
+pose loop=4
+crouch loop=2
+lookup loop=2
+brake loop=5
+bonk loop=2
+fire loop=2
+
+stand speed=0.15
+wait speed=0.15
+lookup speed=0.15
+crouch speed=0.15
+walk speed=0.35
+run speed=0.25
+jump speed=0.5
+bonk speed=0.25
+ball speed=0.5
+spindash speed=0.5
+push speed=0.1
+hang speed=0.2
+airwalk speed=0.5
+fly speed=0.25
+flyup speed=0.25
+flydown speed=0.25
+flytired speed=0.125
+fire speed=0.12
+flyfast speed=0.25
+flyupfast speed=0.25
+flydownfast speed=0.25
+swim speed=0.25
+tailspin speed=0.5
+tailidle speed=0.15
+climbing speed=0.25
+
+stand frametimes=32,1,1
+crouch frametimes=1,32,1,1
+lookup frametimes=1,32,1,1
+
+grind frames=6
+piping frames=8
+pipingup frames=8
+sidepiping frames=8
+doorenter frames=4
+doorexit frames=1
+
+grind speed=0.15
+piping speed=0.5
+pipingup speed=0.5
+sidepiping speed=0.5
+doorenter speed=0.20
+doorexit speed=0.20
+
+doorenter loop=4
+doorexit loop=2
+
+boll top=#60C000
+boll mid=#38A800
+boll bot=#004000
+
+[lang]
+winspecial=Bean got a Chaos Emerald
+allspecial=Bean got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Bean
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
+credits=Dew, Kaching

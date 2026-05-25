@@ -117,3 +117,4 @@ savetext3=Hurrah to Robotnik
 savetext4=Our Only Hero..?
 savetext5=This Ends Your Trip
 savetext6=Of a Long Friendship
+credits=Vinci2000, BAS229, ren, MetalHog
