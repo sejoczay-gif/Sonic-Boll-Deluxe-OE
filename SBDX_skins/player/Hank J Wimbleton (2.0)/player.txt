@@ -8,6 +8,7 @@ center x=24
 center y=27
 box width=48
 box height=48
+bow lag=no
 
 custom sprite list=stand,wait,lookup,pose,walk,jump,bonk,fall,wall,dash,bow,stand2,wait2,lookup2,pose2,walk2,jump2,bonk2,fall2,wall2,dash2,bow2,flagslide,climbing
 

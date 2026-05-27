@@ -2265,7 +2265,10 @@ jesus=0
 jesus_mercy=0
 /*"/**/ return 0}
 ')
+
+charm_run("start");
 }
+
 }
 
 #define draw

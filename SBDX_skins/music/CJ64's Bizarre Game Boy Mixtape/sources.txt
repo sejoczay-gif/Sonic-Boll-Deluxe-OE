@@ -13,11 +13,12 @@
 \special: Conker's Pocket Tales - Minigame
 \volcano: Bomberman Max - Battle Star
 \bonus: Game & Watch Gallery 2 - Mode Select
-\desert: Aladdin (GBC) - First Level
+\desert: Aladdin (GBC) - The Desert
 \clockwork: Dave Mirra's Freestyle BMX - "BGM #05" (zophar's domain)
 \final castle: Tony Hawk's Pro Skater 2 - Skater Heaven
 \abstract: Razor Freestyle Scooter - Ex Number Five: Not Go
 \tutorial: LEGO Racers - Build Menu (restored, I guess. I still wish I knew why the music plays correctly on some emulators but not on real hardware...)
+\warp: Star Wars - Tatooine
 
 \start: Mickey's Speedway USA - Race Start
 \flagpole clear: LEGO Racers - 1st Place

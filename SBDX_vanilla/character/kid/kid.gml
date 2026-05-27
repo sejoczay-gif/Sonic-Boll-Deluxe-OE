@@ -537,22 +537,17 @@ if (event="step") {
 
 	}//////BOW CODE, hey there, -S- here, you would not believe how stupidly long it took me to fix this crashing the game, in fact, as i'm writing this, it's still not fixed,i hate this sooo much,,, EDIT: 27/12/2020 Finally fixed this with adding the spriteswitcherflag holy guacamole
 	else if (bow){
+		if bowlag{
+			x=owner.xprevious y=owner.yprevious
+		}else {x=owner.x+owner.hsp y=owner.y+owner.vsp}
 		//spriteswitch(1)
 		ssw_core(1)
 		visible=1
 		xsc=owner.xsc
-		ypos=owner.ypos
 		depth=owner.depth-1
 		if ((owner.pose && finish) || !owner.bow) instance_change(smoke,0)
 		with (owner){mybow.bowlag=skindat("bowlag")} 
 		ysc=owner.ysc
-		if bowlag{
-			myframe-=1 
-			if myframe=0{
-				x=owner.x y=owner.y myframe=3
-			}
-		}else x=owner.x y=owner.y
-
 	}
 
 }

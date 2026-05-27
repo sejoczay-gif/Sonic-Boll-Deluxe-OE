@@ -24,5 +24,5 @@ if prevstate!=gamemanager.kaerublockstate {
 
 frame=(frame+0.3) mod 6
 
-with konblock draw_sprite_part(global.spr_samblock,0,4+16*floor(other.frame),4,16,16,x,y)
-with koffblock draw_sprite_part(global.spr_samblock,0,100,4,16,16,x,y)
+with konblock draw_sprite_part_ext(global.spr_samblock,0,4+16*floor(other.frame),4,16,16,x,y,1,1,c_white,1)
+with koffblock draw_sprite_part_ext(global.spr_samblock,0,100,4,16,16,x,y,1,1,c_white,0.5)
