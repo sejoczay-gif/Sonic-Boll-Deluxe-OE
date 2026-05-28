@@ -4,24 +4,24 @@ name=X
 icon speed=6
 icon loop=yes
 animation speed=1.0
-center x=15
-center y=12
-box width=28
-box height=32
+center x=21
+center y=13
+box width=40
+box height=33
 marker offset=26
 
 carry offset x=5
-carry offset y=2
-fire duration=4
-blood splat=yes
+carry offset y=3
+fire duration=20
+blood splat=no
 bow lag=yes
 victory duration=50
-time until wait=200
+time until wait=0
 pipe squish=20
 mario death=false
 death animation=true
-size reroute beet=big
-size reroute lui=big
+size reroute beet=basic
+size reroute lui=basic
 
 
 custom sprite list=stand,wall,standfire,wallfire,walk,walkfire,jump,fall,jumpfire,fallfire,bow,dash,pose,dashfire,posefire,lookup,lookupfire,climbing,flagslide,dead
@@ -52,9 +52,9 @@ reroute wait=stand
 reroute standcarry=stand
 reroute walkcarry=walk
 reroute jumpcarry=jump
-reroute piping=pose
-reroute pipingup=pose
-reroute doorenter=pose
+reroute piping=stand
+reroute pipingup=stand
+reroute doorenter=stand
 reroute doorexit=stand
 reroute sidepiping=walk
 reroute fallcarry=fall
@@ -76,37 +76,42 @@ reroute lookup2=lookupfire
 reroute wall2=wallfire
 
 stand frames=4
-wait frames=4
+wait frames=3
 lookup frames=4
 pose frames=1
-walk frames=4
-jump frames=2
+walk frames=8
+jump frames=3
 bonk frames=2
-fall frames=3
+fall frames=2
 wall frames=2
-dash frames=4
+dash frames=3
 spacer1 frames=1
 climbing frames=2
 bow frames=1
 spacer1 frames=1
 spacer2 frames=2
+dead frames=3
 
-jump loop=2
-fall loop=2
 bonk loop=2
 pose loop=8
 
-stand speed=0.06
+stand speed=0.2
 wait speed=0.2
 lookup speed=0.2
 pose speed=0.3
-walk speed=0.2zx
-jump speed=0.25
+walk speed=0.2
+jump speed=0.2
 bonk speed=0.25
-fall speed=0.25
-wall speed=0.25
+fall speed=0.2
+wall speed=0.1
 dash speed=0.25
 climbing speed=0.2
+dead speed=0.2
+
+dead loop=3
+jump loop=3
+fall loop=2
+dash loop=2
 
 standcarry frames=4
 walkcarry frames=4
@@ -129,24 +134,27 @@ bow frames=1
 
 standfire frames=4
 lookupfire frames=4
-walkfire frames=4
-jumpfire frames=2
+walkfire frames=8
+jumpfire frames=3
 bonkfire frames=2
-fallfire frames=3
+fallfire frames=2
 wallfire frames=2
-dashfire frames=4
+dashfire frames=3
 
-jumpfire loop=2
+jumpfire loop=3
+fallfire loop=2
+
+jumpfire loop=3
 fallfire loop=2
 bonkfire loop=2
 
-standfire speed=0.2
+standfire speed=0.4
 lookupfire speed=0.2
 walkfire speed=0.2
 jumpfire speed=0.25
 bonkfire speed=0.25
 fallfire speed=0.25
-wallfire speed=0.25
+wallfire speed=0.1
 dashfire speed=0.25
 
 
@@ -168,6 +176,9 @@ doorexit speed=0.2
 run frames=9
 run speed=0.35
 run loop=5
+
+stand frametimes=32,1,1,1
+lookup frametimes=32,1,1,1
 
 boll top=#F0F0F0
 boll mid=#0040F0
