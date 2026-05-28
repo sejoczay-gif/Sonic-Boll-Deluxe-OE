@@ -5,9 +5,9 @@ icon speed=6
 icon loop=yes
 animation speed=1.0
 center x=21
-center y=13
+center y=14
 box width=40
-box height=33
+box height=34
 marker offset=26
 
 carry offset x=5
@@ -24,7 +24,7 @@ size reroute beet=basic
 size reroute lui=basic
 
 
-custom sprite list=stand,wall,standfire,wallfire,walk,walkfire,jump,fall,jumpfire,fallfire,bow,dash,pose,dashfire,posefire,lookup,lookupfire,climbing,flagslide,dead
+custom sprite list=stand,wall,standfire,wallfire,walk,walkfire,jump,fall,jumpfire,fallfire,bow,dash,pose,dashfire,posefire,lookup,lookupfire,climbing,flagslide,dead,standcarry,walkcarry,jumpcarry,fallcarry,dashcarry
 
 use paletting=true
 defaultspray 1=2
@@ -47,20 +47,16 @@ connect standfire=true
 connect wallfire=true
 connect dashfire=true
 connect dash=true
+connect fallcarry=true
 
 reroute wait=stand
-reroute standcarry=stand
-reroute walkcarry=walk
-reroute jumpcarry=jump
 reroute piping=stand
 reroute pipingup=stand
 reroute doorenter=stand
 reroute doorexit=stand
 reroute sidepiping=walk
-reroute fallcarry=fall
-reroute dashcarry=dash
 reroute bonk=jump
-reroute bonkcarry=jump
+reroute bonkcarry=jumpcarry
 reroute run=walk
 reroute spin=walk
 reroute grind=walk
@@ -78,7 +74,7 @@ reroute wall2=wallfire
 stand frames=4
 wait frames=3
 lookup frames=4
-pose frames=1
+pose frames=2
 walk frames=8
 jump frames=3
 bonk frames=2
@@ -93,12 +89,12 @@ spacer2 frames=2
 dead frames=3
 
 bonk loop=2
-pose loop=8
+pose loop=2
 
 stand speed=0.2
 wait speed=0.2
 lookup speed=0.2
-pose speed=0.3
+pose speed=0.15
 walk speed=0.2
 jump speed=0.2
 bonk speed=0.25
@@ -114,21 +110,22 @@ fall loop=2
 dash loop=2
 
 standcarry frames=4
-walkcarry frames=4
-jumpcarry frames=2
+walkcarry frames=8
+jumpcarry frames=3
 bonkcarry frames=2
-fallcarry frames=3
-dashcarry frames=4
+fallcarry frames=2
+dashcarry frames=3
 
-jumpcarry loop=2
+jumpcarry loop=3
 fallcarry loop=2
 bonkcarry loop=2
+dashcarry loop=2
 
 standcarry speed=0.2
 walkcarry speed=0.2
-jumpcarry speed=0.25
+jumpcarry speed=0.2
 bonkcarry speed=0.25
-fallcarry speed=0.25
+fallcarry speed=0.2
 dashcarry speed=0.25
 bow frames=1
 
@@ -178,6 +175,7 @@ run speed=0.35
 run loop=5
 
 stand frametimes=32,1,1,1
+standcarry frametimes=32,1,1,1
 lookup frametimes=32,1,1,1
 
 boll top=#F0F0F0
