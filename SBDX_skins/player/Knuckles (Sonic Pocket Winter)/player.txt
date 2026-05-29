@@ -1,0 +1,169 @@
+[knux]
+name=Knuckles
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=24
+center y=28
+box width=48
+box height=48
+
+fire duration=8
+victory duration=45
+time until wait=300
+pipe squish=20
+pole center offset=8
+shield speed=3
+
+disable spindust=true
+max sizes=7
+pitch spindash=yes
+glide animation=yes
+jump ball animation=no
+
+use paletting=false
+defaultspray 1=5
+defaultspray 2=10
+defaultspray 3=5
+defaultspray 4=8
+
+flame knuckle vert graphic x=10
+flame knuckle vert graphic y=87
+
+flame knuckle hor graphic x=64
+flame knuckle hor graphic y=69
+
+featherdash graphic x=99
+featherdash graphic y=64
+
+spindash dust graphic x=99
+spindash dust graphic y=99
+spindash dust frames=8
+spindash dust speed=1
+
+custom sprite list=stand,lookup,pose,crouch,knock,dead,brake,spring,climbing,wait,walk,run,jump,spindash,push,hang,fire,upper,climbstill,climb,climbdown,glide,flagslide,glideturn,recover,slide,battlemid,battlelose,battledead
+
+connect lookup=true
+connect pose=true
+connect crouch=true 
+connect knock=true
+connect dead=true
+connect brake=true
+connect spring=true
+connect climbing=true
+connect hang=true
+connect upper=true
+connect climbstill=true
+connect glide=true
+connect flagslide=true
+connect recover=true
+connect slide=true
+
+reroute wait=wait
+reroute ball=jump
+reroute fall=jump
+reroute bonk=jump
+reroute spincharge=spindash
+reroute piping=pose
+reroute sidepiping=walk
+reroute pipingup=spring
+reroute doorenter=stand
+reroute doorexit=stand
+reroute battlewin=pose
+
+stand frames=1
+wait frames=43
+lookup frames=1
+pose frames=1
+crouch frames=2
+knock frames=1
+dead frames=1
+walk frames=8
+run frames=4
+brake frames=1
+spring frames=1
+jump frames=8
+bonk frames=2
+ball frames=8
+spindash frames=4
+spincharge frames=8
+push frames=4
+hang frames=4
+fire frames=3
+upper frames=4
+climb frames=4
+climbstill frames=1
+climbdown frames=4
+glide frames=1
+glideturn frames=3
+recover frames=2
+slide frames=1
+climbing frames=2
+
+size reroute beet=fire
+size reroute lui=big
+
+stand speed=0.2
+wait speed=0.15
+lookup speed=0.2
+crouch speed=0.2
+walk speed=0.35
+run speed=0.3
+jump speed=0.5
+bonk speed=0.25
+ball speed=0.5
+spring speed=0.25
+spindash speed=0.5
+spincharge speed=0.5
+push speed=0.1
+hang speed=0.2
+fire speed=0.15
+upper speed=0.25
+climb speed=0.125
+climbstill speed=0.05
+climbdown speed=0.15
+glide speed=0.25
+glideturn speed=0.15
+recover speed=0.15
+climbing speed=0.125
+
+crouch loop=2
+upper loop=3
+recover loop=2
+fire loop=3
+brake loop=1
+glide loop=1
+glideturn loop=1
+
+grind frames=1
+piping frames=8
+pipingup frames=8
+sidepiping frames=8
+doorenter frames=4
+doorexit frames=1
+
+piping speed=0.5
+pipingup speed=0.5
+sidepiping speed=0.4
+doorenter speed=0.20
+doorexit speed=0.20
+
+doorenter loop=4
+doorenter framestimes=1,1,1,1
+
+boll top=#ddbb00
+boll mid=#aa0000
+boll bot=#ff0000
+
+[lang]
+winspecial=Knuckles got a Chaos Emerald
+allspecial=Knuckles got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Knuckles
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
+credits=VAdaPEGA, renex, Christian32307
