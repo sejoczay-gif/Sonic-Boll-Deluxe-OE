@@ -20,7 +20,7 @@ Moveset failed to load.
 shortsmallform=( unreal(playerskindat(p2,"simple-overall resizesmallform"),3)  )
 
 
-for (i=0;i<=5;i+=1){
+for (i=0;i<=7;i+=1){
 
 	fall_type[i]=( string(playerskindat(p2,"simple-overall jump type")) == "Mario"  )	
 	mario_movement[i]=( string(playerskindat(p2,"simple-overall movement type")) == "Mario"  )
@@ -42,6 +42,15 @@ for (i=0;i<=5;i+=1){
 	can_momentumbreak[i]=funnytruefalse(playerskindat(p2,"simple-overall momentumbreak"))
 
 	can_fireproj[i]=funnytruefalse(playerskindat(p2,"simple-overall fire projectile"))
+	proj_button[i]=playerskindat(p2,"simple-overall projectile button") //A B C X Y Z
+	proj_button2[i]=playerskindat(p2,"simple-overall projectile button2") //A B C X Y Z Down Up None
+	proj_grounded[i]=funnytruefalse(playerskindat(p2,"simple-overall fire projectile when grounded"))
+	proj_aerial[i]=funnytruefalse(playerskindat(p2,"simple-overall fire projectile when aerial"))
+	proj_type[i]=playerskindat(p2,"simple-overall projectile type") //cloverwhip, bubble, iceball, fireball, thunderball
+	proj_limit[i]=(unreal(playerskindat(p2,"simple-overall projectile limit"),3))
+	proj_fireduration=(unreal(playerskindat(p2,"simple-overall projectile firing duration"),16))
+	
+	
 	can_fireproj2[i]=funnytruefalse(playerskindat(p2,"simple-overall fire projectile 2"))
 	can_fireproj3[i]=funnytruefalse(playerskindat(p2,"simple-overall fire projectile 3"))
 	
@@ -75,9 +84,10 @@ for (i=0;i<=5;i+=1){
 	airjumpy_changevsp[i]=funnytruefalse(playerskindat(p2,"simple-overall airjump changevertspeed"))
 	airjumpy_hsp[i]=unreal(playerskindat(p2,"simple-overall airjump horspeed"),0)
 	airjumpy_vsp[i]=unreal(playerskindat(p2,"simple-overall airjump vertspeed"),0)
+	
 }
 
-for (i=0;i<=5;i+=1){
+for (i=0;i<=7;i+=1){
 
 	switch(i){
 		case 0: sizename="-basic" break;
@@ -86,6 +96,8 @@ for (i=0;i<=5;i+=1){
 		case 3: sizename="-feather" break;
 		case 4: sizename="-extra" break;
 		case 5: sizename="-mini" break;
+		case 6: sizename="-beet" break;
+		case 7: sizename="-lui" break;
 	}
 	
 
@@ -717,6 +729,8 @@ if (!akey) {
     }
     canstopjump=0
 }
+
+charm_run("CheckProjectile")
 
 //code for specifically the b button
 if (bbut) {
@@ -1826,3 +1840,284 @@ if (type="up") {}
 if (type="down") {}
 
 
+#define CheckProjectile
+
+if can_fireproj[size]{
+	if (proj_aerial[size] && jump) || (proj_grounded[size] && !jump){
+		projbut=false
+		switch (proj_button[size]){
+			case "A": projbut=abut break;
+			case "B": projbut=bbut break;
+			case "C": projbut=cbut break;
+			case "X": projbut=xbut break;
+			case "Y": projbut=ybut break;
+			case "Z": projbut=zbut break;
+			case "R": projbut=rbut break;
+			case "S": projbut=sbut break;
+		}
+		
+		if projbut switch (proj_button2[size]){ //it just lets it pass by default.
+			case "A": projbut=akey break;
+			case "B": projbut=bkey break;
+			case "C": projbut=ckey break;
+			case "X": projbut=xkey break;
+			case "Y": projbut=ykey break;
+			case "Z": projbut=zkey break;
+			case "R": projbut=rkey break;
+			case "S": projbut=skey break;
+			case "Up": projbut=up break;
+			case "Down": projbut=down break;
+		}
+		
+		
+		if projbut{
+			if count_projectiles()<proj_limit[size] {
+				projtype=proj_type[size]
+				i=fire_projectile(x+8*xsc,y+2)
+				fired=proj_fireduration[size]
+				if projtype=="fireball"||projtype="iceball" && up i.vspeed=-4
+			}
+		
+		}
+	}
+}
+
+#define projectile
+
+if (event="create"){
+	type=owner.projtype
+	visible=1
+	event=type+"_create"
+}
+else if (event="step"){
+	if !inview() instance_destroy()
+	i=7
+	repeat(8){
+		if i!=0{
+			prev_x[i]=prev_x[i-1]
+			prev_y[i]=prev_y[i-1]
+			
+		} else {
+			prev_x[i]=xprevious
+			prev_y[i]=yprevious
+		}
+		i-=1
+	}
+	
+	event=type+"_step"
+}
+else if (event="draw"){
+
+	event=type+"_draw"
+	
+}
+
+if (event="fireball_create"){
+	hspeed=owner.xsc*3+owner.hsp/3
+	gravity=0.15
+	fr=0
+}else if (event="fireball_step"){
+	fr+=0.2
+	frame=floor(fr) mod 4
+	
+	
+	if com_proj_mov_bouncewall() {with owner {projtype="fireplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	/*if*/ com_proj_mov_bouncefloor() //vspeed=-2
+	com_proj_dmg_enemies(true)
+	
+}else if (event="fireball_draw"){
+	prevframe=frame-2
+	if prevframe<0 prevframe+=4
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
+
+	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
+	
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
+	
+	draw_set_blend_mode(bm_normal)
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-8*xsc),round(y-8*1),xsc,1,c_white,1)
+
+}
+if (event="fireplosion_create"){
+	fr=0
+	ignoreoncount=1
+
+}else if (event="fireplosion_step"){
+	fr=fr+0.2
+	frame=floor(fr)
+
+	if (frame>=3) {instance_destroy() visible=0}
+}else if (event="fireplosion_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,9,16,16,round(x-8*1),round(y-8*1),1,1,c_white,1)
+
+}
+if (event="thunderball_create"){
+	hspeed=owner.xsc*2+owner.hsp
+
+}else if (event="thunderball_step"){
+	fr=fr+0.2
+	frame=floor(fr) mod 4
+	xsc=sign(hspeed)
+	com_proj_dmg_blocks(false)
+	com_proj_dmg_enemies(false)
+	y=ystart+cos(fr)*3
+}else if (event="thunderball_draw"){
+prevframe=frame-2
+	if prevframe<0 prevframe+=4
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
+
+	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
+	
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
+	
+	draw_set_blend_mode(bm_normal)
+
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
+
+
+}
+if (event="bubble_create"){
+	hspeed=owner.xsc*3
+	vspeed=0.35
+	friction=0.005
+	gravity=-0.025
+	image_xscale=10
+	image_yscale=10
+}else if (event="bubble_step"){
+	xsc=esign(hspeed,xsc)
+	fr=fr+0.1
+	frame=min(floor(fr),3) 
+	if fr>=8 {with owner {projtype="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	
+	if fr>4
+	if place_meeting(x,y,owner) && owner.vsp>0 && owner.y<y {with owner {vsp=-4 canstopjump=0 projtype="waterplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	com_proj_dmg_enemies(true)
+}else if (event="bubble_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*25,99,24,24,round(x-12*xsc),round(y-12*1),xsc,1,c_white,1)
+
+}
+if (event="waterplosion_create"){
+	fr=0
+	ignoreoncount=1
+}else if (event="waterplosion_step"){
+	fr=fr+0.2
+	frame=floor(fr)
+	if (frame>=3) {instance_destroy() visible=0}
+}else if (event="waterplosion_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*25,74,24,24,round(x-12*1),round(y-12*1),1,1,c_white,1)
+
+}
+if (event="iceball_create"){
+	hspeed=owner.xsc*3+owner.hsp/3
+	gravity=0.1
+	fr=0
+
+}else if (event="iceball_step"){
+	fr+=0.2
+	frame=floor(fr) mod 4
+	
+	gravity=0.1
+	if com_proj_mov_bouncewall() {with owner {projtype="iceplosion" fire_projectile(other.x,other.y)} instance_destroy()}
+	com_proj_mov_bouncefloor()
+	//com_proj_freeze_enemies(true)
+
+}else if (event="iceball_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,141,16,16,round(x-8*1),round(y-8*1),xsc,1,c_white,1)
+
+
+}
+if (event="iceplosion_create"){
+	fr=0
+	ignoreoncount=1
+}else if (event="iceplosion_step"){
+	fr=fr+0.2
+	frame=floor(fr)
+
+	if (frame>=3) {instance_destroy() visible=0}
+
+}else if (event="iceplosion_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,124,16,16,round(x-8*1),round(y-8*1),1,1,c_white,1)
+
+
+}
+if (event="cloverwhip_create"){
+	fr=0
+	ignoreoncount=0
+	image_xscale=1
+	image_yscale=4
+
+}else if (event="cloverwhip_step"){
+	if fr < 32 fr+=3 else fr=32
+	image_xscale=fr
+	x=owner.x+image_xscale*owner.xsc
+	owner.fired=2
+	y=owner.y
+	if (fr>=32) {fr2+=1}
+	if fr2>32 instance_destroy() 
+	coll=instance_place(x,y,collider)
+	if coll{
+		if knuxcanclimb(coll){
+			owner.x=bbox_right-owner.mask_w 
+			owner.fired=0
+			instance_destroy()
+		
+		}
+			
+	}
+
+}else if (event="cloverwhip_draw"){
+	
+		draw_sprite_part_ext(owner.sheetshields,0,273-fr*2,158,fr*2+3,16,round(x-image_xscale*owner.xsc),round(y-8*1),owner.xsc,1,c_white,1)
+
+	
+	
+
+}
+if (event="twirlefx_create"){
+	fr=0
+	ignoreoncount=1
+}else if (event="twirlefx_step"){
+	fr+=2
+	if fr>10 instance_destroy()
+
+}else if (event="twirlefx_draw"){
+	draw_set_blend_mode(bm_add)
+	draw_sprite_part_ext(owner.sheetshields,0,369,175,24,15,round(x-(15+fr)*xsc),round(y+fr/3),xsc*(1+fr/30),1+fr/30,c_white,1)
+	draw_sprite_part_ext(owner.sheetshields,0,369+25,175,24,15,round(x-(8-fr)*xsc),round(y-fr/3),xsc*(1-fr/30),1-fr/30,c_white,1)
+	draw_set_blend_mode(bm_normal)
+}
+
+
+
+if (event=="pstar_create" || event=="4star_create"){
+	fr=0
+	friction=0.1
+	getregion(x)
+	growsize=0	
+}
+else if (event=="pstar_step")||(event=="4star_step"){
+	fr=fr+0.2
+
+	if growsize!=0{
+		image_xscale*=1+(growsize*0.1*0.25)
+		image_yscale*=1+(growsize*0.1*0.25)
+	}
+	if drag{
+	speed*=0.99*drag
+
+	}
+	frame=floor(fr)
+
+	if (frame>=4) {instance_destroy() visible=0}
+}
+else if (event=="pstar_draw"){
+	if owner.usepalette scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,global.reroutedsizes[owner.p2,owner.size],1,owner.totpal+1)
+
+	draw_sprite_part_ext(owner.sheetshields,0,493+frame*25,9,24,24,round(x-12*image_xscale),round(y-12*image_yscale),image_xscale,image_yscale,c_white,1)
+	shader_reset()
+}
+else if (event=="4star_draw"){
+	draw_sprite_part_ext(owner.sheetshields,0,493+frame*25,34,24,24,round(x-12*image_xscale),round(y-12*image_yscale),image_xscale,image_yscale,c_white,1)
+}

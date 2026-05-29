@@ -50,6 +50,16 @@ groundpound=false
 dive=false
 spinjump=false
 
+
+
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=fireball
+projectile limit=3
+projectile firing duration=16
+
 [simple-basic]
 zerodash=true
 top speed=3
