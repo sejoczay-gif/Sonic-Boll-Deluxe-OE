@@ -32,6 +32,7 @@ reroute doorexit=stand
 reroute piping=stand
 reroute pipingup=spring
 reroute sidepiping=walk
+reroute balance=hang
 
 stand frames=4
 wait frames=14
