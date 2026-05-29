@@ -36,6 +36,7 @@ reroute piping=stand
 reroute pipingup=spring
 reroute sidepiping=walk
 reroute fired=fire
+reroute balance=hang
 
 stand frames=1
 wait frames=18
@@ -97,4 +98,4 @@ savetext3=
 savetext4=THANKS FOR YOUR PLAYING.
 savetext5=
 savetext6=
-credits=CJ64, Rep, Rin, Renex, Fractor, Todadoat, Vantas
+credits=CJ64, Rep, Rin, Renex, Fractor, lyb, Todadoat, Vantas
