@@ -27,14 +27,14 @@ use paletting=true
 defaultspray 1=1
 defaultspray 2=7
 defaultspray 3=5
-defaultspray 4=0
+defaultspray 4=5
 
 
 single sheet=true
-singlesheet split width=8,200,456,456,456,456
+singlesheet split width=8,200,200,200,200,8,200,200
 singlesheet split height=0,0,0,0,0,0
 
-custom sprite list= stand,wait,pose,crouch,knock,dead,walk,run,brake,spring,ball,jump,spindash,push,balance,spacer1,fire,spacer2,dash
+custom sprite list= stand,wait,pose,crouch,knock,dead,walk,run,brake,spring,climbing,ball,jump,spindash,flagslide,push,balance,spacer1,fire,spacer2,dash
 
 connect stand=true
 connect wait=true
@@ -48,15 +48,14 @@ connect balance=true
 connect fire=true
 connect spacer2=true
 connect dash=true
-
+connect climbing=true
+connect flagslide=true
 
 reroute lookup=stand
 reroute maxrun=run
 reroute springfall=walk
 reroute bonk=jump
 reroute spincharge=spindash
-reroute climbing=spring
-reroute flagslide=spring
 reroute piping=pose
 reroute pipingup=spring
 reroute sidepiping=walk
@@ -198,6 +197,9 @@ dash speed=0.25
 dash frametimes=0
 dash offset x=0
 dash offset y=0
+
+size reroute beet=big
+size reroute lui=big
 
 boll top=#0077FF
 boll mid=#000000
