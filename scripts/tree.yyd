@@ -347,6 +347,41 @@
 			|fire_projectile
 			|count_projectiles
 			|count_owned
+		+helperscripts
+			|is_basic
+			|is_big
+			|is_fire
+			|is_feather
+			|is_beet
+			|is_lui
+			|is_mini
+			|is_extra
+			|is_shielded
+			|com_proj_dmg_enemies
+			|com_proj_dmg_blocks
+			|com_proj_mov_bouncefloor
+			|com_proj_mov_bouncewall
+			|com_smokegeneration
+			|com_waterforces
+			|com_defaultenemycollision
+			|com_startspindash
+			|com_handlespindash
+			|com_handlespinning
+			|com_spinhitblocks
+			|com_handlespindashdust
+			|com_dorecurl
+			|com_handlesonicdash
+			|com_handlecloverwallrun
+			|com_starthomingattack
+			|com_handlehomingattack
+			|com_startpeelout
+			|com_handlepeelout
+			|com_dmgr_instashield
+			|com_dmgr_dmg_blocks
+			|com_dmgr_dmg_player
+			|com_dmgr_dmg_enemy
+			|draw_sprite_general_centered
+			|com_defaultcpupartner
 		|reset_invincible
 		|knockplayer
 		|invincible

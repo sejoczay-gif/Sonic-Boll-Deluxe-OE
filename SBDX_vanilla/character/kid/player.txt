@@ -126,6 +126,7 @@ pipingup frames=8
 sidepiping frames=4
 doorenter frames=4
 doorexit frames=4
+climbing frames=4
 
 doorenter loop=4
 doorexit loop=2
@@ -135,6 +136,7 @@ grind speed=0.2
 sidepiping speed=0.5
 doorenter speed=0.2
 doorexit speed=0.2
+climbing speed=0.2
 
 run frames=9
 run speed=0.35
