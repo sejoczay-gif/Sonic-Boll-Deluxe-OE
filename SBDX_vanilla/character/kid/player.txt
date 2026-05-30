@@ -125,7 +125,7 @@ piping frames=8
 pipingup frames=8
 sidepiping frames=4
 doorenter frames=4
-doorexit frames=4
+doorexit frames=2
 climbing frames=4
 
 doorenter loop=4
