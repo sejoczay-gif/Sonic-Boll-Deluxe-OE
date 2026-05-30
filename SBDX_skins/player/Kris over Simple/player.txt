@@ -2,8 +2,6 @@
 has tails=false
 name color=0,255,255
 
-resizesmallform=0.5
-
 top speed=3.5
 air acceleration=0.08
 ground acceleration=0.06
@@ -97,6 +95,8 @@ time until wait=300
 pipe squish=20
 pole center offset=8
 
+short small form=0.7
+
 single sheet=true
 singlesheet split width=8,8,8,8,8,8,8,8
 singlesheet split height=0,0,0,0,0,0,0,0
@@ -113,6 +113,7 @@ connect walk=true
 
 reroute wait=stand
 reroute lookup=stand
+reroute skid=wallslide
 
 connect knock=true
 connect dead=true
