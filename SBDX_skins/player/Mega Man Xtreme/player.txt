@@ -10,7 +10,7 @@ box width=40
 box height=34
 marker offset=26
 
-carry offset x=5
+carry offset x=8
 carry offset y=3
 fire duration=20
 blood splat=no
@@ -24,7 +24,7 @@ size reroute beet=basic
 size reroute lui=basic
 
 
-custom sprite list=stand,wall,standfire,wallfire,walk,walkfire,jump,fall,jumpfire,fallfire,bow,dash,pose,dashfire,posefire,lookup,lookupfire,climbing,flagslide,dead,standcarry,walkcarry,jumpcarry,fallcarry,dashcarry
+custom sprite list=stand,wall,standfire,wallfire,walk,walkfire,jump,fall,jumpfire,fallfire,bow,dash,pose,dashfire,posefire,lookup,lookupfire,flagslide,dead,climbing,standcarry,walkcarry,jumpcarry,fallcarry,dashcarry
 
 use paletting=true
 defaultspray 1=2
@@ -48,6 +48,7 @@ connect wallfire=true
 connect dashfire=true
 connect dash=true
 connect fallcarry=true
+connect climbing=false
 
 reroute wait=stand
 reroute piping=stand
@@ -58,7 +59,7 @@ reroute sidepiping=walk
 reroute bonk=jump
 reroute bonkcarry=jumpcarry
 reroute run=walk
-reroute spin=walk
+reroute spin=dash
 reroute grind=walk
 reroute wallcarry=wall
 reroute bonk2=jumpfire
@@ -70,6 +71,7 @@ reroute fall2=fallfire
 reroute dash2=dashfire
 reroute lookup2=lookupfire
 reroute wall2=wallfire
+reroute lookupcarry=standcarry
 
 stand frames=4
 wait frames=3
@@ -82,7 +84,7 @@ fall frames=2
 wall frames=2
 dash frames=3
 spacer1 frames=1
-climbing frames=2
+climbing frames=8
 bow frames=1
 spacer1 frames=1
 spacer2 frames=2
@@ -186,7 +188,7 @@ boll bot=#0C0C0C
 [lang]
 winspecial=X got a Chaos Emerald
 allspecial=X got all Chaos Emeralds
-credits=CowboyJoseph64
+credits=CowboyJoseph64, Todadoat, supersani24
 princess=Zero
 savetext1=Zero has been
 savetext2=successfully rescued.
