@@ -64,7 +64,7 @@ if (aim) aimframe+=0.5
 if (aimframe>1) aimframe=0
 
 //draw_skintext(x,y-32,string(goalenems))
-
+//draw_skintext(x,y-32,pound)
 
 #define grabflagpole
 grabflagpole=1
@@ -786,6 +786,7 @@ else if (hold  && sprite!="fire") sprite=sprite+"hold"
 com_inputstack()
 
 tempbrick=0
+luijump-=1
 
 //situations in which it should skip controls entirely
 if (rise!=0 || watrlock || hurt || piped || move_lock) {
@@ -844,7 +845,8 @@ braking=0
 }
 } else {
 if (water) {if (h!=sign(hsp)) hsp+=0.1*h else hsp+=0.0375*h}
-else if (dropkick) hsp+=0.05*wf*h
+//else if (dropkick) hsp+=0.05*wf*h
+else if (size==5) hsp+=0.085*wf*h
 else hsp+=0.12*wf*h
 if (!hang && !wallkick && !twist && !spin) xsc=h
 }
@@ -861,7 +863,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
                 if (!pound) {vsp=-1.5-up*0.75 swim=24 crouch=0 playsfx("yoshiswim")
                 if (sprite="paddle") frame=0}
             } else {
-                jumpsnd=playsfx(name+"jump")
+                jumpsnd=playsfx(name+"jump",0,1+(size==5)/3)
                 //vsp=-5.2-0.2*super
 				vsp=-(4.7+min(1,abs(hsp)/8)+!!poundjump)
                 }
@@ -886,6 +888,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
                 jumptiming=0
                 onvine=0
                 jump=1
+				if (size==7) luijump=9
                 fall=0
                 braking=0
                 spin=0
@@ -955,7 +958,7 @@ flutter=0
 
 if bbut && !lick && hold && fall!=69 &&!vinegrab
 {
-if size!=2
+if (size!=2 && size!=6)
 {
 spit=8
 playsfx("yoshispit")
@@ -972,6 +975,7 @@ with fire_projectile(x+hsp+12*xsc,y-4)
 xsc=owner.aimxdir
 eggtype=2
 hspeed=abs(owner.hsp)+6*owner.xsc
+hspeed=owner.hsp+6*owner.xsc
 vspeed=-1
 mask_index=spr_mask12x12
 sprite_index=spr_mask12x12
@@ -982,10 +986,21 @@ with fire_projectile(x+12*xsc,y-2)
 {
 xsc=owner.xsc
 eggtype=4
-hspeed=abs(owner.hsp)+2*owner.xsc
+//hspeed=abs(owner.hsp)+2*owner.xsc
+hspeed=owner.hsp+2*owner.xsc
 vspeed=0
 visible=1
 }
+if holdind!=brick && size=6 { spit=8 playsfx("yoshispit") p2 = 10;
+with fire_projectile(x+12*xsc,y-2)
+{
+xsc=owner.xsc
+eggtype=4
+//hspeed=abs(owner.hsp)+2*owner.xsc
+hspeed=owner.hsp+3*owner.xsc
+vspeed=-2.4
+visible=1
+} p2 = real(ss);}
 hold=0
 anemyeat=0
 holdind=0
@@ -1108,11 +1123,12 @@ poundlok=1
 com_piping()
 } else {
 if (pound=-1) pound=0
-if (!jump) crouch=0
+if (!jump && (!collision(0,-12) || !size || size==5)) crouch=0
 poundlok=0
 }
 
-if (size=0 || crouch || pound) mask_set(12,12)
+if (size==5) mask_set(9,8)
+else if (size=0 || crouch || pound) mask_set(12,12)
 else if (jump) mask_set(12,26)
 else mask_set(12,24)
 
@@ -1131,7 +1147,7 @@ if (slipnslide) frick=0.03
 hsp=max(0,abs(hsp)-frick)*sign(hsp)
 }
 
-maxspd=(3.1+water+slipnslide-!!flutter*1.2+!!spin)*wf
+maxspd=(3.1+water+(size==5)*0.55+slipnslide-!!flutter*1.2+!!spin)*wf
 if (abs(hsp)>maxspd) hsp=(abs(hsp)*2+maxspd)/3*sign(hsp)
 
 if (pound) {
@@ -1165,11 +1181,11 @@ hsp=0
         else if (pound>=14 && pound<15) vsp=6*wf
         else if (water) {vsp-=0.1*wf if (vsp<1.5) pound=0}
         else vsp+=0.375*wf
-    } else if (vsp<-2) vsp+=0.15
-else if (flutter>8) if size=3 vsp=median(-3,vsp-max(0.4,vsp),1) else vsp=median(-1.2,vsp-max(0.2,vsp),2)
+    } else if (vsp<-2 && !luijump) vsp+=0.15
+else if (flutter>8) if size=3 /*|| size=7*/ vsp=median(-3,vsp-max(0.4,vsp),1) else vsp=median(-1.2,vsp-max(0.2,vsp),2)
 else if (water) vsp=min(1.5,vsp+0.04)
 else if toungecling=2 vsp=0
-else if fall!=69 {vsp=min(4,vsp+0.28)}
+else if fall!=69 && !luijump {vsp=min(4,vsp+0.28) if size==5 && vsp>-0.84 vsp-=0.196}
 if (hang>0 && vsp>1 && !spinjump && !water) vsp=1.5
 if (skidding) {soundstop("yoshiskid") skidding=0}
 braking=0
@@ -1407,7 +1423,7 @@ if (rise!=0) {crouch=1 hsp=0 xsc=rise risec+=1 if (risec=10) {risec=0 rise=0 cro
 sprung=0
 if (slipnslide) {
 crouch=1
-if ((slobal=0 && (hsp=0 || ((left || right) && !down))) || jump) {slipnslide=0 crouch=0}
+if ((slobal=0 && (hsp=0 || ((left || right) && !down))) || jump) && (!collision(0,-12) || !size || size==5) {slipnslide=0 crouch=0}
 }
 if (energy!=maxe || sign(hsp)=xsc) jumpspd=min(jumpspd,100)
 
@@ -1460,6 +1476,10 @@ if (fall=69) {
     }
 }
 
+jesus=(((boost && vsp<4)||(size==5 && !down && abs(hsp)>2.8)) && !water)
+
+if (jump && size==7 && global.fastframe4 != ff4prev) {ff4prev = global.fastframe4 with instance_create(x, y, afterimagenoblend) {event_user(0) alphadecay=1 alarm[0] = 24 maxalarm = 24 maxalpha=0.8}}
+
 com_endactions()
 
 
@@ -1497,6 +1517,13 @@ if coll.id!=anemyeat {
         if (star  
         || (spin && type!=spinyegg && type!=beetle && type!=shell)
         || (pound>13 && type!=piranha && type!=spinyegg && type!=spiny)) {
+		    if size==5 && !spin && !star //&& (hurt || piped || (intangible() && !diggity)) 
+			{
+			if vsp<=0 {hurtplayer("enemy") exit} else playsfx(name+"jump",0,3.6) 
+			vsp=-3-((ckey && spin) || (akey && star))*1.5 
+			canstopjump=akey 
+			if !pound exit else pound=0
+			}
             instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
             if (type=hammerbro) seqcount=max(5,seqcount)
             enemydie(coll)                
@@ -1507,10 +1534,10 @@ if coll.id!=anemyeat {
         
         
         if (spin) {
-            if (type=shell) {if (coll.type!="beetle") {enemydie(coll) exit}}
-            else if (type=beetle) {hsp=0 jump=1 jumpspd=0.5 dropkick=1 spin=0 enemystomp(coll) exit}
+		    if (type=shell) {if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-ckey*1.5 canstopjump=akey exit} else if (coll.type!="beetle") {enemydie(coll) exit}}
+            else if (type=beetle) {if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-ckey*1.5 canstopjump=akey exit} else {hsp=0 jump=1 jumpspd=0.5 dropkick=1 spin=0 enemystomp(coll) exit}}
             else if (type=spinyegg) {hurtplayer("enemy") exit}
-            else {enemydie(coll) exit}
+            else {if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-ckey*1.5 canstopjump=akey exit} else enemydie(coll) exit}
         }
                          
         if (type=spinyegg || type=spiny || type=piranha) {
@@ -1540,23 +1567,25 @@ if coll.id!=anemyeat {
             if (coll.type="spiny" && (coll.vspeed-vsp)*coll.ysc<0) {
                 hurtplayer("enemy") exit
             } else if (!coll.kicked || (coll.stop && (coll.owner=id || coll.vspeed>=0))) {
-                if (bkey && !carry && !spin && !dropkick) {
-                    coll.carry=id coll.owner=id coll.alarm[1]=600 coll.alarm[2]=-1 carryid=coll
-                    carry=1
-                } else { 
-                    if (coll.stop && !coll.kicked) doscore_p(8000)
-                    else {seqcount=max(seqcount,2+scorelok1) doscore_p()}
+                //if (bkey && !carry && !spin && !dropkick) {
+                    //coll.carry=id coll.owner=id coll.alarm[1]=600 coll.alarm[2]=-1 carryid=coll
+                    //carry=1
+                //} else { 
+                    if (coll.stop && !coll.kicked && size!=5) doscore_p(8000)
+                    else if size!=5 {seqcount=max(seqcount,2+scorelok1) doscore_p()}
                     if (jump) {
                         if (vsp>0) {
                             vsp=-3-akey*1.5
                             canstopjump=akey
+							if size==5 playsfx(name+"jump",0,3.6)
                             if (fall=12) fall=5
                         }
                     }
+					if size!=5 {
                     kicksound(0)
                     instance_create(mean(x,coll.x),mean(y,coll.y),kickpart)
-                    with (coll) {spd=max(3,abs(other.hsp)+1) hspeed=spd*esign(x-other.x,other.xsc) owner=other.id kicked=1 stop=0 phase=owner}
-                }
+                    with (coll) {spd=max(3,abs(other.hsp)+1) hspeed=spd*esign(x-other.x,other.xsc) owner=other.id kicked=1 stop=0 phase=owner}}
+                //}
                 exit
             } else {
                 if (coll.kicked && !coll.stop && sign(hsp)=sign(coll.hspeed) && abs(hsp)>abs(coll.hspeed)) {
@@ -1568,7 +1597,8 @@ if coll.id!=anemyeat {
                     exit
                 } else if (coll.kicked && (!coll.stop || (coll.owner!=id && coll.vspeed<0)) && (vsp<0 || !jump)) {hurtplayer("enemy") exit}
                 else {
-                    with (coll) {hspeed=0 owner=noone phase=other.id stop=0 kicked=0 time=15}
+                    if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey if fall=12 fall=5 exit}
+					with (coll) {hspeed=0 owner=noone phase=other.id stop=0 kicked=0 time=15}
                     vsp=-3-akey*1.5 canstopjump=akey sound("enemystomp") doscore_p() if (fall=12) fall=5 exit
                 }
             }                    
@@ -1588,11 +1618,18 @@ if coll.id!=anemyeat {
             if (type=koopa || type=beetle || object_is_ancestor(type,koopa)) {
                 if (vsp<0) {
                     if (calcfall) hurtplayer("enemy")
+					else if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey exit}
                     else enemyexplode(coll) exit
                 }
             } else {
-                if (!calcfall) {enemyexplode(coll) exit}
+                if (!calcfall && size!=5) {enemyexplode(coll) exit}
+                if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey if fall=12 fall=5 exit}
                 if (vsp<0) {hurtplayer("enemy") exit}
+            }
+			
+			if (type=bulletbill)
+            {
+            if (coll.vspeed<0 && coll.y>y+8) {if size==5 {playsfx(name+"smalljump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey exit} else {jump=1 fall=1 dive=0 vsp=-0.5 enemydie(coll) exit}}
             }
             
             if (type=goomba && seqcount=1 && !scorelok4) {seqcount=0 scorelok4=1}    
@@ -1600,8 +1637,9 @@ if coll.id!=anemyeat {
             if (type=hopkoopa || type=redhover) seqcount=max(seqcount,1)
             if (type=hammerbro) seqcount=max(5,seqcount)
             if (fall=12) fall=5                        
+			if size==5 {if vsp<=0 {hurtplayer("enemy") exit} else playsfx(name+"jump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey exit}
             enemystomp(coll) exit      
-        } else if (coll.vspeed<0 && coll.y>y+8) {jump=1 fall=1 vsp=-0.5 enemystomp(coll) exit}
+        } else if (coll.vspeed<0 && coll.y>y+8) {if size==5 {playsfx(name+"jump",0,3.6) vsp=-3-akey*1.5 canstopjump=akey exit} else {jump=1 fall=1 vsp=-0.5 enemystomp(coll) exit}} //boll team watching me paste this same line 12 times like an idiot:
         
         hurtplayer("enemy")   
     } else if (!star && !flash) hurtplayer("enemy")
@@ -1628,12 +1666,13 @@ twirl=0
 oldsize=size
 jumpbuffer=0
 hyperspeed=0
+luijump=0
 hp=0
 star=0
 if (super) stopsuper()   
 
 
-if ((!size || ohgoditslava || name="kid") && !shielded) {
+if (((!size || size==5) || ohgoditslava || name="kid") && !shielded) {
    if (global.mplay>1 || global.debug || global.lemontest) alarm[7]=120
    if (global.gamemode="battle") dropcoins(0)
    die()
@@ -1665,9 +1704,9 @@ if ((!size || ohgoditslava || name="kid") && !shielded) {
 #define hitblocks
 if typeblockhit=0{
 with (blockcoll){
-if (stonebump || owner.size=0 && insted!=1 && !owner.tempkill && (biggie || cracked=0)) {
+if (stonebump || (owner.size=0 || owner.size=5) && insted!=1 && !owner.tempkill && (biggie || cracked=0 || (cracked=1 && owner.size=5))) {
     if (!goinup) {if (insted!=2) owner.vsp=1.5 sound("itemblockbump") tpos=1}
-} else if (stonebump || owner.size && insted!=1 && !owner.tempkill && cracked=0 && biggie) { //break spiner
+} else if (stonebump || owner.size && owner.size!=5 && insted!=1 && !owner.tempkill && cracked=0 && biggie) { //break spiner
     if (!goinup) {if (insted!=2) owner.vsp=1.5 sound("itemblockbump") tpos=1}
     if (!stonebump){
     owner.vsp=1.5

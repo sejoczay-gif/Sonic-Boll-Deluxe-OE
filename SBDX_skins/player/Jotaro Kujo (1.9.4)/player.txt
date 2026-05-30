@@ -88,7 +88,7 @@ glideturn frames=6
 climbing frames=2
 slide frames=1
 
-stand speed=1
+stand speed=0.15
 lookup speed=0.15
 walk speed=0.4
 run speed=0.25
