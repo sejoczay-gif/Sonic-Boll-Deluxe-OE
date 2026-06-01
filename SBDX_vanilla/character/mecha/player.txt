@@ -24,6 +24,8 @@ defaultspray 3=6
 defaultspray 4=6
 
 size reroute mini=big
+size reroute beet=big
+size reroute lui=big
 
 custom sprite list=stand,wait,lookup,pose,crouch,knockstand,knockrun,deadair,prerun,run,turn,fly,jump,ball,dead,claw,armless,armlessalt,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit
 reroute spike=jump
