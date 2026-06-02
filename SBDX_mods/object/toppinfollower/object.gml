@@ -42,36 +42,37 @@ switch(global.cobjectentrypoint){
 					stats("toppings collected",stats("toppings collected")+1)
 					with other sound("itemtopping")
 					
-				
-					i=instance_create(x,y,part)
-					i.vspeed=-2
-					i.hspeed=-2
-					i.spritepart=0
-					i.visible=0
-					i.toppingcagepart=1
+					if realtype!=5 {
+						i=instance_create(x,y,part)
+						i.vspeed=-2
+						i.hspeed=-2
+						i.spritepart=0
+						i.visible=0
+						i.toppingcagepart=1
 
-					i=instance_create(x,y,part)
-					i.vspeed=2
-					i.hspeed=2
-					i.spritepart=1
-					i.visible=0
-					i.toppingcagepart=1
-					
-					i=instance_create(x,y,part)
-					i.vspeed=-2
-					i.hspeed=2
-					i.spritepart=1
-					i.visible=0
-					i.toppingcagepart=1
-					
-					i=instance_create(x,y,part)
-					i.vspeed=2
-					i.hspeed=-2
-					i.spritepart=0
-					i.visible=0
-					i.toppingcagepart=1
-					
-					sound("itemblockbreak")
+						i=instance_create(x,y,part)
+						i.vspeed=2
+						i.hspeed=2
+						i.spritepart=1
+						i.visible=0
+						i.toppingcagepart=1
+						
+						i=instance_create(x,y,part)
+						i.vspeed=-2
+						i.hspeed=2
+						i.spritepart=1
+						i.visible=0
+						i.toppingcagepart=1
+						
+						i=instance_create(x,y,part)
+						i.vspeed=2
+						i.hspeed=-2
+						i.spritepart=0
+						i.visible=0
+						i.toppingcagepart=1
+						
+						sound("itemblockbreak")
+					}
 				}
 			}
 	
