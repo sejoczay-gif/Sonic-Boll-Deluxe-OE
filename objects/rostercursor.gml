@@ -57,8 +57,8 @@ input_keystates()
 
 if (!held) {
     if !cantkeycontrol {
-    x=median(view_xview[0]+8,x+(right-left)*2,view_xview[0]+392)
-    y=median(view_yview[0]+8,y+(down-up)*2,view_yview[0]+216)
+    x=median(view_xview[0]+8,x+(right-left)*(2+1*(xkey)),view_xview[0]+392)
+    y=median(view_yview[0]+8,y+(down-up)*(2+1*(xkey)),view_yview[0]+216)
     } else {if (right||left||down||up)&&mybox {x=mybox.x y=mybox.y visible=0}}
     pf1=instance_position(x,y,rostergm) //we are so back rostergmbros
     pf2=instance_position(x,y,rostercard)

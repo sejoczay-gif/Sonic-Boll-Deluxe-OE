@@ -45,8 +45,8 @@ wup=0
 if ((special || global.input[p2]=0) && canmouse && !global.ignorejoy) mousecursor(0)
 input_keystates()
 
-x=median(view_xview[0]+8,x+(right-left)*2,view_xview[0]+392)
-y=median(view_yview[0]+8,y+(down-up)*2,view_yview[0]+216)
+x=median(view_xview[0]+8,x+(right-left)*(2+1*(xkey)),view_xview[0]+392)
+y=median(view_yview[0]+8,y+(down-up)*(2+1*(xkey)),view_yview[0]+216)
 
 if (instance_exists(statshow)) {
     if (abut || bbut || (cbut && !statshow.maxpage)) statshow.go=1
