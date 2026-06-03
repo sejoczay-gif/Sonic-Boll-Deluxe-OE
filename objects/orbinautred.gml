@@ -94,7 +94,6 @@ mychildren[11]=o;
 
 hspeed = -0.25
 gravity = 0
-enemy2=1
 sprite = "redorbinaut"
 #define Step_0
 /*"/*'/**//* YYD ACTION

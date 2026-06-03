@@ -8,7 +8,6 @@ event_inherited();
 xsc=-1
 
 damage_player_on_contact=1
-enemy2=1
 sprite="pokeybody"
 #define Destroy_0
 /*"/*'/**//* YYD ACTION

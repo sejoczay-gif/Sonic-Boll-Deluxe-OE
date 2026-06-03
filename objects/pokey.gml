@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 getregion(x)
 xsc=-1
-enemy2=1
 sprite="pokey"
 children=ds_list_create();
 grav=0

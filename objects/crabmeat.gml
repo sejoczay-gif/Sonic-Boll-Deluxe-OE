@@ -8,7 +8,6 @@ event_inherited()
 
 hspeed=-0.25
 brat=0
-enemy2=1
 sprite="crabmeat"
 yoff=-3
 #define Step_0

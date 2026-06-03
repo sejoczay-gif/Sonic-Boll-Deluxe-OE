@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 hspeed=-0.5
 redturn=1
-enemy2=1
 sprite="bombshelldead"
 wigbod=0
 bodturn=0

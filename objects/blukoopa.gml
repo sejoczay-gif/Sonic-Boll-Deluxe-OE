@@ -11,7 +11,6 @@ xsc=1
 type=0
 sprite="blukoopa"
 walking=1
-enemy2=1
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -36,7 +35,6 @@ if walking && spindash{
         i=instance_create(x,y,shell)
         i.goblu=1
         i.type="blu"
-        i.enemy2=1
         i.powner=powner
         i.kicked=1
         i.spd=max(3,abs(other.hsp)+1)
@@ -50,7 +48,7 @@ if walking && spindash{
 
 if (hp<=-2) {
     sound("enemystomp")
-    with (instance_create(x,y,shell)) {type="blu" enemy2=1 powner=other.powner}
+    with (instance_create(x,y,shell)) {type="blu" powner=other.powner}
     if (powner) powner.items+=1
     instance_destroy()
 }

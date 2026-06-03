@@ -9,7 +9,6 @@ jc=x mod 224
 hc=x mod 48
 ragemode="1"
 sprite="firebro"
-enemy2=1
 #define Step_2
 /*"/*'/**//* YYD ACTION
 lib_id=1

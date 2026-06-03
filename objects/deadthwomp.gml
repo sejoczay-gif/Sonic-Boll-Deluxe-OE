@@ -7,7 +7,6 @@ applies_to=self
 vsp=-2
 frame=0
 sprite="thwomp"
-enemy2=true
 xsc=1
 ysc=-1
 #define Step_0

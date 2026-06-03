@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 
 hspeed=-0.5
-enemy2=1
 xsc=1
 redturn=1
 revive=0

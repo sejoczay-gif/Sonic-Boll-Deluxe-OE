@@ -7,5 +7,4 @@ applies_to=self
 event_inherited()
 
 hspeed=-1.4
-enemy2=1
 sprite="rexsmall"

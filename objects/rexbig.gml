@@ -6,7 +6,6 @@ applies_to=self
 */
 event_inherited()
 hspeed=-0.5
-enemy2=1
 sprite="rex"
 #define Step_0
 /*"/*'/**//* YYD ACTION

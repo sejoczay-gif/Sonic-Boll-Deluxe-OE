@@ -15,7 +15,6 @@ phasec=0
 
 active=1
 frspd=1
-enemy2=1
 ky=y
 type=""
 damage_player_on_contact=1
@@ -90,8 +89,6 @@ switch (real(type)) {
 
 }
 
-
-enemy2=1
 enemy_spritechange()
 enemy_animate()
 #define Collision_player

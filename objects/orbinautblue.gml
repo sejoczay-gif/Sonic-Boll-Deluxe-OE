@@ -49,7 +49,6 @@ gravity = 0
 canthrow = false
 
 alarm[0] = 60
-enemy2=1
 sprite = "blueorbinaut"
 #define Alarm_0
 /*"/*'/**//* YYD ACTION

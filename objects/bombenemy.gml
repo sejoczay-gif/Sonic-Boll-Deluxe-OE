@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 hspeed = -0.5
 mode="0"
-enemy2=1
 sprite="bombstand"
 ignitetimer = 120
 x+=8

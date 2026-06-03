@@ -33,4 +33,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+/*if btype=1 sprite="bowser"
+else if btype=2 sprite="dowser"
+else sprite="fakebowser"
+
+ssw_enemy(sprite+"panic",1)*/
 ssw_boss()

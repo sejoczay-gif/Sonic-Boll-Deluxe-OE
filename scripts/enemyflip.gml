@@ -13,11 +13,11 @@ if (type=beetle|| object_is_ancestor(type,koopa) || type=koopa) {
         else heorng=instance_create(x,y,bombshell)
         with (heorng) {owner=other.owner phase=owner}
         if (object_index=redkoopa) heorng.type="red"
-        if (object_index=blukoopa) {heorng.type="blu" heorng.enemy2=1}
-        if (object_index=yelkoopa) {heorng.type="yel" heorng.enemy2=1}
-        if (object_index=redhover) {heorng.type="red"}
-        if (object_index=yelhover) {heorng.type="yel" heorng.enemy2=1}
-        if (object_index=bluhover) {heorng.type="blu" heorng.enemy2=1}
+        if (object_index=blukoopa) heorng.type="blu"
+        if (object_index=yelkoopa) heorng.type="yel"
+        if (object_index=redhover) heorng.type="red"
+        if (object_index=yelhover) heorng.type="yel"
+        if (object_index=bluhover) heorng.type="blu"
         if (object_index=beetle) heorng.type="beetle"
         if (object_index=spiny) heorng.type="spiny"
         heorng.ysc=-1

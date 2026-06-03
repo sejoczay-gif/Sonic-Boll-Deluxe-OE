@@ -50,8 +50,8 @@ if (coll) {
         if (other.go=-1) with (heorng) {hspeed=other.hspeed owner=other.owner vspeed=-2.5 stop=1 flip=1}
         else with (heorng) {owner=other.owner spd=3 hspeed=spd*esign(other.hspeed,x-owner.x) kicked=1 stop=0 phase=owner}
         if (object_index=redkoopa) heorng.type="red"
-        if (object_index=blukoopa) {heorng.type="blu" heorng.enemy2=1}
-        if (object_index=yelkoopa) {heorng.type="yel" heorng.enemy2=1}
+        if (object_index=blukoopa) {heorng.type="blu"}
+        if (object_index=yelkoopa) {heorng.type="yel"}
         if (object_index=beetle) heorng.type="beetle"
         if (object_index=spiny) heorng.type="spiny"
         heorng.ysc=-1
@@ -74,7 +74,7 @@ if (coll) {
                     type="hammerbrodead"
                 }
             }
-            if type!="hammerbrodead" enemy2=1
+            if type!="hammerbrodead"
             biome=other.biome
         }
         instance_destroy()
@@ -134,7 +134,6 @@ if (coll) {
                 vspeed=-2.5
                 hspeed=other.hspeed
                 type="montydead"
-                enemy2=1
                 biome=other.biome
             }
             instance_destroy()
@@ -150,7 +149,6 @@ if (coll) {
                 hspeed=other.hspeed
                 type="rexdead"
                 if other.object_index=rexsmall type="rexsmalldead"
-                enemy2=1
                 biome=other.biome
             }
             instance_destroy()
@@ -178,7 +176,6 @@ if (coll) {
                 hspeed=other.hspeed
                 vspeed=-2.5
                 type="spikedead"
-                enemy2=1
                 biome=other.biome
             }
             instance_destroy()

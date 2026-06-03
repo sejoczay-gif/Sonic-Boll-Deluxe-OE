@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 
 hspeed=0
-enemy2=1
 sprite="montymole"
 pop=0
 

@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 
 hspeed=-0.5
-enemy2=1
 sprite="bob-omb"
 IM_LIT=0;
 #define Destroy_0

@@ -24,7 +24,7 @@ applies_to=self
 */
 time+=1;
 if (time mod 7 == 0 && frame < 2) {frame+=1}
-draw_sprite_part_ext(global.enemysheet2[biome],0,429+(74*frame),8,74,74,round(x+32)+35*-xsc,round(y)-5,xsc,1,$ffffff,1)
+draw_sprite_part_ext(global.enemysheet[biome],0,589+(74*frame),8,74,74,round(x+32)+35*-xsc,round(y)-5,xsc,1,$ffffff,1)
 
 if (vspeed!=0) {vsp+=vspeed vspeed=0}
 vsp+=0.2

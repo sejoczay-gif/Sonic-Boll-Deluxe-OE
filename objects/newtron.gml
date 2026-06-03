@@ -9,7 +9,6 @@ event_inherited()
 
 active=1
 visible=0
-enemy2=1
 sprite="newtron"
 #define Step_1
 /*"/*'/**//* YYD ACTION

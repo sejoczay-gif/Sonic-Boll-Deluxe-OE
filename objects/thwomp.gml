@@ -31,7 +31,6 @@ initialx = x
 active = false
 
 
-enemy2=1
 sprite="thwomp"
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
