@@ -3,7 +3,7 @@ var l,r,panl,panr,t,b,w,h,hw,bgl,bgr,i,memx,noy,cs;
 
 if (settings("frameskip") && !fallbacky) {view_yview[p2]=viewy}
 
-if ((gamemanager.debugcamlock || overwritecam || alarm[0]!=-1 || dead) || (piped && !argument[0] && !finish) || (finish && posed && !c)) {
+if ((gamemanager.debugcamlock || gamemanager.codeblockcamlock || overwritecam || alarm[0]!=-1 || dead) || (piped && !argument[0] && !finish) || (finish && posed && !c)) {
     gamemanager.shake[p2]=0
     exit
 }
