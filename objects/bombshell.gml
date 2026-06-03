@@ -15,7 +15,6 @@ kickup=0
 eita=0
 active=1
 frspd=0
-enemy2=1
 
 getregion(x)
 

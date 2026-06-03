@@ -11,7 +11,6 @@ ysc=1
 
 active=1
 
-enemy2=1
 sprite="bullseyebullet"
 #define Step_0
 /*"/*'/**//* YYD ACTION

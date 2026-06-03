@@ -7,7 +7,6 @@ applies_to=self
 getregion(x)
 alarm[0]=240
 sound("enemybones")
-enemy2=1
 sprite="drybonesdead"
 active=1
 ysc=1

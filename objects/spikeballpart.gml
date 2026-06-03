@@ -6,7 +6,7 @@ applies_to=self
 */
 getregion(x)
 
-spr=global.enemysheet2[biome]
+spr=global.enemysheet[biome]
 
 gravity=0.3
 alarm[0]=300

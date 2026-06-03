@@ -74,20 +74,20 @@ switch (argument[0]) {
         draw_background_part_ext(global.masterobjects[biome],272+floor(frame)*16,304,16,16,round(x-8),round(y-8),xsc,ysc,$ffffff,1)
     break}
     case "hammer": {draw_sprite_part_ext(global.enemysheet[biome],0,10+17*global.frame88,10,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "boomerang": {draw_sprite_part_ext(global.enemysheet2[biome],0,10+17*global.framefire,10,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "anotherfirebaliguess": {draw_sprite_part_ext(global.enemysheet2[biome],0,10+17*global.framefire,29,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "crabfireball": {draw_sprite_part_ext(global.enemysheet2[biome],0,10+17*(global.frame88 mod 4),48,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "newtronfireball": {draw_sprite_part_ext(global.enemysheet2[biome],0,10+17*(global.frame88 mod 4),67,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "bombfireball": {draw_sprite_part_ext(global.enemysheet2[biome],0,10+17*(global.frame88 mod 4),86,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "boomerang": {draw_sprite_part_ext(global.enemysheet[biome],0,170+17*global.framefire,10,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "anotherfirebaliguess": {draw_sprite_part_ext(global.enemysheet[biome],0,170+17*global.framefire,29,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "crabfireball": {draw_sprite_part_ext(global.enemysheet[biome],0,170+17*(global.frame88 mod 4),48,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "newtronfireball": {draw_sprite_part_ext(global.enemysheet[biome],0,170+17*(global.frame88 mod 4),67,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "bombfireball": {draw_sprite_part_ext(global.enemysheet[biome],0,170+17*(global.frame88 mod 4),86,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
     case "hammerbowser": {if dowser draw_sprite_part_ext(global.dowsersheet[biome],0,10+17*global.frame88,10,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) else  draw_sprite_part_ext(global.bosssheet[biome],0,10+17*global.frame88,10,16,16,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
     case "firemissile": {if dowser draw_sprite_part_ext(global.dowsersheet[biome],0,10+32*frame,29,31,16,round(x-16*xsc),round(y-8),xsc,1,$ffffff,1) else draw_sprite_part_ext(global.bosssheet[biome],0,10+32*frame,29,31,16,round(x-16*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "spikeball": {draw_sprite_part_ext(global.enemysheet2[biome],0,80+25*global.framefire,10,24,24,round(x-13*xsc),round(y-13),xsc,1,$ffffff,1) break}
-    case "spikeballpart": {draw_sprite_part_ext(global.enemysheet2[biome],0,80+11*global.framefire,35,10,10,round(x-6*xsc),round(y-6),xsc,1,$ffffff,1) break}
-    case "banzaibill": {draw_sprite_part_ext(global.enemysheet2[biome],0,429,8,64,64,round(x),round(y),xsc,1,$ffffff,1) break}
-    case "bullseyebanzai": {draw_sprite_part_ext(global.enemysheet2[biome],0,494,8,64,64,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
-    case "muncher": {draw_sprite_part_ext(global.enemysheet2[biome],0,429+16*global.frame,73,16,16,round(x),round(y),xsc,1,$ffffff,1) break}
+    case "spikeball": {draw_sprite_part_ext(global.enemysheet[biome],0,240+25*global.framefire,10,24,24,round(x-13*xsc),round(y-13),xsc,1,$ffffff,1) break}
+    case "spikeballpart": {draw_sprite_part_ext(global.enemysheet[biome],0,240+11*global.framefire,35,10,10,round(x-6*xsc),round(y-6),xsc,1,$ffffff,1) break}
+    case "banzaibill": {draw_sprite_part_ext(global.enemysheet[biome],0,589,8,64,64,round(x),round(y),xsc,1,$ffffff,1) break}
+    case "bullseyebanzai": {draw_sprite_part_ext(global.enemysheet[biome],0,494,8,64,64,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
+    case "muncher": {draw_sprite_part_ext(global.enemysheet[biome],0,589+16*global.frame,73,16,16,round(x),round(y),xsc,1,$ffffff,1) break}
     //why yo muncher so fucking big ???
-    case "bigassmuncher": {draw_sprite_part_ext(global.enemysheet2[biome],0,429+32*global.frame,90,32,32,round(x),round(y),xsc,1,$ffffff,1) break}
+    case "bigassmuncher": {draw_sprite_part_ext(global.enemysheet[biome],0,429+32*global.frame,90,32,32,round(x),round(y),xsc,1,$ffffff,1) break}
 
 
     case "retainer": {draw_sprite_part(sheet,0,8+floor(frame mod 4)*66,8+65*floor(frame div 4),64,64,x-32,y-44) break}

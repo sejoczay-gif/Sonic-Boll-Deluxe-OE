@@ -10,7 +10,6 @@ hspeed=0
 
 xsc=1
 type=1
-enemy2=1
 sprite="yelparatroopa"
 #define Step_0
 /*"/*'/**//* YYD ACTION
@@ -18,7 +17,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if (hp<=-1) {hp=0 hspeed=xsc*-0.75 paramode=1 sprite="yelkoopa" enemy2=1 instance_change(yelkoopa,0)}
+if (hp<=-1) {hp=0 hspeed=xsc*-0.75 paramode=1 sprite="yelkoopa" instance_change(yelkoopa,0)}
 #define Step_2
 /*"/*'/**//* YYD ACTION
 lib_id=1

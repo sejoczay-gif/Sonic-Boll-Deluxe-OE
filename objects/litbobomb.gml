@@ -17,7 +17,6 @@ hp=0
 carry=0
 turncount=0
 active=inview()
-enemy2=1
 sprite="bob-ombfuse"
 
 wait=instance_position(x+24,y,enemy)

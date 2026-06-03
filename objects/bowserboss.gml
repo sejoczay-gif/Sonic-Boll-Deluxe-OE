@@ -31,14 +31,17 @@ if !instance_exists(player) {
     exit
 }
 
+spr="fakebowser"
 if (string_count(global.leveldesc,"$finale") && region.type == "Castle") {
    sheet=global.bowsersheet[biome]
    btype=1
+   spr="bowser"
    with (player) {
       if (name="bowser") {
          other.dowser=1
          other.sheet=global.dowsersheet[biome]
          other.btype=2
+         other.spr="dowser"
       }
    }
 }
@@ -183,6 +186,13 @@ if (!jump && !panic && dir!=0) {
         vspeed=-2.75
     }
 }
+#define Step_1
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+animated=0
 #define Collision_player
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -225,4 +235,48 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if (flash mod 5<3) ssw_boss()
+/*fry=0 //Doesn't work outside of fakebowser where it's just the first animation fsr I hate this
+if (panic) {
+    frame=min(5,floor(step)+4)-4
+    fry=2
+} else if (fbb>16) {
+    frame=max(0,floor((step-3)/2))
+    fry=1
+} else frame=((step-2) div 0.5)
+
+if fry=1 sprite=spr+"fire"
+else if fry=2 sprite=spr+"panic"
+else sprite=spr
+
+if !animated {enemy_spritechange(1) animated=1}
+
+if (flash mod 5<3)
+ssw_enemy(sprite)*/
+
+/*frx=frox+floor(frame) //Don't uncomment this one it's all in ssw_enemy()
+fry=froy
+draw_systext(x,y,string(sprite))
+draw_omitext(x,y-30,string(8+frx*global.enemybosswidth)+"#"+string(global.enemybosssheetheight+fry*global.enemybossheight))
+draw_omitext(x,y-24,string(global.enemysheet[biome]))
+draw_omitext(x,y-18,string(global.enemybosswidth)+string(global.enemybossheight))
+draw_omitext(x,y-12,round(x)+xoff+lengthdir_x((margin-global.enemybossoffx)*xsc,sprite_angle)+lengthdir_x((margin+dy-(14+global.enemybossoffy))*ysc+14*ysc,sprite_angle-90))
+draw_omitext(x,y-6,round(y)+yoff+lengthdir_y((margin-global.enemybossoffx)*xsc,sprite_angle)+lengthdir_y((margin+dy-(14+global.enemybossoffy))*ysc+14*ysc,sprite_angle-90))
+
+draw_sprite_general(
+    //  sprite, subimage
+        global.enemysheet[biome],0,
+    //  left, top
+        8+frx*global.enemybosswidth,global.enemybosssheetheight+fry*global.enemybossheight,
+    //  width, height
+        global.enemybosswidth-1,global.enemybossheight-1,
+    //  left top corner of the quad, accounting for rotation
+        floor(x-30*xsc),
+        floor(y-35+dy),
+    //  scale and rotation
+        xsc,1,0,
+    //  blending
+        $ffffff,$ffffff,$ffffff,$ffffff,1
+    )*/
+
+
+if (flash mod 5<3) {ssw_boss()}

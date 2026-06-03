@@ -24,21 +24,21 @@ with (argument[0]) {
             case blooper:    {with (instance_create(x,y,genericdead)) {hspeed=0      type="blooperdead"} break}
             case piranha:    {with (instance_create(x,y,genericdead))    {depth=other.depth if (other.red) type="redpiranhadie" else type="piranhadie" nomove=1 timetodie=30} break}
             case redpiranha: {with (instance_create(x,y,genericdead))    {depth=other.depth type="redpiranhadie" nomove=1 timetodie=30} break}
-            case koopa:      {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner                      } break}
-            case redkoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="red"           } break}
-            case yelkoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="yel"   enemy2=1} break}
-            case blukoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="blu"   enemy2=1} break}
+            case koopa:      {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner           } break}
+            case redkoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="red"} break}
+            case yelkoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="yel"} break}
+            case blukoopa:   {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="blu"} break}
             case bombshellkoopa:      {instance_create(x,y,bombshell) break}
             case beetle:     {with (instance_create(x,y,shell   )) {phase=global.coll if (powner) powner.items+=1 powner=other.powner type="beetle"} break}
             case hopkoopa:   {with (instance_create(x,y,   koopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.5} break}
             case redhover:   {with (instance_create(x,y,redkoopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.5} break}
-            case yelhover:   {with (instance_create(x,y,yelkoopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.75 enemy2=1 } break}
-            case bluhover:   {with (instance_create(x,y,blukoopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.75 enemy2=1 } break}
+            case yelhover:   {with (instance_create(x,y,yelkoopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.75} break}
+            case bluhover:   {with (instance_create(x,y,blukoopa)) {phase=global.coll if (powner) powner.items+=1 powner=other.powner hspeed=esign(other.x-x,1)*0.75} break}
             case drybones:   {with (instance_create(x,y,drydead)) {xsc=other.xsc if other.vspeed!=0 {drop=1 vspeed=other.vspeed} powner=other.powner} break}
-            case rexsmall:   {with (instance_create(x,y,goombasmash)) {xsc=other.xsc hspeed*=s enemy2=1 sprite="rexsmash" biome=other.biome } break}
+            case rexsmall:   {with (instance_create(x,y,goombasmash)) {xsc=other.xsc hspeed*=s sprite="rexsmash" biome=other.biome } break}
             case rexbig:     {with (instance_create(x,y,rexsmall)) {xsc=other.xsc biome=other.biome } break}
-            case montymole: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome enemy2=1}  break}
-            case spikenemy: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome enemy2=1}  break}
+            case montymole: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome}  break}
+            case spikenemy: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome}  break}
 
             case crabmeat: {instance_create(x,y,badniksmoke) break}
             case newtron: {instance_create(x,y,badniksmoke) break}

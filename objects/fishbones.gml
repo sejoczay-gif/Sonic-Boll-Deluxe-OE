@@ -10,7 +10,6 @@ xsc=1
 active=1
 sprite="fishbones"
 targeting=0
-enemy2=1
 image_xscale=2
 hspeed=-0.5
 fuckinggo=1

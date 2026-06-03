@@ -8,7 +8,6 @@ event_inherited()
 if (nearestplayer().x>x) {hspeed=1 xsc=-1} else {hspeed=-1 xsc=1}
 
 active=1
-enemy2=1
 smoke_gen = 0
 #define Step_0
 /*"/*'/**//* YYD ACTION
@@ -138,7 +137,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-draw_sprite_part_ext(global.enemysheet2[biome],0,429,8,74,74,round(x)+36*-xsc,round(y)-5-32,xsc,1,$ffffff,1)
+draw_sprite_part_ext(global.enemysheet[biome],0,589,8,74,74,round(x)+36*-xsc,round(y)-5-32,xsc,1,$ffffff,1)
 
 if global.debug draw_self()
 if (global.debug) rect(bbox_left,bbox_top,bbox_right-bbox_left+1,bbox_bottom-bbox_top+1,$ffffff,0.5)

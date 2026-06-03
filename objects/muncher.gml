@@ -88,4 +88,4 @@ action_id=603
 applies_to=self
 */
 if (global.debug) draw_self()
-draw_sprite_part_ext(global.enemysheet2[biome],0,558+(16*global.frame),106,16,16,round(x)+8-16,round(y)-8,1,1,$ffffff,1)
+draw_sprite_part_ext(global.enemysheet[biome],0,718+(16*global.frame),106,16,16,round(x)+8-16,round(y)-8,1,1,$ffffff,1)

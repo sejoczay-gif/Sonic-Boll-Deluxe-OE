@@ -10,7 +10,6 @@ hspeed=-0.5
 xsc=1
 type=0
 sprite="bombshellkoopa"
-enemy2=1
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
