@@ -11,7 +11,6 @@ hspeed=0
 xsc=1
 type=1
 sprite="bluparatroopa"
-enemy2=1
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -34,7 +33,6 @@ if (spindash) {
         i=instance_create(x,y,shell)
         i.goblu=1
         i.type="blu"
-        i.enemy2=1
         i.powner=powner
         i.kicked=1
         i.spd=max(3,abs(other.hsp)+1)

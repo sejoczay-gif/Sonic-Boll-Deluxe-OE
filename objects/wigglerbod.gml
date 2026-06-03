@@ -8,7 +8,6 @@ event_inherited()
 wigurn=-1
 hspeed=0
 redturn=1
-enemy2=1
 
 sprite="bombshell"
 fast=-0.5

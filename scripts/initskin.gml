@@ -63,25 +63,32 @@ with (globalmanager) {
         for (j=0;j<96;j+=1) global.effectsprite[i,j]=-1
     }
     list=
-        "goomba,goombasmash,goombadead,"+
-        "goombrat,goombratsmash,goombratdead,"+
-        "paratroopa,koopa,shell,shellwake,shellspin,shelldead,"+
-        "redparatroopa,redkoopa,redshell,redshellwake,redshellspin,redshelldead,"+
+        "goomba,goombasmash,goombadead,paragoomba,"+
+        "goombrat,goombratsmash,goombratdead,paragoombrat,"+
+        "paratroopa,koopa,"+
+        "shell,shellwake,shellspin,shelldead,"+
+        "redparatroopa,redkoopa,"+
+        "redshell,redshellwake,redshellspin,redshelldead,"+
+        "yelparatroopa,yelkoopa,"+
+        "yelshell,yelshellwake,yelshellspin,yelshelldead,"+
+        "bluparatroopa,blukoopa,blushellwinged,"+
+        "blushell,blushellwake,blushellspin,blushelldead,"+
+        "drybones,drybonesdead,dryres,boo,booscared,"+
+        "bombshellkoopa,bombshell,bombshelldead,bob-omb,bob-omblit,bob-ombfuse,"+
         "beetle,beetleshell,beetleshellwake,beetleshellspin,beetleshelldead,"+
         "spinyegg,spiny,spinyshell,spinyshellwake,spinyshellspin,spinyshelldead,"+
-        "lakitu,lakituaim,lakitudead,lakitucloud,"+
-        "piranha,piranhadie,"+
-        "redpiranha,redpiranhadie,"+
-        "cheep,cheepdead,"+
-        "greencheep,greencheepdead,"+
-        "cheepfly,cheepflydead,"+
-        "blooper,blooperdead,"+
-        "bullet,bulletdead,"+
-        "hammerbro,hammerbrojump,hammerbroaim,hammerbrodead,"+
-        "lavabubble,lavabubbledown,"+
-        "paragoomba,"+
-        "paragoombrat,"+
-        "samba,"
+        "spike,spikeballthrow,spikedead,lakitu,lakituaim,lakitudead,lakitucloud,pokey,pokeybody,"+
+        "hammerbro,hammerbrojump,hammerbroaim,hammerbrodead,firebro,firebrojump,firebroaim,firebrodead,boomerangbro,boomerangbrojump,boomerangbroaim,boomerangbrodead,"+
+        "rex,rexsmall,rexsmash,rexdead,rexsmalldead,montydigup,montydig,hole,montypop,montymole,montydead,"+
+        "wigglerhead,wigglerbod,wigglerheaddead,wigglerboddead,wigglerheadangery,wigglerbodangery,wigglerheadangerydead,wigglerbodangerydead,"+
+        "piranha,piranhadie,redpiranha,redpiranhadie,"+
+        "firepiranhaup,firepiranhaupshoot,firepiranhadown,firepiranhadownshoot,firepiranhamiddle,firepiranhamiddleshoot,"+
+        "cheep,cheepdead,greencheep,greencheepdead,cheepfly,cheepflydead,blooper,blooperdead,fishbones,fishbonesattack,fishbonesdead,urchin,"+
+        "bullet,bulletdead,bullseyebullet,bullseyebulletdead,"+
+        "lavabubble,lavabubbledown,thwomp,thwompangry,thwompdown,thwompangryside,thwompside,bthwomp,bthwompangry,bthwompdown,bthwompangryside,bthwompside,thwimp,"+
+        "crabmeat,crabmeatshoot,newtrontrans,newtronshoot,newtrongo,chopper,greenorbinaut,blueorbinaut,redorbinaut,bumperorbinaut,"+
+        "bombstand,bombwalk,bombignite,buzzbombfly,buzzbombhover,"+
+        "samba,pig,"
 
     global.enemysprites=string_count(",",list)
     for (i=0;i<global.enemysprites;i+=1) {
@@ -90,43 +97,16 @@ with (globalmanager) {
         list=string_delete(list,1,p)
     }
 
-        list2=
-        "drybones,drybonesdead,dryres,"+
-        "thwomp,thwompangry,thwompdown,thwompangryside,thwompside,"+
-        "bthwomp,bthwompangry,bthwompdown,bthwompangryside,bthwompside,"+
-        "firebro,firebrojump,firebroaim,firebrodead,"+
-        "boomerangbro,boomerangbrojump,boomerangbroaim,boomerangbrodead,"+
-        "boo,booscared,"+
-        "crabmeat,crabmeatshoot,"+
-        "newtrontrans,newtronshoot,newtrongo,"+
-        "rex,rexsmall,rexsmash,rexdead,rexsmalldead,"+
-        "montydigup,montydig,hole,montypop,montymole,montydead,"+
-        "yelparatroopa,yelkoopa,yelshell,yelshellwake,yelshellspin,yelshelldead,"+
-        "bluparatroopa,blukoopa,blushellwinged,blushell,blushellwake,blushellspin,blushelldead,"+
-        "urchin,"+
-        "chopper,"+
-        "bob-omb,bob-omblit,bob-ombfuse,"+
-        "bombshellkoopa,bombshell,bombshelldead,"+
-        "buzzbombfly,buzzbombhover,"+ //please change these anim names i dont know the name of them -neko
-        "firepiranhaup,firepiranhaupshoot,firepiranhadown,firepiranhadownshoot,firepiranhamiddle,firepiranhamiddleshoot,"+
-        "bullseyebullet,bullseyebulletdead,"+
-        "fishbones,fishbonesattack,fishbonesdead,"+
-        "spike,spikeballthrow,spikedead,"+
-        "wigglerhead,wigglerbod,wigglerheaddead,wigglerboddead,wigglerheadangery,wigglerbodangery,wigglerheadangerydead,wigglerbodangerydead,"+
-        "pokey,pokeybody,"+
-        "greenorbinaut,"+
-        "blueorbinaut,"+
-        "redorbinaut,"+
-        "bumperorbinaut,"+
-        "bombstand,bombwalk,bombignite,"+
-        "thwimp,pig,"
+    listBoss=
+        "fakebowser,fakebowserfire,fakebowserpanic,"+
+        "bowser,bowserfire,bowserpanic,"+
+        "dowser,dowserfire,dowserpanic,"
 
-
-    global.enemysprites2=string_count(",",list2)
-    for (i=0;i<global.enemysprites2;i+=1) {
-        p=string_pos(",",list2)
-        global.enemysprite2[i,0]=string_copy(list2,1,p-1)
-        list2=string_delete(list2,1,p)
+    global.enemybosssprites=string_count(",",listBoss)
+    for (i=0;i<global.enemybosssprites;i+=1) {
+        p=string_pos(",",listBoss)
+        global.enemybosssprite[i,0]=string_copy(listBoss,1,p-1)
+        list=string_delete(listBoss,1,p)
     }
 
     indexskins()

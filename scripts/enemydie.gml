@@ -18,13 +18,13 @@ with (argument[0]) {
             case redkoopa:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="redshell"} break}
             case redhover:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="redshell"} break}
             case koopa:         {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="shell" } break}
-            case bombshellkoopa:{with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="bombshell" enemy2=1} break}
+            case bombshellkoopa:{with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="bombshell"} break}
             case hopkoopa:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="shell"} break}
             case yelkoopa:
-            case yelhover:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="yelshell" enemy2=1} break}
-            case blukoopa:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="blushell" enemy2=1} break}
-            case bluhover:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="blushell" enemy2=1} break}
-            case bombshellkoopa:{with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="bombshell" enemy2=1} break}
+            case yelhover:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="yelshell"} break}
+            case blukoopa:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="blushell"} break}
+            case bluhover:      {with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="blushell"} break}
+            case bombshellkoopa:{with (instance_create(x,y,koopadead))      {hspeed*=s biome=other.biome type="bombshell"} break}
 
             case spiny:
             case spinyegg:      {with (instance_create(x,y,koopadead))      {hspeed*=s type="spinyshell"} break}
@@ -40,13 +40,13 @@ with (argument[0]) {
             case lakitu:        {with (instance_create(x,y,genericdead))    {type="lakitudead"} break}
             case piranha:       {with (instance_create(x,y,genericdead))    {depth=other.depth if (other.red) type="redpiranhadie" else type="piranhadie" nomove=1 timetodie=30 ysc=other.ysc} break}
             case redpiranha:    {with (instance_create(x,y,genericdead))    {depth=other.depth type="redpiranhadie" nomove=1 timetodie=30 ysc=other.ysc} break}
-            case thwomp:        {with (instance_create(x,y,deadthwomp))     {depth=other.depth xsc=other.xsc biome=other.biome enemy2=1 frame=0 eid=3} sound("enemykick") break}
+            case thwomp:        {with (instance_create(x,y,deadthwomp))     {depth=other.depth xsc=other.xsc biome=other.biome frame=0 eid=3} sound("enemykick") break}
             case drybones:      {with (instance_create(x,y,drydead))        {xsc=other.xsc if other.vspeed!=0 {drop=1 vspeed=other.vspeed} powner=other.powner} break}
 
-            case rexbig:        {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexdead" vspeed=-2 biome=other.biome enemy2=1}  break}
-            case rexsmall:      {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexsmalldead" vspeed=-2 biome=other.biome enemy2=1}  break}
-            case montymole:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome enemy2=1}  break}
-            case spikenemy:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome enemy2=1}  break}
+            case rexbig:        {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexdead" vspeed=-2 biome=other.biome}  break}
+            case rexsmall:      {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexsmalldead" vspeed=-2 biome=other.biome}  break}
+            case montymole:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome}  break}
+            case spikenemy:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome}  break}
             case bulletbill:    {with (instance_create(x,y,genericdead))    {hspeed*=-s type="bulletdead"  vspeed=0} break}
             case banzaibill:   {with(instance_create(x,y,bigBOM)) {sound("enemybigexplode")} break}
 
@@ -62,7 +62,7 @@ with (argument[0]) {
 
             //damage on touch enemies (damages player objects)
             case boo: break;
-            case fishbones:    {with (instance_create(x,y,genericdead))    {hspeed=s  type="fishbonesdead" vspeed=-2 biome=other.biome enemy2=1} sound("enemybones") break}
+            case fishbones:    {with (instance_create(x,y,genericdead))    {hspeed=s  type="fishbonesdead" vspeed=-2 biome=other.biome} sound("enemybones") break}
             //case thwomp: {  if kek {with other hurtplayer("enemydamage") did_you_think_killing_me_would_kill_me=1} else {instance_create(x,y,smoke) did_you_think_killing_me_would_kill_me=0} break }
             case urchin: {instance_create(x,y,smoke)} break;
 

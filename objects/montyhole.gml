@@ -7,7 +7,6 @@ applies_to=self
 xsc=1
 ysc=1
 sprite="montydig"
-enemy2=1
 active=0
 #define Alarm_0
 /*"/*'/**//* YYD ACTION

@@ -8,7 +8,6 @@ event_inherited()
 
 jc=x mod 224
 hc=x mod 48
-enemy2=1
 hasboomerang=1
 sprite="boomerangbro"
 #define Step_2

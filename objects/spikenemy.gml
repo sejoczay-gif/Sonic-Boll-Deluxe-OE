@@ -5,7 +5,6 @@ action_id=603
 applies_to=self
 */
 event_inherited()
-enemy2=1
 hspeed=-0.5
 brat=0
 sprite="spike"

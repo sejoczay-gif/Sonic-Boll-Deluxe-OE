@@ -22,7 +22,6 @@ if (!collision(x+sign(hsp)*16,y+sign(vsp)*16) && !place_meeting(x+sign(hsp)*16,y
         enem=other.enem
         object=other.object
         sprite=other.sprite
-        enemy2=other.enemy2
         if (enem) xsc=esign(-hspeed,esign(x-nearestplayer().x,1)) else xsc=esign(-hspeed,esign(nearestplayer().x-x,-1))
         if (content=spring || content=spreng) {x-=8 y-=8}
     }
@@ -50,8 +49,8 @@ switch content {
     case "beetle": content=beetle sprite="beetle" enem=1 break
     case "spiny": content=spiny sprite="spiny" enem=1 break
     case "blooper": content=blooper sprite="blooper" enem=1 break
-    case "bobomb": content=bobomb sprite="bob-omb" enem=1 enemy2=1 break
-    case "litbobomb": content=litbobomb sprite="bob-ombfuse" enem=1 enemy2=1 break
+    case "bobomb": content=bobomb sprite="bob-omb" enem=1 break
+    case "litbobomb": content=litbobomb sprite="bob-ombfuse" enem=1 break
     case "podoboo": instance_create(x,y+4,podoboo) instance_destroy() break
     case "chopper": instance_create(x,y+4,chopper) instance_destroy() break
     case "mushroom": content=mushroom sprite="mushroom" break

@@ -64,10 +64,8 @@ for (i=0;i<global.biomes;i+=1) {
     global.itemsheet[i]=skindat("tex_item"+string(i))
     replacesheet("","topsecret"+string(i),wskin+global.biome[i]+"\itern.png",144,288,1)
     global.topsheetcret[i]=skindat("tex_topsecret"+string(i))
-    replacesheet("","enemy_"+string(i),wskin+global.biome[i]+"\enemy.png",330,1824,1)
+    replacesheet("","enemy_"+string(i),wskin+global.biome[i]+"\enemy.png",500,1000,1)
     global.enemysheet[i]=skindat("tex_enemy_"+string(i))
-    replacesheet("","enemy2_"+string(i),wskin+global.biome[i]+"\enemy2.png",330,1824,1)
-    global.enemysheet2[i]=skindat("tex_enemy2_"+string(i))
     replacesheet("","boss"+string(i),wskin+global.biome[i]+"\boss.png",500,500,1)
     global.bosssheet[i]=skindat("tex_boss"+string(i))
     replacesheet("","bowser"+string(i),wskin+global.biome[i]+"\bowser.png",500,500,1)
@@ -160,16 +158,54 @@ for (i=0;i<global.enemysprites;i+=1) {
     global.enemysprite[i,3]=median(1,unreal(skindat("enemy "+global.enemysprite[i,0]+" loop"),1),global.enemysprite[i,1])-1
 }
 
+global.enemysprite[i,4]=0
+global.enemysprite[i,5]=0
 
-global.enemyoffx2=unreal(skindat("enemy2 center x"),0)
-global.enemyoffy2=unreal(skindat("enemy2 center y"),0)
-global.enemywidth2=unreal(skindat("enemy2 box width"),32)
-global.enemyheight2=unreal(skindat("enemy2 box height"),32)
+i=0
+repeat (global.enemysprites) {
+    if i!=0 {
 
-for (i=0;i<global.enemysprites2;i+=1) {
-    global.enemysprite2[i,1]=median(1,unreal(skindat("enemy2 "+global.enemysprite2[i,0]+" frames"),1),32)
-    global.enemysprite2[i,2]=median(0,unreal(skindat("enemy2 "+global.enemysprite2[i,0]+" speed"),0.125),1)
-    global.enemysprite2[i,3]=median(1,unreal(skindat("enemy2 "+global.enemysprite2[i,0]+" loop"),1),global.enemysprite2[i,1])-1
+        global.enemysprite[i,4]=global.enemysprite[i-1,4]
+        global.enemysprite[i,5]=global.enemysprite[i-1,5]
+
+        if funnytruefalse(skindat("enemy "+global.enemysprite[i,0]+" connect")) {
+            global.enemysprite[i,4]+=global.enemysprite[i-1,1]
+        } else {
+            global.enemysprite[i,4]=0
+            global.enemysprite[i,5]+=1
+        }
+    }
+    i+=1
+}
+
+global.enemybosssheetheight=unreal(skindat("enemy boss sheet height"),128)
+global.enemybossoffx=unreal(skindat("enemy boss center x"),0)
+global.enemybossoffy=unreal(skindat("enemy boss center y"),0)
+global.enemybosswidth=unreal(skindat("enemy boss box width"),60)
+global.enemybossheight=unreal(skindat("enemy boss box height"),60)
+
+for (i=0;i<global.enemybosssprites;i+=1) {
+    global.enemybosssprite[i,1]=median(1,unreal(skindat("enemy boss "+global.enemybosssprite[i,0]+" frames"),1),32)
+}
+
+global.enemybosssprite[i,2]=0
+global.enemybosssprite[i,3]=0
+
+i=0
+repeat (global.enemybosssprites) {
+    if i!=0 {
+
+        global.enemybosssprite[i,2]=global.enemybosssprite[i-1,2]
+        global.enemybosssprite[i,3]=global.enemybosssprite[i-1,3]
+
+        if funnytruefalse(skindat("enemy boss "+global.enemybosssprite[i,0]+" connect")) {
+            global.enemybosssprite[i,2]+=global.enemybosssprite[i-1,1]
+        } else {
+            global.enemybosssprite[i,2]=0
+            global.enemybosssprite[i,3]+=1
+        }
+    }
+    i+=1
 }
 
 replaceworldsfx(wskin)

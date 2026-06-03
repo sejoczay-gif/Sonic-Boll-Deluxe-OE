@@ -22,7 +22,6 @@ ky=y
 
 depth = 1000001
 
-enemy2=1
 sprite="chopper"
 
 getregion(x)

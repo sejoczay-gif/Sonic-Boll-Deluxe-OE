@@ -16,7 +16,6 @@ stop=0
 watermode=0
 waterlevel=32
 red=0
-enemy2=1
 
 sprite="firepiranhaup"
 #define Alarm_0

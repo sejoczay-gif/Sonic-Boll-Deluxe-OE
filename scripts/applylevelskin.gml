@@ -69,8 +69,6 @@ for (i=0;i<global.biomes;i+=1) {
         global.topsheetcret[i]=skindat("tex_topsecret"+string(i))
         replacesheet("","enemy_"+string(i),wskin+global.biome[i]+"\enemy.png",330,1824,1)
         global.enemysheet[i]=skindat("tex_enemy_"+string(i))
-        replacesheet("","enemy2_"+string(i),wskin+global.biome[i]+"\enemy2.png",330,1824,1)
-        global.enemysheet2[i]=skindat("tex_enemy2_"+string(i))
         replacesheet("","boss"+string(i),wskin+global.biome[i]+"\boss.png",500,500,1)
         global.bosssheet[i]=skindat("tex_boss"+string(i))
         replacesheet("","bowser"+string(i),wskin+global.biome[i]+"\bowser.png",500,500,1)

@@ -67,4 +67,4 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-draw_sprite_part(global.enemysheet2[biome],0,104+65*frame,58,64,64,round(x-32),y-32)
+draw_sprite_part(global.enemysheet[biome],0,264+65*frame,58,64,64,round(x-32),y-32)

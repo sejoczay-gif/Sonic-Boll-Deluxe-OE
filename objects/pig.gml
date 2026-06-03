@@ -18,7 +18,6 @@ hp=0
 carry=0
 turncount=0
 active=1
-enemy2=1
 
 getregion(x)
 

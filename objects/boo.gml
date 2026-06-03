@@ -7,7 +7,6 @@ applies_to=self
 event_inherited()
 
 active=1
-enemy2=1
 sprite="boo"
 
 damage_player_on_contact=1

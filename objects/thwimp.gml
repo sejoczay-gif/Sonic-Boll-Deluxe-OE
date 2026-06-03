@@ -20,7 +20,6 @@ redturn=0
 jumptimer=60
 jumpdir=1
 
-enemy2=1
 sprite="thwimp"
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
