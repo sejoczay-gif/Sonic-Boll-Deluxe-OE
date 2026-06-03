@@ -1260,17 +1260,16 @@ with (deity) {
         } break
 
         case (customobject):{
-        if !variable_global_get("cobject_code_"+string(data[0])) {
+        if !variable_global_get("cobject_code_"+string(data[0])+"_"+"create") {
             if !file_exists(globalmanager.moddir+"object\"+string(data[0])+"\object.gml") {break}
             else {
-                variable_global_set("cobject_code_"+string(data[0]),code_compile(file_text_read_all(globalmanager.moddir+"object\"+string(data[0])+"\object.gml")))
-                my_code=variable_global_get("cobject_code_"+string(data[0]))
+                variable_global_set("cobject_code_"+string(data[0]+"_"+"create"),code_compile(loopThrough("lemon_display",globalmanager.moddir+"object\"+string(data[0])+"\object.gml")))
+                my_code=variable_global_get("cobject_code_"+string(data[0])+"_"+"create")
             }
         } else {
-            my_code=variable_global_get("cobject_code_"+string(data[0]))
+            my_code=variable_global_get("cobject_code_"+string(data[0])+"_"+"create")
 
         }
-        global.cobjectentrypoint="lemon_display"
 
         code_execute(my_code)
 
