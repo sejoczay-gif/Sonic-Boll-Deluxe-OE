@@ -310,6 +310,7 @@ reroute sidepiping=walk
 reroute lookupcarry=standcarry
 reroute tspin=spinjump
 reroute galspinfall=spinjump
+reroute scuttle=run
 
 stand frames=3
 wait frames=4
