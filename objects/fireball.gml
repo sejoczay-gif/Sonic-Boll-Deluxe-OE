@@ -16,8 +16,6 @@ vspeed=3
 exploding=0
 exploframe=0
 visible=1
-
-sound("enemyhammerthrow")
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
