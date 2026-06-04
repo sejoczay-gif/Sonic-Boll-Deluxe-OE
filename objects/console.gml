@@ -100,62 +100,18 @@ if (keyboard_check_pressed(vk_enter) && !off) {
         case "objdel":
             mytype=arg
 
-            var thefile, thecode, listinator, curinator, keyinator, i_iterationator;
-            thefile=globalmanager.moddir+"object\"+mytype+"\object.gml"
-            thecode=file_text_open_read(thefile)
-            listinator=ds_list_create()
-            curinator=""
 
-            while (!file_text_eof(thecode)) {
 
-                curinator=file_text_read_string(thecode)
+            if variable_global_get("cobject_code_"+mytype)  {
+                global.cobjectentrypoint="deloaded"
+                code_execute(variable_global_get("cobject_code_"+mytype)) //let the object deload itself and whatever else is in there.
 
-                if string_starts_with(curinator, "#define") {
-                    curinator=string_delete(curinator, 1, 8)
-                    ds_list_add(listinator,curinator)
-                }
+                code_destroy(variable_global_get("cobject_code_"+mytype)) //destroy the object's code to prevent any funny leakage.
+                variable_global_set("cobject_code_"+mytype,0)             //and finally, set the global variable's code to 0.
 
-                file_text_readln(thecode)
-                if file_text_eof(thecode) {
-                    break;
-                }
             }
-            file_text_close(thecode)
 
-            i_iterationator=0
-            repeat(ds_list_size(listinator)) {
-                keyinator = ds_list_find_value(listinator,i_iterationator);
-
-                switch(keyinator) {
-                    case "create":
-                    case "step":
-                    case "draw":
-                    case "draw_hud":
-                    case "lemon_display":
-                    case "editobjmenu":
-                    case "editobjdataname":
-                        if variable_global_get("cobject_code_"+mytype+"_"+keyinator)  {
-                        code_destroy(variable_global_get("cobject_code_"+mytype+"_"+keyinator))
-                        variable_global_set("cobject_code_"+mytype+"_"+keyinator,0)
-                        }
-                    break;
-                    case "deloaded":
-                        if variable_global_get("cobject_code_"+mytype+"_deloaded")  {
-                        code_execute(variable_global_get("cobject_code_"+mytype+"_deloaded")) //let the object deload itself and whatever else is in there.
-
-                        //destroy the object's code to prevent any funny leakage.
-                        code_destroy(variable_global_get("cobject_code_"+mytype+"_deloaded"))
-                        variable_global_set("cobject_code_"+mytype+"_deloaded",0)             //and finally, set the global variable's code to 0.
-
-                        }
-
-                        //p simple, huh?
-                    break;
-                    default : show_debug_message("Invalid define ("+keyinator+") in "+string(mytype)) break;
-                }
-                i_iterationator+=1;
-            }
-            ds_list_destroy(listinator);
+            //p simple, huh?
 
          break;
 

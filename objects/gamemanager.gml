@@ -330,7 +330,7 @@ if !players[view_current].dontdrawdefaulthud && hud_alpha[view_current] > 0.0 {
 if !pause && !players[view_current].hudoff_custom{
     with customobject {
         global.cobjectentrypoint="draw_hud"
-        if drawhudevent!=0 code_execute(drawhudevent)
+        code_execute(my_code)
 
     }
 }
