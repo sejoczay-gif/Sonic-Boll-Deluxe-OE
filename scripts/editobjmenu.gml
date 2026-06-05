@@ -429,7 +429,6 @@ switch (argument[0]) {
     case vine:
     case redcoin:
     case fishbones:
-    case spikenemy:
     case wigglerhead:
     case orbinautgreen:
     case orbinautblue:
@@ -450,6 +449,16 @@ switch (argument[0]) {
             return string(i-1)
         }
     }
+
+    case spikenemy: {
+        if (type=1) {
+            i=show_contextmenu("Type:|-|Normal|Classic|Snow|Fire",0)
+            if (!i) return argument[2]
+            return string(i-1)
+        }
+        return get_string("Alignment in pixels (x,y):",argument[2])
+    }
+
     case montymole: {
         if (type=0) return get_string("Alignment in pixels (x,y):",argument[2])
         if (type=1) return string(!funnytruefalse(argument[2]))

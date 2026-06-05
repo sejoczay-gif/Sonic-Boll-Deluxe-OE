@@ -10,6 +10,13 @@ image_yscale=2
 owner=noone
 
 type=0
+#define Alarm_0
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+hspeed=-2*owner.xsc
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

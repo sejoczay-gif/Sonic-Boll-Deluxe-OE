@@ -389,7 +389,6 @@ switch (argument[0]) {
     case rexbig:
     case fishbones:
     case wigglerhead:
-    case spikenemy:
     case grinder:
     case orbinautgreen:
     case orbinautblue:
@@ -413,6 +412,10 @@ switch (argument[0]) {
             if (i="2") return "Rage: Full"
         }
 
+    }
+    case spikenemy: {
+        if (type=0) {return "Align: "+string(i)}
+        if (type=1) {if (i="0") return "Type: Normal" else if i="1" return "Type: Classic" else if i="2" return "Type: Snow" /*those wh snow*/ else return "Type: Fire"}
     }
     case montymole: {
         if (type=0) {return "Align: "+string(i)}

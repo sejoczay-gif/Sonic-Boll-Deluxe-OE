@@ -318,6 +318,9 @@ switch (obj) {
         if (data[1]="0") frame=0
         if (data[1]="1") frame=1
     } break
+    case (spikenemy): {
+        frame=unreal(data[1],0)
+    } break
     case (platdonut): {
         if (data[1]="0") frame=0
         if (data[1]="1") frame=1

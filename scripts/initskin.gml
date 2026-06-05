@@ -77,7 +77,9 @@ with (globalmanager) {
         "bombshellkoopa,bombshell,bombshelldead,bob-omb,bob-omblit,bob-ombfuse,"+
         "beetle,beetleshell,beetleshellwake,beetleshellspin,beetleshelldead,"+
         "spinyegg,spiny,spinyshell,spinyshellwake,spinyshellspin,spinyshelldead,"+
-        "spike,spikeballthrow,spikedead,lakitu,lakituaim,lakitudead,lakitucloud,pokey,pokeybody,"+
+        "spike,spikeballthrow,spikedead,oldspike,oldspikeballthrow,oldspikedead,"+
+        "snowspike,snowspikeballthrow,snowspikedead,firespike,firespikeballthrow,firespikedead,"+
+        "lakitu,lakituaim,lakitudead,lakitucloud,pokey,pokeybody,angrysun,angrysundescend,moon,moondescend,"+
         "hammerbro,hammerbrojump,hammerbroaim,hammerbrodead,firebro,firebrojump,firebroaim,firebrodead,boomerangbro,boomerangbrojump,boomerangbroaim,boomerangbrodead,"+
         "rex,rexsmall,rexsmash,rexdead,rexsmalldead,montydigup,montydig,hole,montypop,montymole,montydead,"+
         "wigglerhead,wigglerbod,wigglerheaddead,wigglerboddead,wigglerheadangery,wigglerbodangery,wigglerheadangerydead,wigglerbodangerydead,"+

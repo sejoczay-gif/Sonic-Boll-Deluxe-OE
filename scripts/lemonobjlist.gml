@@ -811,8 +811,8 @@ listobj(wigglerhead             ,1,spr_semiplat      ,139,wigglerhead)
 
 listobj(spikenemy             ,1,spr_spikenemy      ,140,spikenemy)
     listdoc("Spike","[UNFINISHED] Will spit out spikeballs.")
-    listargs("align")
-    listdata("0")
+    listargs("align","spiketype")
+    listdata("0"    ,"0")
 
 listobj(ballcannonquad             ,0,spr_plquadcannon         ,142,cannon)
 listdoc("Quad Cannon","Like a cannon, but alternates between angles with each shot.")

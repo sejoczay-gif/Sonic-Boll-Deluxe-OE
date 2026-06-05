@@ -27,4 +27,4 @@ action_id=603
 applies_to=self
 */
 xsc=1 ysc=1
-ssw_effects("spikeballpart")
+ssw_effects("spikeballpart"+type)
