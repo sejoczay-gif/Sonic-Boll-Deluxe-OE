@@ -83,6 +83,8 @@ switch (argument[0]) {
     case "firemissile": {if dowser draw_sprite_part_ext(global.dowsersheet[biome],0,10+32*frame,29,31,16,round(x-16*xsc),round(y-8),xsc,1,$ffffff,1) else draw_sprite_part_ext(global.bosssheet[biome],0,10+32*frame,29,31,16,round(x-16*xsc),round(y-8),xsc,1,$ffffff,1) break}
     case "spikeball": {draw_sprite_part_ext(global.enemysheet[biome],0,240+25*global.framefire,10,24,24,round(x-13*xsc),round(y-13),xsc,1,$ffffff,1) break}
     case "spikeballpart": {draw_sprite_part_ext(global.enemysheet[biome],0,240+11*global.framefire,35,10,10,round(x-6*xsc),round(y-6),xsc,1,$ffffff,1) break}
+    case "spikeballold": {draw_sprite_part_ext(global.enemysheet[biome],0,814+25*global.framefire,10,24,24,round(x-13*xsc),round(y-13),xsc,1,$ffffff,1) break}
+    case "spikeballpartold": {draw_sprite_part_ext(global.enemysheet[biome],0,814+11*global.framefire,35,10,10,round(x-6*xsc),round(y-6),xsc,1,$ffffff,1) break}
     case "banzaibill": {draw_sprite_part_ext(global.enemysheet[biome],0,589,8,64,64,round(x),round(y),xsc,1,$ffffff,1) break}
     case "bullseyebanzai": {draw_sprite_part_ext(global.enemysheet[biome],0,494,8,64,64,round(x-8*xsc),round(y-8),xsc,1,$ffffff,1) break}
     case "muncher": {draw_sprite_part_ext(global.enemysheet[biome],0,589+16*global.frame,73,16,16,round(x),round(y),xsc,1,$ffffff,1) break}

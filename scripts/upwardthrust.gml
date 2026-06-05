@@ -175,7 +175,7 @@ if (coll) {
             with instance_create(x,y,genericdead) {
                 hspeed=other.hspeed
                 vspeed=-2.5
-                type="spikedead"
+                type=other.type+"spikedead"
                 biome=other.biome
             }
             instance_destroy()

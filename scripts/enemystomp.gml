@@ -38,7 +38,7 @@ with (argument[0]) {
             case rexsmall:   {with (instance_create(x,y,goombasmash)) {xsc=other.xsc hspeed*=s sprite="rexsmash" biome=other.biome } break}
             case rexbig:     {with (instance_create(x,y,rexsmall)) {xsc=other.xsc biome=other.biome } break}
             case montymole: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome}  break}
-            case spikenemy: {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome}  break}
+            case spikenemy: {with (instance_create(x,y,genericdead))    {hspeed*=s  type=other.type+"spikedead" vspeed=-2 biome=other.biome}  break}
 
             case crabmeat: {instance_create(x,y,badniksmoke) break}
             case newtron: {instance_create(x,y,badniksmoke) break}

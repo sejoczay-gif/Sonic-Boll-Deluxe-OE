@@ -50,6 +50,7 @@ with (jetstream) event_user(0)
 with (enemydummy) event_user(0)
 with (thwimp) event_user(0)
 with (pokey) event_user(3)
+with (spikenemy) event_user(0)
 
 with (camsecret) y=-verybignumber
 with (camblock) event_user(0)

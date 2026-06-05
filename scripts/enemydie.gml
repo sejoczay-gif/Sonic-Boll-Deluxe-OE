@@ -46,7 +46,7 @@ with (argument[0]) {
             case rexbig:        {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexdead" vspeed=-2 biome=other.biome}  break}
             case rexsmall:      {with (instance_create(x,y,genericdead))    {hspeed=s  type="rexsmalldead" vspeed=-2 biome=other.biome}  break}
             case montymole:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="montydead" vspeed=-2 biome=other.biome}  break}
-            case spikenemy:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type="spikedead" vspeed=-2 biome=other.biome}  break}
+            case spikenemy:     {with (instance_create(x,y,genericdead))    {hspeed*=s  type=other.type+"spikedead" vspeed=-2 biome=other.biome}  break}
             case bulletbill:    {with (instance_create(x,y,genericdead))    {hspeed*=-s type="bulletdead"  vspeed=0} break}
             case banzaibill:   {with(instance_create(x,y,bigBOM)) {sound("enemybigexplode")} break}
 

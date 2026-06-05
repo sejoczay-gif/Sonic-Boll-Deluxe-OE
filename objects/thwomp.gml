@@ -117,7 +117,7 @@ switch sidethwomp{ //A bit weird to start caring about optimizing right now, but
     case "1"://This is the sideways thwomp (1 is for left)
        if sidethwompint=2
        sidegoing=1 else sidegoing=-1
-        xsc=sidegoing
+        xsc=sidegoing*-1
 
         if (abs(nearestplayer().y-y)<16)
         {

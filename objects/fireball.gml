@@ -16,8 +16,14 @@ vspeed=3
 exploding=0
 exploframe=0
 visible=1
-
-sound("enemyhammerthrow")
+#define Alarm_0
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+xsc=owner.xsc
+hspeed=-2*xsc
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
