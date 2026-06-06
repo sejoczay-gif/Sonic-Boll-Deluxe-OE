@@ -1,4 +1,4 @@
-sprite=spr_mask16c16
+sprite=spr_round12
 visible=1
 solid=0
 persistent=0

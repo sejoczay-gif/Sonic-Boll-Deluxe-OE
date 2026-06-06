@@ -49,7 +49,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if (pitdeath()) instance_destroy()
+if (pitdeath() || !inview()) instance_destroy()
 
 if !hasgrav {
     if vspeed > 0 d=1
@@ -60,15 +60,15 @@ if !hasgrav {
     }
 }
 
-coll=collision(hspeed,-4)
-if (coll) {
+/*coll=collision(hspeed,-4)
+if (coll) && hasgrav {
     instance_destroy()
-}
+}*/
 
 pla=nearestplayer()
 
 coll=instance_place(x+hspeed,y,hittable)
-if (coll) {
+if (coll) && hasgrav {
 hitblock(coll,pla,1,-1,0)
 instance_destroy()
 }
@@ -80,6 +80,8 @@ applies_to=self
 */
 if hasgrav=1 && !alarm[0]
 {
+    /*
+    //Old Spikeball code
     calcmoving()
     vspeed=min(3,vspeed)
     if (vspeed<0) {
@@ -95,7 +97,69 @@ if hasgrav=1 && !alarm[0]
             y=floor(y)
             y=yground-(bbox_bottom-2-y)
         } else vspeed=min(3,vspeed)
-    }
+    } */
+
+    //Shell code copy
+
+        calcmoving()
+        time=max(0,time-1)
+        if (vspeed<0) {
+            vspeed+=0.15
+            coll=collision(0,vspeed)
+            if (coll) {
+                sound("itemblockbump")
+                if (object_is_ancestor(coll.object_index,hittable)) {
+                    global.coll=nearestplayer()
+                    with (coll) {insted=1 go=-1 event_user(0) insted=0}
+                }
+                vspeed=1
+            }
+        }
+        if (vspeed>=0) {
+
+            if (collision(0,vspeed) && !grounded) {
+
+
+            s=esign(vspeed,1)
+            y+=vspeed
+            halved=0
+            while (collision(0,0)) {
+                y-=s
+                if !halved {vspeed=-0.5*vspeed halved=1}
+                if !floor(vspeed) vspeed=0
+            }
+
+            //vspeed=0
+
+            belt=collision(0,1)
+            if belt.object_index=conveyorbelt && !collision(belt.beltspd,0) && !collision(-belt.beltspd,0)
+                x=x+belt.beltspd;
+
+
+                if (stop) {
+                    vspeed=-abs(vspeed)*0.25
+                    hspeed*=0.5
+                }
+                if (abs(vspeed)<0.5 || !stop) {
+                    vspeed=0
+                    if (stop) {
+                        hspeed=0
+                        stop=0
+                    }
+                }
+            } else if !grounded {vspeed=min(4,vspeed+0.15)}
+        }
+        coll=collision(hspeed,-4)
+        if (coll) {
+            //hspeed*=-1
+            sound("itemblockbump")
+            if (object_is_ancestor(coll.object_index,hittable)) {
+                global.coll=nearestplayer()
+                with (coll) {insted=1 go=-1 event_user(0) insted=0}
+            }
+            instance_destroy()
+
+        }
 }
 
 
