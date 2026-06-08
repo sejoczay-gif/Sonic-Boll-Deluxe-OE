@@ -566,7 +566,7 @@ switch type{
                     coll.flash=64
                     coll.owner=owner
                     sound("enemybowserhurt")
-                    instance_create(x,y,kickpart)
+                    //instance_create(x,y,kickpart)
                     instance_destroy()
                 }
             }
@@ -581,7 +581,7 @@ switch type{
                     if (coll.object_index=shell) if (coll.type="beetle") yes=0
                     if (yes) {
                         global.coll=owner.id  
-                        instance_create(x,y,kickpart)  
+                        //instance_create(x,y,kickpart)  
                         enemydie(coll,2)
                     }
                 }
@@ -656,7 +656,7 @@ switch type{
                     if (coll.object_index=brick) brickc+=1 else brickc=4
                     hitblock(coll,owner,1,-1,0)
                 } else brickc=4
-                instance_create(x,y,kickpart)     
+                //instance_create(x,y,kickpart)     
                 if (brickc=4) {sound("itemblockbump") destroy=1 /*instance_destroy()*/}
             }
             
@@ -670,7 +670,7 @@ switch type{
                     if (coll.object_index=shell) if (coll.type="beetle") yes=0
                     if (yes) {
                         global.coll=owner.id  
-                        instance_create(x,y,kickpart)  
+                        //instance_create(x,y,kickpart)  
                         enemydie(coll,2)
                     }
                 }
@@ -981,6 +981,7 @@ if (bbut) {
 			fall=1 
 			//energy-=2 
 			if size=3 vsp=-(5.25-1*jump-1.5*water) else vsp=-(5-1*jump-1.5*water)
+			if (size==7 && !jump) luijump=9
 			jump=1       
 			hsp=(3+!water)*xsc
 			tatsu=0 
@@ -1397,6 +1398,8 @@ if piko {
     if piko>21 {
 		if piko=25 { //why doesn't this work if it's a proper factor of 1.5
 		playsfx("amypiko")
+		pep=0
+		with (projectile) {if owner.name="amy" && (p2=10) && (owner=other.id) owner.pep+=1}
 			if (size=2 && energy>=maxe) {
 				energy=0
 				i=fire_projectile(x+8*xsc,y+6)
@@ -1405,6 +1408,23 @@ if piko {
 				i.hspeed=xsc*3+hsp*(xsc=sign(hsp))
 				i.speed=median(2,i.speed,5) 
 				i.xsc=xsc              
+			}
+			if size=6 && pep<4 {
+			    instance_create(x+24*xsc,y+8+4,kickpart)
+			    p2 = 10;
+                with fire_projectile(x+(24*xsc)+8,y+8) {
+                    hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc; //yaargh me formula
+                    vspeed = -2.4;
+                    visible = 0;
+					owner.pep+=1;
+                }
+				with fire_projectile(x+(24*xsc)-8,y+8) {
+                    hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc * -1; //yaargh me formula
+                    vspeed = -2.4;
+                    visible = 0;
+					owner.pep+=1;
+                }
+                p2 = real(ss);
 			}
 		}
 	if piko=24 playsfx(name+"slam")
@@ -1705,6 +1725,8 @@ if (dropkick) {
     if (abs(hsp)>2) kick=1 
     else if !piped {if (size!=0 && size!=5) screenshake(x,3) rise=xsc risec=-15}
 	playsfx(name+"slam")
+	pep=0
+		with (projectile) {if owner.name="amy" && (p2=10) && (owner=other.id) owner.pep+=1}
     if (size=2 || super) {
         screenshake(x,4)
 		
@@ -1716,7 +1738,23 @@ if (dropkick) {
         with (fire_projectile(x,y+8)) {other.type=fballexplosion type=fballexplosion hspeed=-4 vspeed=0}
        // with (fire_projectile(x,y+8)) {other.type=fballexplosion type=fballexplosion hspeed=4 vspeed=-4}
         with (fire_projectile(x,y+8)) {other.type=fballexplosion type=fballexplosion hspeed=4 vspeed=0}
-    } else instance_create(x,y+8,smoke)
+    } else if size=6 && pep<4 {
+			    instance_create(x+24*xsc,y+8+4,kickpart)
+			    p2 = 10;
+                with fire_projectile(x+(24*xsc)+8,y+8) {
+                    hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc; //yaargh me formula
+                    vspeed = -2.4;
+                    visible = 0;
+					owner.pep+=1;
+                }
+				with fire_projectile(x+(24*xsc)-8,y+8) {
+                    hspeed=max((1 + (abs(other.hsp) / 2.2)),1.2) * xsc * -1; //yaargh me formula
+                    vspeed = -2.4;
+                    visible = 0;
+					owner.pep+=1;
+                }
+                p2 = real(ss);
+			} else instance_create(x,y+8,smoke)
     energy=max(2,energy)
 }
 

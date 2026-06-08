@@ -799,7 +799,7 @@ if (bbut) {
         if (up) {
             kek=0
 			
-			with (projectile) {if (type="bowshammer" || p2=10) && (owner=other.id) owner.kek+=1}
+			with (projectile) {if owner.name="bowser" && (type="bowshammer" || p2=10) && (owner=other.id) owner.kek+=1}
 			
 			if (size=6 && kek<2) {
 				p2 = 10;
@@ -859,7 +859,7 @@ if (crouch) {/*firedc=30*/ firedc=firelength if (sprite="firedcrouch") frame=0}
 
             playsfx("bowserfire")
             kek=0
-            with (projectile) {if (type="bowserfire" && owner=other.id) fade=1}
+            with (projectile) {if owner.name="bowser" && (type="bowserfire" && owner=other.id) fade=1}
             type="bowserfire"
 //with (fire_projectile(x+xsc*16,y-10+16*(crouch || size=5))) {
 with (fire_projectile(x+xsc*24,y-6+12*(crouch || size==5))) {

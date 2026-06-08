@@ -934,6 +934,7 @@ fluttered=0  superflutter=0 if (flutter) {if (flutter>=8) {soundstop("yoshiflutt
         vsp*=0.5
     }
     canstopjump=0
+	luijump=0
 }
 
 
