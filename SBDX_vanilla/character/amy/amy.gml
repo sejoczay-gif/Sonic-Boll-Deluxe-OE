@@ -926,7 +926,7 @@ if (!akey) {
 			vsp*=0.5
 		}
 		canstopjump=0
-		luijump=0
+		if !upper luijump=0
 }
 
 if (bbut) {
