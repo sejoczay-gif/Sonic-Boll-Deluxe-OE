@@ -1,0 +1,337 @@
+[simple-overall]
+has tails=false
+name color=55,81,255
+
+
+
+top speed=3.8
+air acceleration=0.08
+ground acceleration=0.06
+deaccelaration=0.45
+jump type=Mario
+movement type=Sonic
+
+airjump=false
+airjump amount=1
+airjump refreshes other moves=false
+airjump changevertspeed=true
+airjump vertspeed=-3
+airjump changehorspeed=false
+airjump horspeed=0
+
+spindash=false
+roll=false
+
+instashield=false
+dropdash=false
+
+wallkick=true
+wallslide=true
+
+zerodash=false
+zerodashEX=true
+zerodashplus=false
+
+sonicairdash=true
+sonicfiredash=false
+sonicwingdash=false
+
+slide=true
+slidekick=false
+
+momentumbreak=false
+
+longjump=false
+sideflip=true
+triplejump=false
+groundpound=false
+dive=true
+spinjump=false
+
+fire projectile=false
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=thunderball
+projectile limit=1
+projectile firing duration=16
+
+fire twojectile=false
+twojectile button=X
+fire twojectile when grounded=true
+fire twojectile when aerial=true
+twojectile type=thunderball
+twojectile limit=3
+twojectile firing duration=16
+
+[simple-basic]
+top speed=3.5
+
+[simple-big]
+
+[simple-fire]
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=thunderball
+projectile limit=2
+projectile firing duration=32
+
+[simple-feather]
+airjump=true
+airjump amount=1
+airjump refreshes other moves=true
+airjump changevertspeed=true
+airjump vertspeed=3
+airjump changehorspeed=false
+airjump horspeed=0
+
+
+[simple-mini]
+top speed=5
+
+[simple-extra]
+
+[simple-beet]
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=beetroot
+projectile limit=2
+projectile firing duration=16
+
+[simple-lui]
+luijump=true
+
+[simple]
+name=Tinfoil
+short small form=0.85
+
+icon speed=6
+icon loop=yes
+animation speed=1.0
+center x=16
+center y=18
+box width=32
+box height=40
+pole center offset=-6
+
+single sheet=true
+singlesheet split width=8,8,264,8,8,8,8,8
+singlesheet spilt height=0,0,0,0,0,0
+
+custom sprite list=stand,wait,lookup,pose,crouch,brake,flagslide,walk,fire,run,dash,slide,spring,airwalk,knock,wallslide,dead,sideflip,hang
+
+connect wait=true
+connect lookup=true
+connect pose=true
+connect crouch=true
+connect brake=true
+connect flagslide=true
+connect fire=true
+connect dash=true
+connect slide=true
+connect airwalk=true
+connect knock=true
+connect wallslide=true
+connect dead=true
+
+reroute dashfall=dash
+reroute maxrun=run
+reroute bonk=spring
+reroute jump=spring
+reroute dive=dash
+reroute push=walk
+reroute climbing=slide
+
+pitch spindash=yes
+jump ball animation=no
+fire duration=2.75
+victory duration=50
+time until wait=300
+pipe squish=20
+pole center offset=8
+
+size reroute beet=big
+size reroute lui=big
+size reroute feather=big
+size reroute extra=big
+
+use paletting=true
+defaultspray 1=2
+defaultspray 2=6
+defaultspray 3=11
+defaultspray 4=0
+
+stand frames=1
+wait frames=2
+lookup frames=1
+pose frames=1
+crouch frames=1
+knock frames=1
+dead frames=1
+walk frames=6
+spring frames=3
+airwalk frames=2
+run frames=4
+maxrun frames=5
+brake frames=1
+sideflip frames=8
+jump frames=5
+bonk frames=2
+ball frames=8
+dashfall frames=6
+spindash frames=4
+push frames=6
+hang frames=4
+fire frames=2
+fire2 frames=3
+dash frames=2
+climbing frames=4
+climbon2 frames=2
+flagslide frames=1
+tailidle frames=6
+tailspin frames=4
+
+slide frames=2
+zerodash frames=3
+dropdash frames=4
+
+
+pose loop=2
+maxrun loop=2
+crouch loop=2
+lookup loop=2
+bonk loop=2
+springfall loop=1
+specfall loop=2
+brake loop=4
+walk loop=1
+fire loop=2
+fire2 loop=3
+slide loop=2
+zerodash loop=2
+jump loop=5
+sideflip loop=8
+
+stand speed=0.2
+wait speed=0.15
+springfall speed=0.5
+lookup speed=0.22
+crouch speed=0.22
+zerodash speed=0.25
+pose speed=0.20
+walk speed=0.5
+run speed=0.5
+maxrun speed=0.25
+jump speed=0.5
+bonk speed=0.25
+spring speed=0.25
+airwalk speed=0.25
+knock speed=0.25
+brake speed=0.3
+spring speed=0.4
+ball speed=0.5
+spindash speed=0.5
+specfall speed=0.4
+push speed=0.1
+sideflip speed=0.25
+hang speed=0.2
+fire speed=0.35
+fire2 speed=0.2
+dash speed=0.25
+climbing speed=0.125
+climbon2 speed=0.05
+piping speed=0.20
+tailidle speed=0.20
+tailspin speed=0.20
+
+dropdash speed=0.5
+airwalk speed=0.25
+
+stand frametimes=32,1,1
+wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
+maxrun frametimes=3,1,1,1,1
+pose frametimes=1.5,1,1,1,1
+push frametimes=2,1,1,2,1,1
+brake frametimes= 1,1,2,10
+lookup frametimes=1,32,1,1
+piping frametimes=1,1,1,1,1
+doorexit frametimes=5,1,1,1,1
+fire frametimes=1,1,3,1
+
+slide speed=0.25
+
+spring loop=3
+airwalk loop=2
+
+doublejump frames=2
+doublejump loop=2
+doublejump speed=0.1
+
+doublejumpbonk frames=2
+doublejumpbonk loop=2
+doublejumpbonk speed=0.125
+
+doublejumpfall frames=3
+doublejumpfall loop=2
+doublejumpfall speed=0.25
+
+longjump frames=5
+longjump loop=4
+longjump speed=0.25
+
+dive frames=5
+dive loop=5
+dive speed=0.25
+
+marioslide frames=2
+marioslide loop=1
+marioslide speed=0.25
+
+spinjump frames=8
+spinjump loop=1
+spinjump speed=0.5
+
+groundpound frames=8
+groundpound loop=8
+groundpound speed=0.5
+
+poundfall frames=2
+poundfall loop=1
+poundfall speed=0.5
+
+grind frames=1,4,4,4,1
+piping frames=8
+pipingup frames=8,5,5,5,8
+sidepiping frames=8
+doorenter frames=4
+doorexit frames=1,2,2,2,1
+
+grind speed=0.5
+piping speed=0.5
+pipingup speed=0.5
+sidepiping speed=0.5
+doorenter speed=0.20
+doorexit speed=0.20
+
+doorenter loop=4
+doorexit loop=2
+
+boll top=#0077FF
+boll mid=#000000
+boll bot=#ff0000
+
+[lang]
+winspecial=Tinfoil got a Chaos Emerald
+allspecial=Tinfoil got all Chaos Emeralds
+princess=our Princess
+savetext1=Peace is Paved
+savetext2=With Kingdom Saved
+savetext3=Hurrah to Tinfoil
+savetext4=Our Only Hero 
+savetext5=This Ends Your Trip
+savetext6=Of a Long Friendship
+credits=Vantas, Todadoat

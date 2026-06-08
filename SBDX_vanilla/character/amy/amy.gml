@@ -760,6 +760,7 @@ else if (abs(hsp)>maxspd*0.9 && !water && !finish && boost && boostvar>=0.75) {s
 com_inputstack()
 
 tempbrick=0
+luijump -= 1
 
 //situations in which it should skip controls entirely
 if (hurt || piped || move_lock) {
@@ -868,6 +869,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 			sprite_angle=0
 
             jump=1
+	if (size==7) luijump=9
             fall=1
             braking=0
             spin=0
@@ -924,6 +926,7 @@ if (!akey) {
 			vsp*=0.5
 		}
 		canstopjump=0
+		luijump=0
 }
 
 if (bbut) {
@@ -1076,7 +1079,7 @@ player_horstep()
             hsp=lengthdir_x(l,d)
             vsp=lengthdir_y(l,d)
             if !twirl xsc=esign(hsp,xsc)
-        } else if fall!=69 {
+        } else if fall!=69 && !luijump {
             if twirl || dash {
 				vsp=max(0.05,abs(vsp)-0.1)*sign(vsp)
 			} 
@@ -1236,6 +1239,9 @@ if (global.dustframe) {
     } else speedwagon=0
     if (abs(hsp)>4 && boostvar>=0.75 && !jump) shoot(x-12*xsc,y+12,psmoke,0,0)
 }
+
+if (jump && size==7 && global.fastframe4 != ff4prev) {ff4prev = global.fastframe4 with instance_create(x, y, afterimagenoblend) {event_user(0) alphadecay=1 alarm[0] = 24 maxalarm = 24 maxalpha=0.8}}
+
 
 if (kick) {
 	kick-=1
@@ -1566,6 +1572,7 @@ grow=0
 fairdash=0
 gianadash=0
 gk=0
+luijump=0
 fk=0
 punch=0
 bounce=0
@@ -1601,7 +1608,7 @@ if ((!size || ohgoditslava) && !shielded) {
 
     starhit=0
     
-jump=1 hurt=1+starhit if (!starhit) if (shielded) {shielded=0} else {if size=3 size=1 else size-=1} hsp=xsc*-2*wf vsp=-3*wf
+jump=1 hurt=1+starhit if (!starhit) if (shielded) {shielded=0} else {if size=3 || size=6 || size=7 size=1 else size-=1} hsp=xsc*-2*wf vsp=-3*wf
     
 }
 
