@@ -89,6 +89,8 @@ dash speed=0.25
 fire speed=0.10
 climbing speed=0.125
 
+size reroute lui=big
+size reroute beet=big
 
 grind frames=1
 piping frames=4

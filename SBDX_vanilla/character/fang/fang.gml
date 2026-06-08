@@ -371,6 +371,7 @@ sprite="climbing" frspd=sign(left+right+up+down)
 com_inputstack()
 
 tempbrick=0
+luijump -= 1
 
 //situations in which it should skip controls entirely
 if (hurt || piped || move_lock) {
@@ -462,6 +463,7 @@ if ((abut || jumpbufferdo) && (!springin)) {
 		TIMETOTAKEAPISS=0
 
         jump=1
+	if (size==7) luijump=9
         fall=4
         braking=0
         spin=0
@@ -492,6 +494,7 @@ fangbounce=0
 //vsp*=0.5
 }
     canstopjump=0
+	luijump=0
 }
 
 //code for specifically the b button
@@ -587,8 +590,9 @@ if (!dead && !grabflagpole) {
             vsp=lengthdir_y(l,d)
             xsc=esign(hsp,xsc)
         } else {
-            if !fangbouncedelay vsp+=0.15*wf-(size=5 && vsp>-0.35 && !water)*0.075
+            if !fangbouncedelay && !luijump vsp+=0.15*wf-(size=5 && vsp>-0.35 && !water)*0.075
         }
+
 if (!hurt) vine_climbing()
         crouch=0
         spindash=0
@@ -786,6 +790,7 @@ if (global.dustframe) {
     } else speedwagon=0
 }
 
+if (jump && size==7 && global.fastframe4 != ff4prev) {ff4prev = global.fastframe4 with instance_create(x, y, afterimagenoblend) {event_user(0) alphadecay=1 alarm[0] = 24 maxalarm = 24 maxalpha=0.8}}
 
 if (super) boost=1
 
@@ -1006,6 +1011,7 @@ fairdash=0
 gianadash=0
 gk=0
 fk=0
+luijump=0
 punch=0
 bounce=0
 twirl=0
@@ -1039,7 +1045,7 @@ if ((!size || size==5 || ohgoditslava) && !shielded) {
 
     starhit=0
     
-jump=1 hurt=1+starhit if (!starhit) if (shielded) {shielded=0} else {if size=3 size-=1 size-=1} hsp=xsc*-2*wf vsp=-3*wf
+jump=1 hurt=1+starhit if (!starhit) if (shielded) {shielded=0} else {if size=3 || size=6 || size=7 size-=1 size-=1} hsp=xsc*-2*wf vsp=-3*wf
     
 }
 
