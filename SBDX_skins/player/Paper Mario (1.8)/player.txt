@@ -22,7 +22,6 @@ defaultspray 4=0
 short small form=0.8
 
 old hammer rotation=false
-size reroute beet=feather
 size reroute lui=feather
 
 
@@ -33,8 +32,8 @@ box width=32
 box height=40
 
 single sheet=true
-singlesheet split width=8,8,264,520,8,8
-singlesheet spilt height=0,0,0,0,0,0
+singlesheet split width=8,8,264,520,8,8,776,8
+singlesheet spilt height=0,0,0,0,0,0,0,0
 
 custom sprite list=stand,lookup,pose,crouch,knock,dead,walk,run,brake,spring,ball,jump,fall,skip,flagslide,twirl,climb,hammerfall,push,hang,pikoball,piko,upper
 

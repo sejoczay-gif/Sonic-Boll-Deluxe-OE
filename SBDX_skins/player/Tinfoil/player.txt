@@ -44,7 +44,7 @@ momentumbreak=false
 longjump=false
 sideflip=true
 triplejump=false
-groundpound=false
+groundpound=true
 dive=true
 spinjump=false
 
@@ -145,6 +145,8 @@ reroute jump=spring
 reroute dive=dash
 reroute push=walk
 reroute climbing=slide
+reroute groundpound=slide
+reroute poundfall=slide
 
 pitch spindash=yes
 jump ball animation=no
