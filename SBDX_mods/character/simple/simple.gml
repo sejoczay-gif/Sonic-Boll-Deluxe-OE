@@ -20,6 +20,11 @@ disablespindust=funnytruefalse(playerskindat(p2,name+" disable spindust"))
 spindustframes=nozerounreal(playerskindat(p2,name+" spindash dust frames"),8)-1 //subtract 1 for Silly
 spindustspeed=nozerounreal(playerskindat(p2,name+" spindash dust speed"),1)
 
+firedashtranslucent=funnytruefalse(playerskindat(p2,name+" firedash translucent"))
+firedashblendmode=funnytruefalse(playerskindat(p2,name+" firedash blendmode"))
+fireballtrail=funnytruefalse(playerskindat(p2,name+" fireball trail"))
+elecballtrail=funnytruefalse(playerskindat(p2,name+" elecball trail"))
+iceballtrail=funnytruefalse(playerskindat(p2,name+" iceball trail"))
 
 for (i=0;i<=7;i+=1){
 
@@ -408,12 +413,20 @@ if (boomeffect){
 	boomeffect+=0.1
 	if boomeffect>=5 boomeffect=0
 }
+if firedashtranslucent
+if (firedash && !piped) {
+	if firedashblendmode draw_set_blend_mode(bm_add)
+    draw_sprite_part_ext(sheetshields,0,209+40*floor(firedash/2 mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+	if firedashblendmode draw_set_blend_mode(bm_normal)
+}
 
 #define effectsfront
 
 
 if (firedash && !piped) {
-    draw_sprite_part_ext(sheetshields,0,209+40*(firedash mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+	if firedashblendmode draw_set_blend_mode(bm_add)
+    draw_sprite_part_ext(sheetshields,0,209+40*floor(firedash/2 mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha-0.5*firedashtranslucent)
+	if firedashblendmode draw_set_blend_mode(bm_normal)
 }
 if (insta && insta<14) {
     draw_sprite_part_ext(sheetshields,0,209+(floor((insta-1)/2) mod 4)*40,9,39,39,round(x-19.5*xsc),round(y-19.5+dy+4*!size)+4,xsc,1,$ffffff,alpha)
@@ -2062,16 +2075,18 @@ if (event="fireball_create"){
 	if com_proj_dmg_enemies(false) {with owner {projtype="fireplosion" fire_projectile(other.x,other.y)} instance_destroy()}
 	
 }else if (event="fireball_draw"){
-	prevframe=frame-2
-	if prevframe<0 prevframe+=4
-	draw_set_blend_mode(bm_add)
-	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
+	if fireballtrail{
+		prevframe=frame-2
+		if prevframe<0 prevframe+=4
+		draw_set_blend_mode(bm_add)
+		draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
 
-	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
-	
-	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
-	
-	draw_set_blend_mode(bm_normal)
+		draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
+		
+		draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
+		
+		draw_set_blend_mode(bm_normal)
+	}
 	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-8*xsc),round(y-8*1),xsc,1,c_white,1)
 
 }
@@ -2102,17 +2117,18 @@ if (event="thunderball_create"){
 	com_proj_dmg_enemies(false)
 	y=ystart+cos(fr)*3
 }else if (event="thunderball_draw"){
-prevframe=frame-2
-	if prevframe<0 prevframe+=4
-	draw_set_blend_mode(bm_add)
-	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
+	if fireballtrail{
+		prevframe=frame-2
+		if prevframe<0 prevframe+=4
+		draw_set_blend_mode(bm_add)
+		draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
 
-	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
-	
-	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
-	
-	draw_set_blend_mode(bm_normal)
-
+		draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
+		
+		draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
+		
+		draw_set_blend_mode(bm_normal)
+	}
 	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
 
 
