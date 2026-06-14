@@ -56,7 +56,7 @@ fire projectile=true
 projectile button=B
 fire projectile when grounded=true
 fire projectile when aerial=true
-projectile type=fireball
+projectile type=bomb
 projectile limit=3
 projectile firing duration=16
 
@@ -64,8 +64,8 @@ fire twojectile=true
 twojectile button=X
 fire twojectile when grounded=true
 fire twojectile when aerial=true
-twojectile type=thunderball
-twojectile limit=3
+twojectile type=flamingknuckle
+twojectile limit=2
 twojectile firing duration=16
 
 [simple-basic]

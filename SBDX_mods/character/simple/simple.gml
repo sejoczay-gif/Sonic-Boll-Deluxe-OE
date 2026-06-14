@@ -2042,7 +2042,7 @@ else if (event="step"){
 	event=type+"_step"
 }
 else if (event="draw"){
-
+	
 	event=type+"_draw"
 	
 }
@@ -2287,3 +2287,296 @@ if (event="beetroot_create"){
 	ssw_items("btroot")
 
 }
+
+
+
+
+if (event="bomb_create") {
+	explod=0
+	red=0
+	explodtimer=0
+	image_xscale=6
+	image_yscale=6
+	
+	hspeed=owner.hsp+3*owner.xsc
+	vspeed=-2
+	if owner.up vspeed=-4
+	if owner.down {hspeed=0 vspeed=0}
+	
+	alarm0=30
+	size=owner.size
+}
+if (event="bomb_step") {
+	visible=1
+	if explod=0 {
+		calcmoving()
+		
+		if !inview() instance_destroy()
+		
+		explodtimer=(explodtimer+1) mod 16
+		red=explodtimer<8
+		
+		if (vspeed<0) {
+			coll=collision(0,vspeed)
+			if (coll) {
+				vspeed=abs(vspeed)/2
+				y=coll.bbox_bottom+6
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			} else vspeed=min(5,vspeed+0.25)
+		} else {
+			coll=collision(0,vspeed)
+			if (coll) {
+				y=coll.bbox_top-6
+				hspeed=max(0,abs(hspeed)-0.15)*sign(hspeed)
+				vspeed=-abs(vspeed)*0.3
+				if (abs(vspeed)<1) vspeed=0
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			} else vspeed=min(5,vspeed+0.25)
+		}                  
+		
+		
+		coll=collision(hspeed,0)
+		if (coll) {
+			hspeed=abs(hspeed)*sign(x-mean(coll.bbox_left,coll.bbox_right))
+			playsfx("simplebomb")
+			explod=1
+			image_xscale=1.25
+			image_yscale=1.25
+			hspeed=0
+			vspeed=0
+			sprite_index=spr_round32
+			mask_index=spr_round32
+			alarm0=32
+			seqcount=2
+		}
+		coll=instance_place(x,y,player)
+		if (coll){
+			if (other.owner=owner) exit
+			if (instance_exists(flag)) if (flag.passed[owner.p2] || flag.passed[other.owner.p2]) exit
+			if (other.object_index=damager && other.hittype="gut") {
+				speed=-speed 
+				owner=other.owner 
+				contactbomb=1
+			} else {
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			}
+		}
+		
+		coll=instance_place(x,y,enemy)
+		
+		if (coll) if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+		&& coll.object_index!=boo && coll.object_index!=urchin) {
+			explod=1
+			image_xscale=1.25
+			image_yscale=1.25
+			hspeed=0
+			vspeed=0
+			sprite_index=spr_round32
+			mask_index=spr_round32
+			alarm0=32
+			seqcount=2
+		}
+		
+		coll=instance_place(x,y,spreng)
+		if (coll){
+			x-=hspeed
+			hspeed*=-1
+			xsc*=-1
+			sound("itemspring") other.shot=12
+		}
+	} else {
+		image_xscale=1
+				image_yscale=1
+		sprite_index=spr_round32
+				mask_index=spr_round32
+		alarm0-=1
+		if !alarm0{
+			instance_destroy()
+		}
+		frame=global.fastframe4 mod 2
+		
+		coll=instance_place(x,y,enemy)
+		if (coll) {                   
+			if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+			&& coll.object_index!=boo && coll.object_index!=urchin
+			&& coll.object_index!=pokey && coll.object_index!=pokeybody) {
+				global.coll=owner.id
+				enemydie(coll,2)
+			}
+		}
+		
+		coll=instance_place(x,y,player)
+		if (coll) {
+			if (coll.id!=owner) if (!invincible(coll)) {    
+				if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { 
+					if (coll.name="knux" && coll.glide && sign(hspeed)=-sign(coll.hsp) && object_index!=powah_wave) {
+						hspeed=abs(coll.hsp+1)*esign(coll.hsp,1) 
+						owner=coll.id 
+						with (owner) 
+							playsfx("knuxreflect") 
+						exit
+					}                                                                   
+					if (coll.name="robo" && coll.lookup && coll.xsc=sign(hspeed)) {
+						instance_create(x,y,kickpart)
+						exit
+					}
+					with (coll) 
+						hurtplayer("enemy")
+				}
+			}
+		}
+		
+		
+		coll=instance_place(x,y,collider)
+		if (coll) {
+			if (object_is_ancestor(coll.object_index,hittable)) {
+				hitblock(coll,owner,1,-1,0)
+				with coll if bombvfx=false{
+					instance_create(x,y,kickpart)
+					bombvfx=true
+				}
+				
+			}
+		}
+		
+		coll=instance_place(x,y,bowserboss)
+		if (coll) {
+			if (!coll.flash) {
+				coll.hp-=1
+				coll.flash=64
+				coll.owner=owner
+				sound("enemybowserhurt")
+				instance_create(x,y,kickpart)
+				instance_destroy()
+			}
+		}
+	}
+}
+if (event="bomb_draw") {
+	if !explod
+	draw_sprite_part_ext(owner.sheetshields,0,369+17*red,191,16,16,round(x-8*xsc),round(y-16+dy)+4,xsc,1,$ffffff,1)
+	else
+	draw_sprite_part_ext(owner.sheetshields,0,209+40*(floor(global.bgscroll/5 mod 4)),169,39,39,round(x-20),round(y-20),1,1,$ffffff,1)
+}
+
+
+
+
+if (event="flamingknuckle_create") {
+
+    image_xscale=8
+    image_yscale=8
+    vspeed=0
+    last=24
+    friction=0.1
+    seqcount=2
+
+    frame_sub=0
+    frame=0
+    brickc=0
+    
+	flameknucklevert_sheetx=owner.flameknucklevert_sheetx
+	flameknucklevert_sheety=owner.flameknucklevert_sheety
+	flameknucklehor_sheetx=owner.flameknucklehor_sheetx
+	flameknucklehor_sheety=owner.flameknucklehor_sheety
+
+    timer0=3
+    timer1=128
+    if owner.vert_proj=0{
+    if (sign(owner.hsp)=owner.xsc) hspeed=owner.hsp*0.5+4*owner.xsc
+        else hspeed=4*owner.xsc 
+        xsc=sign(hspeed)}
+        
+    if owner.up=1{
+    hspeed=0
+    vspeed=-4
+    xsc=owner.xsc
+    }
+}
+if (event="flamingknuckle_step") {
+    timer0-=1 if (timer0=0) visible=1
+    timer1-=1 if (timer1=0) instance_destroy()
+    calcmoving()
+
+    last-=1
+
+    frame=2-floor(last/8)
+    if (last=0) instance_destroy()
+    
+    if (!inview()) instance_destroy()
+    
+
+    coll=instance_place(x,y,collider)
+    if (coll) {
+        if (object_is_ancestor(coll.object_index,hittable)) {
+            if (coll.object_index=brick) brickc+=1 else brickc=4
+            hitblock(coll,owner,1,-1,0)
+            instance_create(x,y,kickpart) 
+        }    
+        if (brickc=4) {sound("itemblockbump") instance_destroy()}
+    }
+
+    coll=instance_place(x,y,enemy)
+    if (coll) {                    
+        if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+        && coll.object_index!=boo && coll.object_index!=urchin
+        && coll.object_index!=beetle)
+        global.coll=owner.id
+        enemydie(coll,2)
+    }
+coll=instance_place(x,y,bowserboss)
+if (coll) {
+    if (!coll.flash) {
+        coll.hp-=1
+        coll.flash=64
+        coll.owner=owner
+        sound("enemybowserhurt")
+        instance_create(x,y,kickpart)
+        instance_destroy()
+    }
+}
+    coll=instance_place(x,y,player)
+    if (coll) {
+        if (coll.id!=owner) if (!invincible(coll)) {    
+            if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { 
+                if (coll.name="knux" && coll.glide && sign(hspeed)=-sign(coll.hsp) && object_index!=powah_wave) {hspeed=abs(coll.hsp+1)*esign(coll.hsp,1) owner=coll.id with (owner) playsfx("knuxreflect") exit}                                                                   
+                if (coll.name="robo" && coll.lookup && coll.xsc=sign(hspeed)) {instance_create(x,y,kickpart) instance_destroy() exit}
+                with (coll) hurtplayer("enemy")
+            }
+            instance_create(x,y,kickpart) instance_destroy()
+        }
+    }
+}
+if (event="flamingknuckle_draw") {
+        if owner.projectilepalettes scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,owner.size,1*(1-0.75*shadow),owner.totpal+1)
+        if (vspeed=0) {draw_sprite_part_ext(owner.sheetshields,0,437,124+17*frame,32,16,round(x-24*xsc),round(y-8),xsc,1,$ffffff,1)}
+        else {draw_sprite_part_ext(owner.sheetshields,0,420+(17*frame),175,16,32,round(x-8),round(y-8),1,1,$ffffff,1)}
+		if owner.projectilepalettes shader_reset()
+    }
