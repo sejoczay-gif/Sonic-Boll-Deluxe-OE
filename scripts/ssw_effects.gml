@@ -91,6 +91,8 @@ switch (argument[0]) {
     //why yo muncher so fucking big ???
     case "bigassmuncher": {draw_sprite_part_ext(global.enemysheet[biome],0,429+32*global.frame,90,32,32,round(x),round(y),xsc,1,$ffffff,1) break}
 
+    case "lotusfireball": {draw_sprite_part_ext(global.enemysheet,0,10+global.framefire*17,103,16,16,round(x-7*xsc),round(y-7),xsc,1,$ffffff,1) break}
+    case "wrench": {draw_sprite_part_ext(global.enemysheet,0,170+global.framefire*17,105,16,16,round(x-7*xsc),round(y-7),xsc,1,$ffffff,1) break}
 
     case "retainer": {draw_sprite_part(sheet,0,8+floor(frame mod 4)*66,8+65*floor(frame div 4),64,64,x-32,y-44) break}
     case "toad": {draw_sprite_part_ext(sheet,0,8+floor(frame)*33,138,32,32,floor(x-16*xsc),floor(y-20),xsc,1,$ffffff,1) break}

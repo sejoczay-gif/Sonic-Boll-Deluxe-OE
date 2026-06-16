@@ -73,21 +73,23 @@ with (globalmanager) {
         "yelshell,yelshellwake,yelshellspin,yelshelldead,"+
         "bluparatroopa,blukoopa,blushellwinged,"+
         "blushell,blushellwake,blushellspin,blushelldead,"+
-        "drybones,drybonesdead,dryres,boo,booscared,"+
+        "drybones,drybonesdead,dryres,boo,booscared,stretchappear,stretch,stretchhide,"+
         "bombshellkoopa,bombshell,bombshelldead,bob-omb,bob-omblit,bob-ombfuse,"+
-        "beetle,beetleshell,beetleshellwake,beetleshellspin,beetleshelldead,"+
-        "spinyegg,spiny,spinyshell,spinyshellwake,spinyshellspin,spinyshelldead,"+
+        "beetle,beetleshell,beetleshellwake,beetleshellspin,beetleshelldead,busterbeetle,busterbeetlecarry,busterbeetlethrow,busterbeetledead,parabeetle,parabeetledead,greenparabeetle,greenparabeetledead,"+
+        "spinyegg,spiny,spinyshell,spinyshellwake,spinyshellspin,spinyshelldead,spinyball,spinyballdead,pokey,pokeybody,"+
         "spike,spikeballthrow,spikedead,oldspike,oldspikeballthrow,oldspikedead,"+
         "snowspike,snowspikeballthrow,snowspikedead,firespike,firespikeballthrow,firespikedead,"+
-        "lakitu,lakituaim,lakitudead,lakitucloud,pokey,pokeybody,angrysun,angrysundescend,moon,moondescend,"+
+        "lakitu,lakituaim,lakitudead,lakitucloud,angrysun,angrysundescend,moon,moondescend,"+
         "hammerbro,hammerbrojump,hammerbroaim,hammerbrodead,firebro,firebrojump,firebroaim,firebrodead,boomerangbro,boomerangbrojump,boomerangbroaim,boomerangbrodead,"+
-        "rex,rexsmall,rexsmash,rexdead,rexsmalldead,montydigup,montydig,hole,montypop,montymole,montydead,"+
-        "wigglerhead,wigglerbod,wigglerheaddead,wigglerboddead,wigglerheadangery,wigglerbodangery,wigglerheadangerydead,wigglerbodangerydead,"+
+        "rex,rexsmall,rexsmash,rexdead,rexsmalldead,"+
+        "montydigup,montydig,hole,montypop,montymole,montydead,rockywrenchcap,rockywrenchappear,rockywrench,rockywrenchhide,rockywrenchdead,"+
+        "wigglerhead,wigglerbod,wigglerheaddead,wigglerboddead,wigglerheadangery,wigglerbodangery,wigglerheadangerydead,wigglerbodangerydead,firesnake,firesnakedead,"+
         "piranha,piranhadie,redpiranha,redpiranhadie,"+
-        "firepiranhaup,firepiranhaupshoot,firepiranhadown,firepiranhadownshoot,firepiranhamiddle,firepiranhamiddleshoot,"+
-        "cheep,cheepdead,greencheep,greencheepdead,cheepfly,cheepflydead,blooper,blooperdead,fishbones,fishbonesattack,fishbonesdead,urchin,"+
-        "bullet,bulletdead,bullseyebullet,bullseyebulletdead,"+
-        "lavabubble,lavabubbledown,thwomp,thwompangry,thwompdown,thwompangryside,thwompside,bthwomp,bthwompangry,bthwompdown,bthwompangryside,bthwompside,thwimp,"+
+        "firepiranhaup,firepiranhaupshoot,firepiranhadown,firepiranhadownshoot,firepiranhamiddle,firepiranhamiddleshoot,ptooie,ptooieblow,nipper,nipperjump,nipperdead,"+
+        "cheep,cheepdead,greencheep,greencheepdead,cheepfly,cheepflydead,spikecheep,spikecheepdead,bossbass,bossbassate,bossbassdead,"+
+        "blooper,blooperdead,blooperkid,fishbones,fishbonesattack,fishbonesdead,urchin,lavalotus,lavalotusshoot,"+
+        "bullet,bulletdead,bullseyebullet,bullseyebulletdead,flamechomp,flamechompignite,flamechompdead,chainchomp,chainchompdead,"+
+        "lavabubble,lavabubbledown,thwomp,thwompangry,thwompdown,thwompangryside,thwompside,bthwomp,bthwompangry,bthwompdown,bthwompangryside,bthwompside,thwimp,hotfoot,hotfootwalk,"+
         "crabmeat,crabmeatshoot,newtrontrans,newtronshoot,newtrongo,chopper,greenorbinaut,blueorbinaut,redorbinaut,bumperorbinaut,"+
         "bombstand,bombwalk,bombignite,buzzbombfly,buzzbombhover,"+
         "samba,pig,"
@@ -102,7 +104,8 @@ with (globalmanager) {
     listBoss=
         "fakebowser,fakebowserfire,fakebowserpanic,"+
         "bowser,bowserfire,bowserpanic,"+
-        "dowser,dowserfire,dowserpanic,"
+        "dowser,dowserfire,dowserpanic,"+
+        "boomboom,boomboomhit,boomboomsit,"
 
     global.enemybosssprites=string_count(",",listBoss)
     for (i=0;i<global.enemybosssprites;i+=1) {
