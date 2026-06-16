@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,jump,bonk,ball,spindash,push,hang,fire,fire2,fire3,dash,dashfall,dropdash,slide,zerodash,momentumbreak,wallslide,doublejump,doublejumpbonk,doublejumpfall,runjump,longjump,sideflip,groundpound,poundfall,marioslide,dive,spinjump,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit,tailspin,tailidle
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,jump,bonk,ball,spindash,push,hang,fire,fire2,fire3,dash,dashfall,dropdash,slide,zerodash,momentumbreak,wallslide,doublejump,doublejumpbonk,doublejumpfall,runjump,longjump,sideflip,groundpound,poundfall,marioslide,dive,spinjump,dash8glide,dash8up,dash8diagup,dash8side,dash8diagdown,dash8down,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit,tailspin,tailidle
 
 
 #define soundlist
@@ -20,6 +20,11 @@ disablespindust=funnytruefalse(playerskindat(p2,name+" disable spindust"))
 spindustframes=nozerounreal(playerskindat(p2,name+" spindash dust frames"),8)-1 //subtract 1 for Silly
 spindustspeed=nozerounreal(playerskindat(p2,name+" spindash dust speed"),1)
 
+firedashtranslucent=funnytruefalse(playerskindat(p2,name+" firedash translucent"))
+firedashblendmode=funnytruefalse(playerskindat(p2,name+" firedash blendmode"))
+fireballtrail=funnytruefalse(playerskindat(p2,name+" fireball trail"))
+elecballtrail=funnytruefalse(playerskindat(p2,name+" elecball trail"))
+iceballtrail=funnytruefalse(playerskindat(p2,name+" iceball trail"))
 
 for (i=0;i<=7;i+=1){
 
@@ -214,6 +219,28 @@ for (i=0;i<=7;i+=1){
 
 
 
+	//Custom fun stuffs
+	can_8dashabut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash A"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash A")	if (string(temp)!="0") can_8dashabut[i]=funnytruefalse(temp)
+	can_8dashbbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash B"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash B")	if (string(temp)!="0") can_8dashbbut[i]=funnytruefalse(temp)
+	can_8dashcbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash C"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash C")	if (string(temp)!="0") can_8dashcbut[i]=funnytruefalse(temp)
+	can_8dashxbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash X"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash X")	if (string(temp)!="0") can_8dashxbut[i]=funnytruefalse(temp)
+	can_8dashybut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash Y"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash Y")	if (string(temp)!="0") can_8dashybut[i]=funnytruefalse(temp)
+	can_8dashzbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash Z"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash Z")	if (string(temp)!="0") can_8dashzbut[i]=funnytruefalse(temp)
+	air8dash_amount[i]=unreal(playerskindat(p2,"simple-overall eight directional dash amount"),0)
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash amount")	if (string(temp)!="0") air8dash_amount[i]=real(temp)
+	can_8dashglide[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash glide"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash glide")	if (string(temp)!="0") can_8dashglide[i]=funnytruefalse(temp)
+	air8dash_speed[i]=unreal(playerskindat(p2,"simple-overall eight directional dash speed"),0)
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash speed")	if (string(temp)!="0") air8dash_speed[i]=real(temp)
+
+
+
 //setup the movelist
 
 //Size is 0
@@ -280,6 +307,7 @@ for (i=0;i<=7;i+=1){
 	global.movelist[global.option[p2],i]+=replacebuttonnames("[c](Air) Dive#")
 
 	//xbut shit
+	
 	
 	//ybut shit
 	
@@ -408,12 +436,20 @@ if (boomeffect){
 	boomeffect+=0.1
 	if boomeffect>=5 boomeffect=0
 }
+if firedashtranslucent
+if (firedash && !piped) {
+	if firedashblendmode draw_set_blend_mode(bm_add)
+    draw_sprite_part_ext(sheetshields,0,209+40*floor(firedash/2 mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+	if firedashblendmode draw_set_blend_mode(bm_normal)
+}
 
 #define effectsfront
 
 
 if (firedash && !piped) {
-    draw_sprite_part_ext(sheetshields,0,209+40*(firedash mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha)
+	if firedashblendmode draw_set_blend_mode(bm_add)
+    draw_sprite_part_ext(sheetshields,0,209+40*floor(firedash/2 mod 4),49,39,39,round(x-19.5*xsc),round(y-19.5+dy)+4,xsc,1,$ffffff,alpha-0.5*firedashtranslucent)
+	if firedashblendmode draw_set_blend_mode(bm_normal)
 }
 if (insta && insta<14) {
     draw_sprite_part_ext(sheetshields,0,209+(floor((insta-1)/2) mod 4)*40,9,39,39,round(x-19.5*xsc),round(y-19.5+dy+4*!size)+4,xsc,1,$ffffff,alpha)
@@ -524,13 +560,15 @@ else if (mario_slide) {sprite="marioslide" if slobal=0 sprite="slide"}
 else if (slide) {sprite="slide" if slobal!=0 && sign(slobal)==sign(hsp) sprite="marioslide" }
 else if (spindash) {sprite="spindash"}
 else if (crouch) {sprite="crouch"}
-
 else if (jump) {
 	if (onvine) {sprite="climbing" frspd=sign(left+right+up+down)}
+	
 	else if (mombreak) {sprite="momentumbreak"}
 	else if (wallhang && vsp>=1 && !spinjump && can_wallhang[size]) {sprite="wallslide"}
 	else if (zerodash){sprite ="zerodash"}
 	else if (dropdash) {sprite="dropdash"}
+	else if (dash8timer) {sprite="dash8side" if vsp<0 {if hsp!=0 sprite="dash8diagup" else sprite="dash8up"} else if vsp> 0 {if hsp!=0 sprite="dash8diagdown" else sprite="dash8down"}}
+	else if dash8gliding { sprite="dash8glide"}
 	else if (dive) {sprite="dive"}
 	else if (spinjump) sprite="spinjump"
     else if (sprung) {sprite="spring" fallspr="airwalk" if (vsp>=0) {sprung=0 fall=1}}
@@ -603,7 +641,7 @@ if (up) {
 } else lookup=0
 
 //list of things that prevent you from moving
-if (spindash || (crouch && !jump) || (super && fall=10) || poundcancel || pound || vinegrab || grabflagpole || peelout ||wallbonk || mario_slide) h=0
+if (spindash || (crouch && !jump) || (super && fall=10) || poundcancel || pound || vinegrab || grabflagpole || peelout ||wallbonk || mario_slide || dash8timer) h=0
 
 //movement
 if (h!=0 && !wallkick) {
@@ -663,6 +701,32 @@ if (h!=0 && !wallkick) {
 if (push!=h) push=0
 
 com_di()
+
+
+
+/////////////////////////DO 8DASH
+dash8but=false
+if can_8dashabut[size] dash8but=(abut&&jump)
+if !dash8but if can_8dashbbut[size] dash8but=bbut
+if !dash8but if can_8dashcbut[size] dash8but=cbut
+if !dash8but if can_8dashxbut[size] dash8but=xbut
+if !dash8but if can_8dashybut[size] dash8but=ybut
+if !dash8but if can_8dashzbut[size] dash8but=zbut
+
+if dash8but && !dash8timer && (h!=0 || up || down) && air8dash_amount[size]>dash8_amount {
+	hsp=h*air8dash_speed[size]
+	hyperspeed=h*2
+	vsp=(1+air8dash_speed[size])*(down-up)
+	if can_8dashglide[size] { dash8gliding=true}
+	dash8_amount+=1
+	dash8timer=10
+	jump=1
+	if h!=0 xsc=h
+
+}
+if !jump {dash8gliding=false dash8_amount=0 dash8timer=0}
+dash8timer-=1
+
 
 //code for specifically the a button
 if ((abut || jumpbufferdo) && (!springin)) {
@@ -1094,7 +1158,7 @@ if !mario_movement[size]{
 }
 if (pound) {
 vsp=min(6,vsp)
-} else vsp=min(7+downpiped,vsp)
+} else vsp=min(7+downpiped-(dash8gliding && !dash8timer)*6,vsp)
 
 ///movement
 //hi moster here dont uncomment the yground or easyground stuff because its required for the cool new slope system to work
@@ -1125,8 +1189,8 @@ if (!dead && !grabflagpole) {
 			else if (underwater() && carry) {vsp=approach_val(vsp,0,0.075)}
 			else if (pound>=14 && pound<15) {vsp=6*wf}
 			else if (water) {vsp-=0.1*wf if (vsp<1.5) {pound=0}}
-			else {vsp+=0.375*wf}
-		}else if fall!=69 && !luijump{
+			else  {vsp+=0.375*wf}
+		}else if fall!=69 && !luijump && !dash8timer && !climb{
             vsp+=0.15*wf-(size=5 && vsp>-0.35 && !water)*0.075
         }
 		vine_climbing()
@@ -2042,7 +2106,7 @@ else if (event="step"){
 	event=type+"_step"
 }
 else if (event="draw"){
-
+	
 	event=type+"_draw"
 	
 }
@@ -2062,16 +2126,18 @@ if (event="fireball_create"){
 	if com_proj_dmg_enemies(false) {with owner {projtype="fireplosion" fire_projectile(other.x,other.y)} instance_destroy()}
 	
 }else if (event="fireball_draw"){
-	prevframe=frame-2
-	if prevframe<0 prevframe+=4
-	draw_set_blend_mode(bm_add)
-	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
+	if fireballtrail{
+		prevframe=frame-2
+		if prevframe<0 prevframe+=4
+		draw_set_blend_mode(bm_add)
+		draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*17,26,16,16,round(prev_x[2]-2*xsc),round(prev_y[2]-2*1),xsc/4,0.25,c_white,1)
 
-	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
-	
-	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
-	
-	draw_set_blend_mode(bm_normal)
+		draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*17,26,16,16,round(prev_x[1]-4*xsc),round(prev_y[1]-4*1),xsc/2,0.5,c_white,1)
+		
+		draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-10*xsc),round(y-10*1),xsc*1.25,1.25,c_white,1)
+		
+		draw_set_blend_mode(bm_normal)
+	}
 	draw_sprite_part_ext(owner.sheetshields,0,369+frame*17,26,16,16,round(x-8*xsc),round(y-8*1),xsc,1,c_white,1)
 
 }
@@ -2102,17 +2168,18 @@ if (event="thunderball_create"){
 	com_proj_dmg_enemies(false)
 	y=ystart+cos(fr)*3
 }else if (event="thunderball_draw"){
-prevframe=frame-2
-	if prevframe<0 prevframe+=4
-	draw_set_blend_mode(bm_add)
-	draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
+	if fireballtrail{
+		prevframe=frame-2
+		if prevframe<0 prevframe+=4
+		draw_set_blend_mode(bm_add)
+		draw_sprite_part_ext(owner.sheetshields,0,369+(prevframe)*31,43,30,30,round(prev_x[7]-3*xsc),round(prev_y[7]-3*1),xsc/4,0.25,c_white,1)
 
-	draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
-	
-	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
-	
-	draw_set_blend_mode(bm_normal)
-
+		draw_sprite_part_ext(owner.sheetshields,0,369+((prevframe+1) mod 3)*31,43,30,30,round(prev_x[4]-7*xsc),round(prev_y[4]-7*1),xsc/2,0.5,c_white,1)
+		
+		draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-19*xsc),round(y-19*1),xsc*1.25,1.25,c_white,1)
+		
+		draw_set_blend_mode(bm_normal)
+	}
 	draw_sprite_part_ext(owner.sheetshields,0,369+frame*31,43,30,30,round(x-15*xsc),round(y-15*1),xsc,1,c_white,1)
 
 
@@ -2287,3 +2354,296 @@ if (event="beetroot_create"){
 	ssw_items("btroot")
 
 }
+
+
+
+
+if (event="bomb_create") {
+	explod=0
+	red=0
+	explodtimer=0
+	image_xscale=6
+	image_yscale=6
+	
+	hspeed=owner.hsp+3*owner.xsc
+	vspeed=-2
+	if owner.up vspeed=-4
+	if owner.down {hspeed=0 vspeed=0}
+	
+	alarm0=30
+	size=owner.size
+}
+if (event="bomb_step") {
+	visible=1
+	if explod=0 {
+		calcmoving()
+		
+		if !inview() instance_destroy()
+		
+		explodtimer=(explodtimer+1) mod 16
+		red=explodtimer<8
+		
+		if (vspeed<0) {
+			coll=collision(0,vspeed)
+			if (coll) {
+				vspeed=abs(vspeed)/2
+				y=coll.bbox_bottom+6
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			} else vspeed=min(5,vspeed+0.25)
+		} else {
+			coll=collision(0,vspeed)
+			if (coll) {
+				y=coll.bbox_top-6
+				hspeed=max(0,abs(hspeed)-0.15)*sign(hspeed)
+				vspeed=-abs(vspeed)*0.3
+				if (abs(vspeed)<1) vspeed=0
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			} else vspeed=min(5,vspeed+0.25)
+		}                  
+		
+		
+		coll=collision(hspeed,0)
+		if (coll) {
+			hspeed=abs(hspeed)*sign(x-mean(coll.bbox_left,coll.bbox_right))
+			playsfx("simplebomb")
+			explod=1
+			image_xscale=1.25
+			image_yscale=1.25
+			hspeed=0
+			vspeed=0
+			sprite_index=spr_round32
+			mask_index=spr_round32
+			alarm0=32
+			seqcount=2
+		}
+		coll=instance_place(x,y,player)
+		if (coll){
+			if (other.owner=owner) exit
+			if (instance_exists(flag)) if (flag.passed[owner.p2] || flag.passed[other.owner.p2]) exit
+			if (other.object_index=damager && other.hittype="gut") {
+				speed=-speed 
+				owner=other.owner 
+				contactbomb=1
+			} else {
+				playsfx("simplebomb")
+				explod=1
+				image_xscale=1.25
+				image_yscale=1.25
+				hspeed=0
+				vspeed=0
+				sprite_index=spr_round32
+				mask_index=spr_round32
+				alarm0=32
+				seqcount=2
+			}
+		}
+		
+		coll=instance_place(x,y,enemy)
+		
+		if (coll) if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+		&& coll.object_index!=boo && coll.object_index!=urchin) {
+			explod=1
+			image_xscale=1.25
+			image_yscale=1.25
+			hspeed=0
+			vspeed=0
+			sprite_index=spr_round32
+			mask_index=spr_round32
+			alarm0=32
+			seqcount=2
+		}
+		
+		coll=instance_place(x,y,spreng)
+		if (coll){
+			x-=hspeed
+			hspeed*=-1
+			xsc*=-1
+			sound("itemspring") other.shot=12
+		}
+	} else {
+		image_xscale=1
+				image_yscale=1
+		sprite_index=spr_round32
+				mask_index=spr_round32
+		alarm0-=1
+		if !alarm0{
+			instance_destroy()
+		}
+		frame=global.fastframe4 mod 2
+		
+		coll=instance_place(x,y,enemy)
+		if (coll) {                   
+			if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+			&& coll.object_index!=boo && coll.object_index!=urchin
+			&& coll.object_index!=pokey && coll.object_index!=pokeybody) {
+				global.coll=owner.id
+				enemydie(coll,2)
+			}
+		}
+		
+		coll=instance_place(x,y,player)
+		if (coll) {
+			if (coll.id!=owner) if (!invincible(coll)) {    
+				if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { 
+					if (coll.name="knux" && coll.glide && sign(hspeed)=-sign(coll.hsp) && object_index!=powah_wave) {
+						hspeed=abs(coll.hsp+1)*esign(coll.hsp,1) 
+						owner=coll.id 
+						with (owner) 
+							playsfx("knuxreflect") 
+						exit
+					}                                                                   
+					if (coll.name="robo" && coll.lookup && coll.xsc=sign(hspeed)) {
+						instance_create(x,y,kickpart)
+						exit
+					}
+					with (coll) 
+						hurtplayer("enemy")
+				}
+			}
+		}
+		
+		
+		coll=instance_place(x,y,collider)
+		if (coll) {
+			if (object_is_ancestor(coll.object_index,hittable)) {
+				hitblock(coll,owner,1,-1,0)
+				with coll if bombvfx=false{
+					instance_create(x,y,kickpart)
+					bombvfx=true
+				}
+				
+			}
+		}
+		
+		coll=instance_place(x,y,bowserboss)
+		if (coll) {
+			if (!coll.flash) {
+				coll.hp-=1
+				coll.flash=64
+				coll.owner=owner
+				sound("enemybowserhurt")
+				instance_create(x,y,kickpart)
+				instance_destroy()
+			}
+		}
+	}
+}
+if (event="bomb_draw") {
+	if !explod
+	draw_sprite_part_ext(owner.sheetshields,0,369+17*red,191,16,16,round(x-8*xsc),round(y-16+dy)+4,xsc,1,$ffffff,1)
+	else
+	draw_sprite_part_ext(owner.sheetshields,0,209+40*(floor(global.bgscroll/5 mod 4)),169,39,39,round(x-20),round(y-20),1,1,$ffffff,1)
+}
+
+
+
+
+if (event="flamingknuckle_create") {
+
+    image_xscale=8
+    image_yscale=8
+    vspeed=0
+    last=24
+    friction=0.1
+    seqcount=2
+
+    frame_sub=0
+    frame=0
+    brickc=0
+    
+	flameknucklevert_sheetx=owner.flameknucklevert_sheetx
+	flameknucklevert_sheety=owner.flameknucklevert_sheety
+	flameknucklehor_sheetx=owner.flameknucklehor_sheetx
+	flameknucklehor_sheety=owner.flameknucklehor_sheety
+
+    timer0=3
+    timer1=128
+    if owner.vert_proj=0{
+    if (sign(owner.hsp)=owner.xsc) hspeed=owner.hsp*0.5+4*owner.xsc
+        else hspeed=4*owner.xsc 
+        xsc=sign(hspeed)}
+        
+    if owner.up=1{
+    hspeed=0
+    vspeed=-4
+    xsc=owner.xsc
+    }
+}
+if (event="flamingknuckle_step") {
+    timer0-=1 if (timer0=0) visible=1
+    timer1-=1 if (timer1=0) instance_destroy()
+    calcmoving()
+
+    last-=1
+
+    frame=2-floor(last/8)
+    if (last=0) instance_destroy()
+    
+    if (!inview()) instance_destroy()
+    
+
+    coll=instance_place(x,y,collider)
+    if (coll) {
+        if (object_is_ancestor(coll.object_index,hittable)) {
+            if (coll.object_index=brick) brickc+=1 else brickc=4
+            hitblock(coll,owner,1,-1,0)
+            instance_create(x,y,kickpart) 
+        }    
+        if (brickc=4) {sound("itemblockbump") instance_destroy()}
+    }
+
+    coll=instance_place(x,y,enemy)
+    if (coll) {                    
+        if (coll.object_index!=bombenemy && coll.object_index!=drybones 
+        && coll.object_index!=boo && coll.object_index!=urchin
+        && coll.object_index!=beetle)
+        global.coll=owner.id
+        enemydie(coll,2)
+    }
+coll=instance_place(x,y,bowserboss)
+if (coll) {
+    if (!coll.flash) {
+        coll.hp-=1
+        coll.flash=64
+        coll.owner=owner
+        sound("enemybowserhurt")
+        instance_create(x,y,kickpart)
+        instance_destroy()
+    }
+}
+    coll=instance_place(x,y,player)
+    if (coll) {
+        if (coll.id!=owner) if (!invincible(coll)) {    
+            if (!flag.passed[owner.p2] && !flag.passed[coll.p2] && !coll.flash && !coll.piped) { 
+                if (coll.name="knux" && coll.glide && sign(hspeed)=-sign(coll.hsp) && object_index!=powah_wave) {hspeed=abs(coll.hsp+1)*esign(coll.hsp,1) owner=coll.id with (owner) playsfx("knuxreflect") exit}                                                                   
+                if (coll.name="robo" && coll.lookup && coll.xsc=sign(hspeed)) {instance_create(x,y,kickpart) instance_destroy() exit}
+                with (coll) hurtplayer("enemy")
+            }
+            instance_create(x,y,kickpart) instance_destroy()
+        }
+    }
+}
+if (event="flamingknuckle_draw") {
+        if owner.projectilepalettes scr_applyPaletteSegmentedAlpha(global.shaderPaletteSwapAlpha,global.palettesprites[owner.p2*100],global.pal_1[owner.p2]+1,global.pal_2[owner.p2]+1,global.pal_3[owner.p2]+1,global.pal_4[owner.p2]+1,owner.size,1*(1-0.75*shadow),owner.totpal+1)
+        if (vspeed=0) {draw_sprite_part_ext(owner.sheetshields,0,437,124+17*frame,32,16,round(x-24*xsc),round(y-8),xsc,1,$ffffff,1)}
+        else {draw_sprite_part_ext(owner.sheetshields,0,420+(17*frame),175,16,32,round(x-8),round(y-8),1,1,$ffffff,1)}
+		if owner.projectilepalettes shader_reset()
+    }
