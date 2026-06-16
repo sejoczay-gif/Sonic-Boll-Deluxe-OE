@@ -11,7 +11,7 @@ deaccelaration=0.33
 jump type=Sonic
 movement type=Sonic
 
-airjump=true
+airjump=false
 airjump amount=1
 airjump refreshes other moves=false
 airjump changevertspeed=true
@@ -50,6 +50,15 @@ groundpound=false
 dive=false
 spinjump=false
 
+eight directional dash A=false
+eight directional dash B=false
+eight directional dash C=false
+eight directional dash X=true
+eight directional dash Y=false
+eight directional dash Z=false
+eight directional dash amount=8
+eight directional dash glide=true
+eight directional dash speed=4
 
 
 fire projectile=false
@@ -133,6 +142,9 @@ victory duration=50
 time until wait=300
 pipe squish=20
 pole center offset=8
+
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,jump,bonk,ball,spindash,push,hang,fire,fire2,fire3,dash,dashfall,dropdash,slide,zerodash,momentumbreak,wallslide,doublejump,doublejumpbonk,doublejumpfall,runjump,longjump,sideflip,groundpound,poundfall,marioslide,dive,spinjump,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit,tailspin,tailidle
+
 
 firedash translucent=true
 firedash blendmode=false

@@ -1,5 +1,5 @@
 #define spritelist
-stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,jump,bonk,ball,spindash,push,hang,fire,fire2,fire3,dash,dashfall,dropdash,slide,zerodash,momentumbreak,wallslide,doublejump,doublejumpbonk,doublejumpfall,runjump,longjump,sideflip,groundpound,poundfall,marioslide,dive,spinjump,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit,tailspin,tailidle
+stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,jump,bonk,ball,spindash,push,hang,fire,fire2,fire3,dash,dashfall,dropdash,slide,zerodash,momentumbreak,wallslide,doublejump,doublejumpbonk,doublejumpfall,runjump,longjump,sideflip,groundpound,poundfall,marioslide,dive,spinjump,dash8glide,dash8up,dash8diagup,dash8side,dash8diagdown,dash8down,climbing,flagslide,grind,piping,pipingup,sidepiping,doorenter,doorexit,tailspin,tailidle
 
 
 #define soundlist
@@ -219,6 +219,28 @@ for (i=0;i<=7;i+=1){
 
 
 
+	//Custom fun stuffs
+	can_8dashabut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash A"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash A")	if (string(temp)!="0") can_8dashabut[i]=funnytruefalse(temp)
+	can_8dashbbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash B"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash B")	if (string(temp)!="0") can_8dashbbut[i]=funnytruefalse(temp)
+	can_8dashcbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash C"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash C")	if (string(temp)!="0") can_8dashcbut[i]=funnytruefalse(temp)
+	can_8dashxbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash X"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash X")	if (string(temp)!="0") can_8dashxbut[i]=funnytruefalse(temp)
+	can_8dashybut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash Y"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash Y")	if (string(temp)!="0") can_8dashybut[i]=funnytruefalse(temp)
+	can_8dashzbut[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash Z"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash Z")	if (string(temp)!="0") can_8dashzbut[i]=funnytruefalse(temp)
+	air8dash_amount[i]=unreal(playerskindat(p2,"simple-overall eight directional dash amount"),0)
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash amount")	if (string(temp)!="0") air8dash_amount[i]=real(temp)
+	can_8dashglide[i]=funnytruefalse(playerskindat(p2,"simple-overall eight directional dash glide"))
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash glide")	if (string(temp)!="0") can_8dashglide[i]=funnytruefalse(temp)
+	air8dash_speed[i]=unreal(playerskindat(p2,"simple-overall eight directional dash speed"),0)
+	temp=playerskindat(p2,"simple"+sizename+" eight directional dash speed")	if (string(temp)!="0") air8dash_speed[i]=real(temp)
+
+
+
 //setup the movelist
 
 //Size is 0
@@ -285,6 +307,7 @@ for (i=0;i<=7;i+=1){
 	global.movelist[global.option[p2],i]+=replacebuttonnames("[c](Air) Dive#")
 
 	//xbut shit
+	
 	
 	//ybut shit
 	
@@ -537,13 +560,15 @@ else if (mario_slide) {sprite="marioslide" if slobal=0 sprite="slide"}
 else if (slide) {sprite="slide" if slobal!=0 && sign(slobal)==sign(hsp) sprite="marioslide" }
 else if (spindash) {sprite="spindash"}
 else if (crouch) {sprite="crouch"}
-
 else if (jump) {
 	if (onvine) {sprite="climbing" frspd=sign(left+right+up+down)}
+	
 	else if (mombreak) {sprite="momentumbreak"}
 	else if (wallhang && vsp>=1 && !spinjump && can_wallhang[size]) {sprite="wallslide"}
 	else if (zerodash){sprite ="zerodash"}
 	else if (dropdash) {sprite="dropdash"}
+	else if (dash8timer) {sprite="dash8side" if vsp<0 {if hsp!=0 sprite="dash8diagup" else sprite="dash8up"} else if vsp> 0 {if hsp!=0 sprite="dash8diagdown" else sprite="dash8down"}}
+	else if dash8gliding { sprite="dash8glide"}
 	else if (dive) {sprite="dive"}
 	else if (spinjump) sprite="spinjump"
     else if (sprung) {sprite="spring" fallspr="airwalk" if (vsp>=0) {sprung=0 fall=1}}
@@ -616,7 +641,7 @@ if (up) {
 } else lookup=0
 
 //list of things that prevent you from moving
-if (spindash || (crouch && !jump) || (super && fall=10) || poundcancel || pound || vinegrab || grabflagpole || peelout ||wallbonk || mario_slide) h=0
+if (spindash || (crouch && !jump) || (super && fall=10) || poundcancel || pound || vinegrab || grabflagpole || peelout ||wallbonk || mario_slide || dash8timer) h=0
 
 //movement
 if (h!=0 && !wallkick) {
@@ -676,6 +701,32 @@ if (h!=0 && !wallkick) {
 if (push!=h) push=0
 
 com_di()
+
+
+
+/////////////////////////DO 8DASH
+dash8but=false
+if can_8dashabut[size] dash8but=(abut&&jump)
+if !dash8but if can_8dashbbut[size] dash8but=bbut
+if !dash8but if can_8dashcbut[size] dash8but=cbut
+if !dash8but if can_8dashxbut[size] dash8but=xbut
+if !dash8but if can_8dashybut[size] dash8but=ybut
+if !dash8but if can_8dashzbut[size] dash8but=zbut
+
+if dash8but && !dash8timer && (h!=0 || up || down) && air8dash_amount[size]>dash8_amount {
+	hsp=h*air8dash_speed[size]
+	hyperspeed=h*2
+	vsp=(1+air8dash_speed[size])*(down-up)
+	if can_8dashglide[size] { dash8gliding=true}
+	dash8_amount+=1
+	dash8timer=10
+	jump=1
+	if h!=0 xsc=h
+
+}
+if !jump {dash8gliding=false dash8_amount=0 dash8timer=0}
+dash8timer-=1
+
 
 //code for specifically the a button
 if ((abut || jumpbufferdo) && (!springin)) {
@@ -1107,7 +1158,7 @@ if !mario_movement[size]{
 }
 if (pound) {
 vsp=min(6,vsp)
-} else vsp=min(7+downpiped,vsp)
+} else vsp=min(7+downpiped-(dash8gliding && !dash8timer)*6,vsp)
 
 ///movement
 //hi moster here dont uncomment the yground or easyground stuff because its required for the cool new slope system to work
@@ -1138,8 +1189,8 @@ if (!dead && !grabflagpole) {
 			else if (underwater() && carry) {vsp=approach_val(vsp,0,0.075)}
 			else if (pound>=14 && pound<15) {vsp=6*wf}
 			else if (water) {vsp-=0.1*wf if (vsp<1.5) {pound=0}}
-			else {vsp+=0.375*wf}
-		}else if fall!=69 && !luijump{
+			else  {vsp+=0.375*wf}
+		}else if fall!=69 && !luijump && !dash8timer && !climb{
             vsp+=0.15*wf-(size=5 && vsp>-0.35 && !water)*0.075
         }
 		vine_climbing()
