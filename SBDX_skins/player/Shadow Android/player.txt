@@ -1047,22 +1047,22 @@ deaccelaration=0.33
 jump type=Sonic
 movement type=Sonic
 
-airjump=false
+airjump=true
 airjump amount=1
 airjump refreshes other moves=false
 airjump changevertspeed=true
 airjump vertspeed=-3
 airjump changehorspeed=false
-airjump horspeed=0
+airjump horspeed=5
 
 spindash=true
 roll=true
 
-instashield=true
-dropdash=true
+instashield=false
+dropdash=false
 
 wallkick=true
-wallslide=false
+wallslide=true
 
 
 zerodash=false
@@ -1076,35 +1076,77 @@ sonicwingdash=false
 slide=true
 slidekick=false
 
-momentumbreak=true
+momentumbreak=false
 
 
 longjump=false
 sideflip=false
-triplejump=true
-groundpound=false
+triplejump=false
+groundpound=true
 dive=false
 spinjump=false
 
+fire projectile=false
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=thunderball
+projectile limit=1
+projectile firing duration=32
+
+
+
+
 [simple-basic]
-zerodash=true
+zerodash=false
 top speed=3
 
+airjump vertspeed=-2
+airjump horspeed=4
+
 [simple-big]
-zerodash=true
+zerodash=false
 
 [simple-fire]
-zerodashEX=true
+zerodashEX=false
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=bomb
+projectile limit=1
+projectile firing duration=32
 
 [simple-feather]
-zerodashplus=true
+zerodashplus=false
 momentumbreak=false
-dive=true
-wallslide=true
+dive=false
+wallslide=false
+
+airjump amount=2
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=bubble
+projectile limit=1
+projectile firing duration=32
 
 
 [simple-mini]
 top speed=4
+
+[simple-beet]
+fire projectile=true
+projectile button=B
+fire projectile when grounded=true
+fire projectile when aerial=true
+projectile type=beetroot
+projectile limit=2
+projectile firing duration=16
+
+[simple-lui]
+luijump=true
 
 
 [simple]
@@ -1167,7 +1209,7 @@ signpost graphic y=27
 spindash dust graphic x=8
 spindash dust graphic y=96
 
-custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,push,hang,fire,dash,specfall,climbing,flagslide,dropdash,piping,pipingup,sidepiping,doorenter,doorexit,momentumbreak,teleport,slide
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,springfall,jump,bonk,ball,spindash,push,hang,fire,dash,specfall,climbing,flagslide,dropdash,piping,pipingup,sidepiping,doorenter,doorexit,momentumbreak,teleport,spacer,groundpound,wallslide,spacer2,spacer3,spacer4,spacer5,poundfall,marioslide,slide
 
 reroute fall=jump
 reroute spincharge=spindash
@@ -1176,7 +1218,8 @@ reroute doublejump=spring
 reroute doublejumpfall=springfall
 reroute doublejumpbonk=bonk
 reroute zerodash=dash
-
+reroute slide=teleport
+reroute marioslide=teleport
 
 stand frames=1
 wait frames=6
@@ -1206,7 +1249,10 @@ climbon2 frames=2
 flagslide frames=1
 piping frames=4
 momentumbreak frames=1
-slide frames=2
+slide frames=6
+teleport frames=9
+groundpound frames=6
+poundfall frames=16
 
 wait loop=13
 pose loop=4
@@ -1222,6 +1268,10 @@ walk loop=1
 run loop=3
 maxrun loop=3
 fire loop=6
+slide loop=3
+teleport loop=8
+groundpound loop=3
+
 
 stand speed=0.1
 pose speed=0.25
@@ -1250,6 +1300,9 @@ climbing speed=0.125
 climbon2 speed=0.05
 piping speed=0.20
 slide speed=0.5
+teleport speed=0.5
+groundpound speed=0.2
+poundfall speed=1
 
 stand frametimes=16,1,1
 wait frametimes=2,30,1,20,1,1
@@ -1257,7 +1310,7 @@ pose frametimes=1,1,1,1
 lookup frametimes=1,37,3,3
 run frametimes=1,1,1,1,1,1,1,1,1,1,1,1,1,1
 crouch frametimes=1,37,3,3
-maxrun frametimes=5,5,1,1,1,1
+maxrun frametimes=1,1,1,1,1,1
 specfall frametimes=3,2,1,1
 brake frametimes= 1,1,2,10
 
