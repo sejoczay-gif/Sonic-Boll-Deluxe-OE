@@ -3,7 +3,7 @@ stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,ju
 
 
 #define soundlist
-release,skid,spin,spindash,insta,slide,boom,dash,dropdash,fireball,firedash,fly,jump2,peelcharge,peelrelease,tired,wallkick,smallwallkick,dive
+release,skid,spin,spindash,insta,slide,boom,dash,dropdash,fireball,firedash,fly,jump2,peelcharge,peelrelease,tired,wallkick,smallwallkick,dive,8dash
 
 
 #define movelist
@@ -722,6 +722,7 @@ if dash8but && !dash8timer && (h!=0 || up || down) && air8dash_amount[size]>dash
 	dash8timer=10
 	jump=1
 	if h!=0 xsc=h
+	playsfx(name+"8dash")
 
 }
 if !jump {dash8gliding=false dash8_amount=0 dash8timer=0}
@@ -800,6 +801,12 @@ if ((abut || jumpbufferdo) && (!springin)) {
 				longjump=0
 				jumpsnd=playsfx(name+"jump2",0,1.2)
 				braking=0
+				i=shoot(x,y,smoke)
+				if airjumpy_changevsp[size]
+				i.vspeed=-vsp
+				if airjumpy_changehsp[size]
+				i.hspeed=-hsp
+				
 				if can_luijump[size] luijump=9
 				
 			}
