@@ -1,6 +1,6 @@
 [simple-overall]
 has tails=false
-name color=167,167,70
+name color=249,194,43
 
 
 
@@ -120,7 +120,7 @@ eight directional dash speed=4
 
 [simple]
 name=Charmy
-short small form=0.7
+short small form=0.8
 
 icon speed=6
 icon loop=yes
@@ -168,10 +168,10 @@ size reroute feather=big
 size reroute extra=big
 
 use paletting=true
-defaultspray 1=8
-defaultspray 2=6
-defaultspray 3=11
-defaultspray 4=1
+defaultspray 1=1
+defaultspray 2=10
+defaultspray 3=5
+defaultspray 4=0
 
 stand frames=3
 wait frames=7
@@ -181,7 +181,7 @@ crouch frames=2
 knock frames=1
 dead frames=1
 walk frames=8
-run frames=8
+run frames=3
 maxrun frames=5
 brake frames=4
 spring frames=2
@@ -238,7 +238,7 @@ crouch speed=0.22
 zerodash speed=0.25
 pose speed=0.20
 walk speed=0.5
-run speed=0.5
+run speed=0.25
 maxrun speed=0.25
 spring speed=0.25
 jump speed=0.5
@@ -354,3 +354,4 @@ savetext3=Hurrah to Charmy
 savetext4=Our Only Hero 
 savetext5=This Ends Your Trip
 savetext6=Of a Long Friendship
+credits=Todadoat, Kingsmen
