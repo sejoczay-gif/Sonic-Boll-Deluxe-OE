@@ -713,7 +713,7 @@ if !dash8but if can_8dashxbut[size] dash8but=xbut
 if !dash8but if can_8dashybut[size] dash8but=ybut
 if !dash8but if can_8dashzbut[size] dash8but=zbut
 
-if dash8but && !dash8timer && (h!=0 || up || down) && air8dash_amount[size]>dash8_amount {
+if dash8but && !dash8timer && (h!=0 || up || down) && air8dash_amount[size]>dash8_amount &&!hurt &&!onvine {
 	hsp=h*air8dash_speed[size]
 	hyperspeed=h*2
 	vsp=(1+air8dash_speed[size])*(down-up)
