@@ -1,6 +1,6 @@
 [simple-overall]
 has tails=false
-name color=249,194,43
+name color=255,222,0
 
 
 
@@ -146,14 +146,14 @@ custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,sprin
 connect doorenter=true
 connect dash8diagdown=true
 
-reroute airwalk=dash8glide
+reroute ball=jump
+reroute airwalk=walk
 reroute doorexit=stand
 reroute sidepiping=walk
 reroute piping=pose
 reroute pipingup=pose
 reroute grind=walk
 reroute maxrun=run
-reroute ball=jump
 
 firedash translucent=true
 firedash blendmode=false
@@ -168,29 +168,30 @@ size reroute feather=big
 size reroute extra=big
 
 use paletting=true
-defaultspray 1=1
-defaultspray 2=10
-defaultspray 3=5
+defaultspray 1=0
+defaultspray 2=0
+defaultspray 3=0
 defaultspray 4=0
+total palettes=1
 
 stand frames=3
-wait frames=7
+wait frames=3
 lookup frames=4
-pose frames=5
+pose frames=1
 crouch frames=2
 knock frames=1
 dead frames=1
-walk frames=8
+walk frames=6
 run frames=3
 maxrun frames=5
-brake frames=4
+brake frames=1
 spring frames=2
 jump frames=8
 bonk frames=2
 ball frames=8
 dashfall frames=6
 spindash frames=4
-push frames=6
+push frames=4
 hang frames=6
 fire frames=4
 fire2 frames=3
@@ -214,7 +215,6 @@ dropdash frames=4
 airwalk frames=8
 
 
-wait loop=7
 pose loop=2
 maxrun loop=2
 crouch loop=2
@@ -237,11 +237,11 @@ lookup speed=0.22
 crouch speed=0.22
 zerodash speed=0.25
 pose speed=0.20
-walk speed=0.5
+walk speed=0.3
 run speed=0.25
 maxrun speed=0.25
 spring speed=0.25
-jump speed=0.5
+jump speed=0.25
 bonk speed=0.25
 knock speed=0.25
 brake speed=0.3
@@ -250,8 +250,8 @@ ball speed=0.5
 spindash speed=0.5
 specfall speed=0.4
 push speed=0.1
-hang speed=0.2
-fire speed=0.35
+hang speed=0.06
+fire speed=0.2
 fire2 speed=0.2
 dash speed=0.5
 climbing speed=0.125
@@ -271,7 +271,6 @@ dropdash speed=0.5
 airwalk speed=0.25
 
 stand frametimes=32,1,1
-wait frametimes=1,1,5,1.15,1.15,1.15,1.15,3
 maxrun frametimes=3,1,1,1,1
 pose frametimes=1.5,1,1,1,1
 push frametimes=2,1,1,2,1,1
@@ -354,4 +353,3 @@ savetext3=Hurrah to Charmy
 savetext4=Our Only Hero 
 savetext5=This Ends Your Trip
 savetext6=Of a Long Friendship
-credits=Todadoat, Kingsmen
