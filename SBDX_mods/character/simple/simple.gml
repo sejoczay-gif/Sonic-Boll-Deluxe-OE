@@ -3,7 +3,7 @@ stand,wait,lookup,pose,crouch,knock,dead,walk,run,maxrun,brake,spring,airwalk,ju
 
 
 #define soundlist
-release,skid,spin,spindash,insta,slide,boom,dash,dropdash,fireball,firedash,fly,jump2,peelcharge,peelrelease,tired,wallkick,smallwallkick,dive,8dash
+release,skid,spin,spindash,insta,slide,boom,dash,dropdash,fireball,firedash,fly,jump2,peelcharge,peelrelease,tired,wallkick,smallwallkick,dive,8dash,bomb
 
 
 #define movelist
