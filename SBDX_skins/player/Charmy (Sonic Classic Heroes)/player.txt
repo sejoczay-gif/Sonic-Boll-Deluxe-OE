@@ -141,11 +141,30 @@ single sheet=true
 singlesheet split width=8,8,264,8,8,8,8,8
 singlesheet spilt height=0,0,0,0,0,0
 
-custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,bonk,push,hang,fire,dash8side,dash8up,dash8down,dash8diagup,dash8diagdown,dash8glide,climbing,flagslide,doorenter
+custom sprite list=stand,wait,lookup,pose,crouch,knock,dead,walk,run,brake,spring,jump,push,hang,fire,dash8side,dash8up,dash8down,dash8diagup,dash8diagdown,dash8glide,climbing,flagslide,doorenter
 
-connect doorenter=true
+connect wait=true
+connect lookup=true
+connect pose=true
+connect crouch=true
+
+connect dead=true
+connect walk=true
+connect brake=true
+connect spring=true
+
+connect hang=true
+
+connect dash8side=true
+connect dash8up=true
+connect dash8diagup=true
 connect dash8diagdown=true
+connect dash8glide=true
 
+connect flagslide=true
+connect doorenter=true
+
+reroute bonk=jump
 reroute ball=jump
 reroute airwalk=walk
 reroute doorexit=stand
@@ -176,27 +195,27 @@ total palettes=1
 
 stand frames=3
 wait frames=3
-lookup frames=4
+lookup frames=1
 pose frames=1
-crouch frames=2
+crouch frames=1
 knock frames=1
 dead frames=1
 walk frames=6
 run frames=3
 maxrun frames=5
 brake frames=1
-spring frames=2
+spring frames=1
 jump frames=8
 bonk frames=2
 ball frames=8
 dashfall frames=6
 spindash frames=4
 push frames=4
-hang frames=6
+hang frames=3
 fire frames=4
 fire2 frames=3
 dash frames=6
-climbing frames=4
+climbing frames=2
 climbon2 frames=2
 flagslide frames=1
 tailidle frames=6
