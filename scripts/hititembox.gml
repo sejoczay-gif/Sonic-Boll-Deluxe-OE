@@ -87,7 +87,7 @@ with (blockcoll){
                     }
                     sound("itemappear")
                     mush=!owner.size
-                    if owner.name="somari" mush=0
+                    if owner.skipmush mush=0
                     if !mush mush=owner.size==5
                     alarm[0]=18
                 }
