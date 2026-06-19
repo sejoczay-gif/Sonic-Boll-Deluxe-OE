@@ -261,10 +261,10 @@ if (type="ring") {
 
 if (type="redcoinreward") {
     itemc+=1
-    if ((size=2 || super || size=3) && shielded) {
+    if ((size=2 || super || size=3 || size=6 || size=7) && shielded) {
         give_item(id,"1up")
     } else {
-        if !size give_item(id,"mushroom") else {if size =1 if string(other.powerup)!="1" give_item(id,"fflower") else give_item(id,"bfeather") else {give_item(id,"shield")} }
+        if !size && !skipmush give_item(id,"mushroom") else {if size<=1 if string(other.powerup)!="1" give_item(id,"fflower") else give_item(id,"bfeather") else {give_item(id,"shield")} }
    }
 }
 
