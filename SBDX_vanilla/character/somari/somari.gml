@@ -64,6 +64,7 @@ spindustspeed=nozerounreal(playerskindat(p2,name+" spindash dust speed"),1)
 #define start
 mask_set(12,12)
 highcoinmax=1
+skipmush=1 //Skips the Mushroom for itemboxes, no longer a Somari-exclusive in source
 global.animatePrincess=1
 
 //i had to replace somarispeen with spinjump since spinjump is used in the gm81 file itself
