@@ -86,9 +86,9 @@ with (blockcoll){
                         owner.coint+=2
                     }
                     sound("itemappear")
-                    mush=(!owner.size || owner.size==5)
+                    mush=!owner.size
                     if owner.skipmush mush=0
-                    //if !mush mush=owner.size==5
+                    if !mush mush=owner.size==5
                     alarm[0]=18
                 }
             }
